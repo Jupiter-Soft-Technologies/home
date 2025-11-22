@@ -2,9 +2,9 @@ import React from "react";
 import AnimatedSection from "./AnimatedSection";
 
 const plans = [
-  { title: "Starter", price: "$199", features: ["Basic website", "1 month support", "Deployment"] },
+  { title: "Starter", price: "$299", features: ["Basic website", "1 month support", "Deployment"] },
   { title: "Pro", price: "$499", features: ["Web/App development", "3 months support", "Custom UI/UX"] },
-  { title: "Enterprise", price: "$999", features: ["Full-scale solution", "Priority support", "Cloud & Deployment"] },
+  { title: "Enterprise", price: "$799", features: ["Full-scale solution", "Priority support", "Cloud & Deployment"] },
 ];
 
 function Pricing() {

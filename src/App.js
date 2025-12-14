@@ -10,6 +10,7 @@ import Pricing from "./components/Pricing";
 import FAQ from "./components/FAQ";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
+import DemoWebsites from "./components/DemoWebsites";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <section id="hero"><Hero /></section>
       <TrustedBy />
       <section id="services"><Services /></section>
+      <section id="demo-websites"><DemoWebsites/></section>
       <section id="process"><Process /></section>
       <WhyChooseUs />
       <Testimonials />

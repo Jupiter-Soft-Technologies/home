@@ -83,7 +83,7 @@ export default function DemoWebsites() {
   return (
     <>
       <section id="demo-websites" className="py-20 bg-gradient-to-b from-gray-50 to-white text-center">
-        <h2 className="mb-4 text-4xl font-bold">Demo Websites Portfolio</h2>
+        <h2 className="text-4xl font-bold mb-12">Demo Websites Portfolio</h2>
         <p className="text-gray-600 max-w-2xl mx-auto mb-12 px-6">
           Explore our collection of professionally designed demo websites for various industries
         </p>

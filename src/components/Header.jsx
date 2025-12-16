@@ -15,7 +15,7 @@ function Header() {
   return (
     <header className="fixed w-full bg-white shadow-md z-50">
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
-        <div className="text-2xl font-bold text-blue-600">JupitorSoftTechnologies</div>
+        <div className="text-2xl font-bold text-blue-600">JupiterSoftTechnologies</div>
         {/* Desktop Menu */}
         <nav className="hidden md:flex space-x-6">
           {links.map((link, idx) => (

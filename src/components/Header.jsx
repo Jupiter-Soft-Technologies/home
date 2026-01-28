@@ -1,58 +1,129 @@
 import React, { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import ServiceDropdown from "./ServicesDropdown";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const links = [
-    { name: "Home", href: "#hero" },
-    { name: "Services", href: "#services" },
-    { name: "Process", href: "#process" },
-    { name: "Pricing", href: "#pricing" },
-    { name: "FAQ", href: "#faq" },
-    { name: "Contact", href: "#contact" },
-  ];
+  const handleNav = (sectionId) => {
+    if (location.pathname !== "/") {
+      // Navigate to home first, then scroll
+      navigate("/", { state: { scrollTo: sectionId } });
+    } else {
+      document
+        .getElementById(sectionId)
+        ?.scrollIntoView({ behavior: "smooth" });
+    }
+
+    setIsOpen(false);
+  };
 
   return (
-    <header className="fixed w-full bg-white shadow-md z-50">
+    <header className="fixed w-full bg-white shadow-lg z-50">
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
-        <div className="text-2xl font-bold text-blue-600">JupiterSoftTechnologies</div>
-        {/* Desktop Menu */}
-        <nav className="hidden md:flex space-x-6">
-          {links.map((link, idx) => (
-            <a
-              key={idx}
-              href={link.href}
-              className="text-gray-700 hover:text-blue-600 font-medium transition"
-            >
-              {link.name}
-            </a>
-          ))}
-        </nav>
-        {/* Mobile Menu Button */}
-        <div className="md:hidden">
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="text-gray-700 focus:outline-none"
-          >
-            {isOpen ? "✖" : "☰"}
-          </button>
+        {/* BRAND */}
+        <div
+          onClick={() => navigate("/")}
+          className="text-2xl font-extrabold cursor-pointer select-none relative"
+        >
+          <span className="text-blue-600 relative z-10">Jupiter</span>
+          <span className="text-yellow-400 relative z-10">Soft</span>
+          <span className="text-gray-800 relative z-10">Technologies</span>
+          {/* 3D shadow effect */}
+          <span className="absolute top-1 left-1 text-black opacity-20 z-0">
+            JupiterSoftTechnologies
+          </span>
         </div>
+
+        {/* DESKTOP NAV */}
+        <nav className="hidden md:flex space-x-8 items-center font-medium text-gray-800">
+          <button
+            onClick={() => handleNav("hero")}
+            className="relative group nav-link"
+          >
+            Home
+            <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+          </button>
+
+          <ServiceDropdown />
+
+          <button
+            onClick={() => handleNav("process")}
+            className="relative group nav-link"
+          >
+            Process
+            <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+          </button>
+          <button
+            onClick={() => handleNav("pricing")}
+            className="relative group nav-link"
+          >
+            Pricing
+            <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+          </button>
+          <button
+            onClick={() => handleNav("faq")}
+            className="relative group nav-link"
+          >
+            FAQ
+            <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+          </button>
+          <button
+            onClick={() => handleNav("contact")}
+            className="relative group nav-link"
+          >
+            Contact
+            <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+          </button>
+        </nav>
+
+        {/* MOBILE TOGGLE */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden text-2xl font-bold text-gray-800"
+        >
+          {isOpen ? "✖" : "☰"}
+        </button>
       </div>
-      {/* Mobile Menu */}
+
+      {/* MOBILE NAV */}
       {isOpen && (
-        <nav className="md:hidden bg-white shadow-md">
-          <div className="flex flex-col space-y-4 px-6 py-4">
-            {links.map((link, idx) => (
-              <a
-                key={idx}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="text-gray-700 hover:text-blue-600 font-medium transition"
-              >
-                {link.name}
-              </a>
-            ))}
-          </div>
+        <nav className="md:hidden bg-white shadow-lg px-6 py-4 space-y-4 font-medium text-gray-800">
+          <button
+            onClick={() => handleNav("hero")}
+            className="w-full text-left border-b border-gray-200 pb-2"
+          >
+            Home
+          </button>
+
+          <ServiceDropdown isMobile closeMenu={() => setIsOpen(false)} />
+
+          <button
+            onClick={() => handleNav("process")}
+            className="w-full text-left border-b border-gray-200 pb-2"
+          >
+            Process
+          </button>
+          <button
+            onClick={() => handleNav("pricing")}
+            className="w-full text-left border-b border-gray-200 pb-2"
+          >
+            Pricing
+          </button>
+          <button
+            onClick={() => handleNav("faq")}
+            className="w-full text-left border-b border-gray-200 pb-2"
+          >
+            FAQ
+          </button>
+          <button
+            onClick={() => handleNav("contact")}
+            className="w-full text-left border-b border-gray-200 pb-2"
+          >
+            Contact
+          </button>
         </nav>
       )}
     </header>

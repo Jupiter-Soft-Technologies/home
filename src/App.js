@@ -1,34 +1,30 @@
-import React from "react";
-import Header from "./components/Header";
-import Hero from "./components/Hero";
-import TrustedBy from "./components/TrustedBy";
-import Services from "./components/Services";
-import Process from "./components/Process";
-import WhyChooseUs from "./components/WhyChooseUs";
-import Testimonials from "./components/Testimonials";
-import Pricing from "./components/Pricing";
-import FAQ from "./components/FAQ";
-import ContactSection from "./components/ContactSection";
-import Footer from "./components/Footer";
-import DemoWebsites from "./components/DemoWebsites";
+import { Routes, Route } from "react-router-dom";
+import Layout from "./layout/Layout";
 
-function App() {
+import HomePage from "./pages/HomePage";
+import SeoPricing from "./pages/SeoPricing";
+import PpcPricing from "./pages/PpcPricing";
+import AmazonPpcPricing from "./pages/AmazonPpcPricing";
+import WebDevPricing from "./pages/WebDevPricing";
+import AppDevPricing from "./pages/AppDevPricing";
+import CROPricing from "./pages/CROPricing";
+
+export default function App() {
   return (
-    <div className="App scroll-smooth">
-      <Header />
-      <section id="hero"><Hero /></section>
-      <TrustedBy />
-      <section id="services"><Services /></section>
-      <section id="demo-websites"><DemoWebsites/></section>
-      <section id="process"><Process /></section>
-      <WhyChooseUs />
-      <Testimonials />
-      <section id="pricing"><Pricing /></section>
-      <section id="faq"><FAQ /></section>
-      <ContactSection />
-      <Footer />
-    </div>
+    <Routes>
+      {/* Layout wrapper */}
+      <Route element={<Layout />}>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/seo-pricing" element={<SeoPricing />} />
+        <Route path="/ppc-pricing" element={<PpcPricing />} />
+        <Route path="/cro-pricing" element={<CROPricing />} />
+        <Route path="/amazon-ppc-pricing" element={<AmazonPpcPricing />} />
+        <Route path="/web-pricing" element={<WebDevPricing />} />
+        <Route path="/app-pricing" element={<AppDevPricing />} />
+        {/* future routes */}
+        {/* <Route path="/web-pricing" element={<WebPricing />} /> */}
+        {/* <Route path="/app-pricing" element={<AppPricing />} /> */}
+      </Route>
+    </Routes>
   );
 }
-
-export default App;

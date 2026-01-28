@@ -224,13 +224,13 @@ export default function RestaurantDemo() {
             </Button>
           </div>
           <div className="flex items-center justify-center gap-6">
-            <a href="#" className="hover:scale-110 transition-transform">
+            <a href="https://roilift.com/seo-pricing/" className="hover:scale-110 transition-transform">
               <Instagram className="w-8 h-8" />
             </a>
-            <a href="#" className="hover:scale-110 transition-transform">
+            <a href="https://roilift.com/seo-pricing/" className="hover:scale-110 transition-transform">
               <Facebook className="w-8 h-8" />
             </a>
-            <a href="#" className="hover:scale-110 transition-transform">
+            <a href="https://roilift.com/seo-pricing/" className="hover:scale-110 transition-transform">
               <Phone className="w-8 h-8" />
             </a>
           </div>

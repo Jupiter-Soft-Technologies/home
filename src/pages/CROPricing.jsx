@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Check, X } from "lucide-react";
 import ContactModal from "../components/ContactModal";
+import { useCurrency } from "../context/CurrencyContext";
 
 /* ================= FEATURES ================= */
 const features = [
@@ -35,7 +36,7 @@ const features = [
   {
     section: "PAID ADVERTISEMENT",
     items: [
-      ["Ad Budget (Paid by Client)", "$500+", "$500+", "$500+", "$500+"],
+      ["Ad Budget (Paid by Client)", 2500, 2500, 4000, 5000],
       ["Ad Platform Setup (Up to 2)", "✓", "✓", "✓", "✓"],
       ["Campaign Setup", "✓", "✓", "✓", "✓"],
       ["Targeting & Segmentation", "✓", "✓", "✓", "✓"],
@@ -56,11 +57,11 @@ const features = [
   {
     section: "CONTENT & LINK ACQUISITION",
     items: [
-      ["Onsite Blog Writing", "10", "10", "10", "10"],
-      ["Blog Link Promotion", "15", "30", "30", "30"],
-      ["Guest Blog Posting", "x", "2", "2", "2"],
-      ["Web 2.0 Profiles", "x", "2", "2", "2"],
-      ["Social Backlinks", "10", "10", "10", "10"],
+      ["Onsite Blog Writing", 10, 10, 10, 10],
+      ["Blog Link Promotion", 15, 30, 30, 30],
+      ["Guest Blog Posting", "x", 2, 2, 2],
+      ["Web 2.0 Profiles", "x", 2, 2, 2],
+      ["Social Backlinks", 10, 10, 10, 10],
       ["Infographic Creation", "x", "x", "✓", "✓"],
     ],
   },
@@ -68,7 +69,7 @@ const features = [
     section: "SOCIAL MEDIA MARKETING",
     items: [
       ["Facebook Page Optimization", "✓", "✓", "✓", "✓"],
-      ["Facebook Post Updates", "15", "15", "15", "15"],
+      ["Facebook Post Updates", 15, 15, 15, 15],
       ["LinkedIn Profile Optimization", "x", "✓", "✓", "✓"],
       ["YouTube Channel Setup", "x", "x", "✓", "✓"],
     ],
@@ -87,10 +88,10 @@ const features = [
 
 /* ================= PLANS ================= */
 const plans = [
-  { name: "Silver", price: "$2500" },
-  { name: "Gold", price: "$3500", highlight: true },
-  { name: "Platinum", price: "$4000" },
-  { name: "Premium", price: "$5000" },
+  { name: "Silver", price: 2500 },
+  { name: "Gold", price: 3500, highlight: true },
+  { name: "Platinum", price: 4000 },
+  { name: "Premium", price: 5000 },
 ];
 
 /* ================= ICON ================= */
@@ -106,6 +107,14 @@ const Icon = ({ value }) => {
 export default function CROPricingComparison() {
   const [open, setOpen] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState("");
+
+  // Only use convertPrice; removed unused currency to fix ESLint warning
+  const { convertPrice } = useCurrency();
+
+  const formatValue = (value) => {
+    if (typeof value === "number") return convertPrice(value);
+    return value; // for ✓, x, or other text
+  };
 
   return (
     <>
@@ -130,7 +139,7 @@ export default function CROPricingComparison() {
                   {plan.name}
                 </h3>
                 <p className="text-3xl font-bold text-blue-500 mt-2">
-                  {plan.price}
+                  {convertPrice(plan.price)}
                 </p>
                 <p className="text-gray-400 text-sm">per month</p>
               </div>
@@ -150,7 +159,7 @@ export default function CROPricingComparison() {
                           className="flex justify-between text-sm text-gray-300"
                         >
                           <span className="pr-3">{item[0]}</span>
-                          <Icon value={item[planIndex + 1]} />
+                          <Icon value={formatValue(item[planIndex + 1])} />
                         </li>
                       ))}
                     </ul>

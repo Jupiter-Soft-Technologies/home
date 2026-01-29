@@ -1,9 +1,9 @@
 import PricingComparison from "../components/PricingComparison";
 
 const plans = [
-  { name: "Starter Amazon PPC", price: "₹15,000" },
-  { name: "Growth Amazon PPC", price: "₹40,000", highlight: true },
-  { name: "Enterprise Amazon PPC", price: "₹80,000" },
+  { name: "Starter Amazon PPC", price: 15000 },
+  { name: "Growth Amazon PPC", price: 40000, highlight: true },
+  { name: "Enterprise Amazon PPC", price: 80000 },
 ];
 
 const features = [

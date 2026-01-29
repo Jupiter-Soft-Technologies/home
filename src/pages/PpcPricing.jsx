@@ -1,10 +1,14 @@
 import { useState } from "react";
 import ContactModal from "../components/ContactModal";
+import { useCurrency } from "../context/CurrencyContext";
 
+/**
+ * Base prices are in INR
+ */
 const plans = [
   {
     name: "Starter PPC",
-    price: "₹12,000",
+    price: 12000,
     subtitle: "For local & small businesses",
     features: [
       "Google Ads account setup",
@@ -16,7 +20,7 @@ const plans = [
   },
   {
     name: "Growth PPC",
-    price: "₹35,000",
+    price: 35000,
     subtitle: "Most Popular",
     highlight: true,
     features: [
@@ -29,7 +33,7 @@ const plans = [
   },
   {
     name: "Enterprise PPC",
-    price: "₹70,000",
+    price: 70000,
     subtitle: "For aggressive scaling",
     features: [
       "Unlimited campaigns",
@@ -41,9 +45,28 @@ const plans = [
   },
 ];
 
+/**
+ * Conversion rates (can be moved to config later)
+ */
+const currencyRates = {
+  INR: { rate: 1, symbol: "₹" },
+  USD: { rate: 0.012, symbol: "$" },
+  GBP: { rate: 0.0095, symbol: "£" },
+  EUR: { rate: 0.011, symbol: "€" },
+  AUD: { rate: 0.018, symbol: "$" },
+  AED: { rate: 0.044, symbol: "د.إ" },
+};
+
 export default function PpcPricing() {
   const [open, setOpen] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState("");
+
+  const { currency } = useCurrency();
+
+  const formatPrice = (priceInINR) => {
+    const converted = priceInINR * currencyRates[currency].rate;
+    return `${currencyRates[currency].symbol}${Math.round(converted).toLocaleString()}`;
+  };
 
   return (
     <>
@@ -80,8 +103,9 @@ export default function PpcPricing() {
                 </h3>
                 <p className="text-gray-400 mt-2">{plan.subtitle}</p>
 
+                {/* PRICE */}
                 <div className="mt-6 text-4xl font-bold text-blue-400">
-                  {plan.price}
+                  {formatPrice(plan.price)}
                   <span className="text-base text-gray-400 font-medium">
                     {" "}
                     /month

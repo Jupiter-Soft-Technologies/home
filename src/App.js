@@ -9,22 +9,26 @@ import WebDevPricing from "./pages/WebDevPricing";
 import AppDevPricing from "./pages/AppDevPricing";
 import CROPricing from "./pages/CROPricing";
 
+import { CurrencyProvider } from "./context/CurrencyContext";
+
 export default function App() {
   return (
-    <Routes>
-      {/* Layout wrapper */}
-      <Route element={<Layout />}>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/seo-pricing" element={<SeoPricing />} />
-        <Route path="/ppc-pricing" element={<PpcPricing />} />
-        <Route path="/cro-pricing" element={<CROPricing />} />
-        <Route path="/amazon-ppc-pricing" element={<AmazonPpcPricing />} />
-        <Route path="/web-pricing" element={<WebDevPricing />} />
-        <Route path="/app-pricing" element={<AppDevPricing />} />
-        {/* future routes */}
-        {/* <Route path="/web-pricing" element={<WebPricing />} /> */}
-        {/* <Route path="/app-pricing" element={<AppPricing />} /> */}
-      </Route>
-    </Routes>
+    <CurrencyProvider>
+      <Routes>
+        {/* Layout wrapper */}
+        <Route element={<Layout />}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/seo-pricing" element={<SeoPricing />} />
+          <Route path="/ppc-pricing" element={<PpcPricing />} />
+          <Route path="/cro-pricing" element={<CROPricing />} />
+          <Route
+            path="/amazon-ppc-pricing"
+            element={<AmazonPpcPricing />}
+          />
+          <Route path="/web-pricing" element={<WebDevPricing />} />
+          <Route path="/app-pricing" element={<AppDevPricing />} />
+        </Route>
+      </Routes>
+    </CurrencyProvider>
   );
 }

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Check, X } from "lucide-react";
 import ContactModal from "../components/ContactModal";
+import { useCurrency } from "../context/CurrencyContext";
 
 const features = [
   {
@@ -81,9 +82,9 @@ const features = [
 ];
 
 const plans = [
-  { name: "Starter SEO", price: "₹10,000" },
-  { name: "Growth SEO", price: "₹30,000", highlight: true },
-  { name: "Enterprise SEO", price: "₹60,000" },
+  { name: "Starter SEO", price: 10000 },
+  { name: "Growth SEO", price: 30000, highlight: true },
+  { name: "Enterprise SEO", price: 60000 },
 ];
 
 const Icon = ({ value }) => {
@@ -97,6 +98,7 @@ const Icon = ({ value }) => {
 export default function SeoPricingComparison() {
   const [open, setOpen] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState("");
+  const { convertPrice } = useCurrency();
 
   return (
     <>
@@ -121,7 +123,7 @@ export default function SeoPricingComparison() {
                   {plan.name}
                 </h3>
                 <p className="text-3xl font-bold text-blue-500 mt-2">
-                  {plan.price}
+                  {convertPrice(plan.price)}
                 </p>
                 <p className="text-gray-400 text-sm">per month</p>
               </div>
@@ -168,7 +170,6 @@ export default function SeoPricingComparison() {
         </div>
       </section>
 
-      {/* CONTACT MODAL */}
       <ContactModal
         open={open}
         onClose={() => setOpen(false)}

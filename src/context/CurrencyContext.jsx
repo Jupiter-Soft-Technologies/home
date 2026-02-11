@@ -41,10 +41,10 @@ const symbols = {
   CZK: "Kč",
   ILS: "₪",
   THB: "฿",
-  // add more as needed
+ 
 };
 
-// static rates (INR base)
+
 const rates = {
   INR: 1,
   USD: 0.012,
@@ -80,16 +80,16 @@ const rates = {
   HUF: 4.10,
   CZK: 0.28,
   ILS: 0.039,
-  // add more rates here
+  
 };
 
 export const CurrencyProvider = ({ children }) => {
-  // Load initial currency from localStorage, default to INR
+  // Load initial currency from localStorage
   const [currency, setCurrency] = useState(() => {
     return localStorage.getItem("selectedCurrency") || "INR";
   });
 
-  // Store selected currency in localStorage whenever it changes
+  // Store selected currency in localStorage 
   useEffect(() => {
     localStorage.setItem("selectedCurrency", currency);
   }, [currency]);

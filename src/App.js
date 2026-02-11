@@ -8,6 +8,9 @@ import AmazonPpcPricing from "./pages/AmazonPpcPricing";
 import WebDevPricing from "./pages/WebDevPricing";
 import AppDevPricing from "./pages/AppDevPricing";
 import CROPricing from "./pages/CROPricing";
+import SEO from "./pages/services/SEO";
+import ServiceDetail from "./pages/services/ServiceDetail";
+
 
 import { CurrencyProvider } from "./context/CurrencyContext";
 
@@ -27,6 +30,8 @@ export default function App() {
           />
           <Route path="/web-pricing" element={<WebDevPricing />} />
           <Route path="/app-pricing" element={<AppDevPricing />} />
+          <Route path="/services/seo" element={<SEO />} />
+          <Route path="/services/:slug" element={<ServiceDetail />} />
         </Route>
       </Routes>
     </CurrencyProvider>

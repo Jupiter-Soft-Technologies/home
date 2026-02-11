@@ -3,12 +3,12 @@ import { useNavigate, useLocation } from "react-router-dom";
 import ServiceDropdown from "./ServicesDropdown";
 import { useCurrency } from "../context/CurrencyContext";
 import ReactCountryFlag from "react-country-flag";
+import logo from "../assets/logo.png";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-
   const { currency, setCurrency } = useCurrency();
 
   const handleNav = (sectionId) => {
@@ -32,37 +32,37 @@ function Header() {
   };
 
   return (
-    <header className="fixed w-full bg-white shadow-lg z-50">
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
-        {/* BRAND (UNCHANGED) */}
+    <header className="fixed w-full bg-gray-100 shadow-md z-50 border-b border-gray-200">
+      <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-2">
+
+        {/* LOGO */}
         <div
           onClick={() => navigate("/")}
-          className="text-2xl font-extrabold cursor-pointer select-none relative"
+          className="cursor-pointer flex items-center"
         >
-          <span className="text-blue-600 relative z-10">Jupiter</span>
-          <span className="text-yellow-400 relative z-10">Soft</span>
-          <span className="text-gray-800 relative z-10">Technologies</span>
-          <span className="absolute top-1 left-1 text-black opacity-20 z-0">
-            JupiterSoftTechnologies
-          </span>
+          <img
+            src={logo}
+            alt="Jupiter Soft Technologies"
+            className="h-16 md:h-20 w-auto object-contain drop-shadow-sm"
+          />
         </div>
 
-        {/* DESKTOP NAV (UNCHANGED STYLES) */}
+        {/* DESKTOP NAV */}
         <nav className="hidden md:flex space-x-8 items-center font-medium text-gray-800">
+
           <button
             onClick={() => handleNav("hero")}
-            className="relative group nav-link"
+            className="relative group"
           >
             Home
             <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
           </button>
 
-          {/* SERVICES AFTER HOME */}
           <ServiceDropdown />
 
           <button
             onClick={() => handleNav("process")}
-            className="relative group nav-link"
+            className="relative group"
           >
             Process
             <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
@@ -70,7 +70,7 @@ function Header() {
 
           <button
             onClick={() => handleNav("pricing")}
-            className="relative group nav-link"
+            className="relative group"
           >
             Pricing
             <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
@@ -78,7 +78,7 @@ function Header() {
 
           <button
             onClick={() => handleNav("faq")}
-            className="relative group nav-link"
+            className="relative group"
           >
             FAQ
             <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
@@ -86,13 +86,13 @@ function Header() {
 
           <button
             onClick={() => handleNav("contact")}
-            className="relative group nav-link"
+            className="relative group"
           >
             Contact
             <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
           </button>
 
-          {/* 🌍 CURRENCY SELECT (ONLY ADDITION) */}
+          {/* Currency Selector */}
           <div className="flex items-center gap-2 ml-4">
             <ReactCountryFlag
               svg
@@ -112,9 +112,17 @@ function Header() {
               <option value="AED">AE · د.إ</option>
             </select>
           </div>
+
+          {/* GET IN TOUCH BUTTON */}
+          <button
+            onClick={() => handleNav("contact")}
+            className="ml-4 bg-blue-600 text-white px-5 py-2 rounded-full shadow-md hover:bg-blue-700 transition-all duration-300"
+          >
+            Get In Touch
+          </button>
         </nav>
 
-        {/* MOBILE TOGGLE (UNCHANGED) */}
+        {/* MOBILE MENU BUTTON */}
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="md:hidden text-2xl font-bold text-gray-800"
@@ -123,9 +131,10 @@ function Header() {
         </button>
       </div>
 
-      {/* MOBILE NAV (STYLES UNCHANGED) */}
+      {/* MOBILE NAV */}
       {isOpen && (
-        <nav className="md:hidden bg-white shadow-lg px-6 py-4 space-y-4 font-medium text-gray-800">
+        <nav className="md:hidden bg-gray-100 shadow-lg px-6 py-4 space-y-4 font-medium text-gray-800">
+
           <button
             onClick={() => handleNav("hero")}
             className="w-full text-left border-b border-gray-200 pb-2"
@@ -141,18 +150,21 @@ function Header() {
           >
             Process
           </button>
+
           <button
             onClick={() => handleNav("pricing")}
             className="w-full text-left border-b border-gray-200 pb-2"
           >
             Pricing
           </button>
+
           <button
             onClick={() => handleNav("faq")}
             className="w-full text-left border-b border-gray-200 pb-2"
           >
             FAQ
           </button>
+
           <button
             onClick={() => handleNav("contact")}
             className="w-full text-left border-b border-gray-200 pb-2"
@@ -160,7 +172,7 @@ function Header() {
             Contact
           </button>
 
-          {/* 🌍 MOBILE CURRENCY */}
+          {/* Mobile Currency */}
           <div className="flex items-center gap-2 pt-2">
             <ReactCountryFlag
               svg
@@ -180,6 +192,14 @@ function Header() {
               <option value="AED">AE · د.إ</option>
             </select>
           </div>
+
+          {/* Mobile CTA */}
+          <button
+            onClick={() => handleNav("contact")}
+            className="w-full bg-blue-600 text-white px-5 py-2 rounded-full shadow-md hover:bg-blue-700 transition-all duration-300"
+          >
+            Get In Touch
+          </button>
         </nav>
       )}
     </header>

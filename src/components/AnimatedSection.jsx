@@ -1,18 +1,37 @@
-import React from "react";
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
-const AnimatedSection = ({ children, className = "opacity-0 animate-fadeIn" }) => {
+function AnimatedSection({ children }) {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+
+    return () => {
+      if (ref.current) observer.unobserve(ref.current);
+    };
+  }, []);
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className={className}
+    <div
+      ref={ref}
+      className={`transition-all duration-1000 ${
+        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      }`}
     >
       {children}
-    </motion.div>
+    </div>
   );
-};
+}
 
 export default AnimatedSection;
+

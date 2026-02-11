@@ -15,7 +15,6 @@ import DemoWebsites from "../components/DemoWebsites";
 export default function HomePage() {
   const location = useLocation();
 
-  // ✅ Fix navigation from other routes (SEO / PPC pages)
   useEffect(() => {
     if (location.state?.scrollTo) {
       const sectionId = location.state.scrollTo;
@@ -28,7 +27,7 @@ export default function HomePage() {
             block: "start",
           });
         }
-      }, 100); // ensures DOM is mounted
+      }, 100); 
     }
   }, [location]);
 

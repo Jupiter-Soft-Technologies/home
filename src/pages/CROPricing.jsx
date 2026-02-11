@@ -3,7 +3,6 @@ import { Check, X } from "lucide-react";
 import ContactModal from "../components/ContactModal";
 import { useCurrency } from "../context/CurrencyContext";
 
-/* ================= FEATURES ================= */
 const features = [
   {
     section: "INITIAL REVIEW & ANALYSIS",
@@ -86,7 +85,6 @@ const features = [
   },
 ];
 
-/* ================= PLANS ================= */
 const plans = [
   { name: "Silver", price: 2500 },
   { name: "Gold", price: 3500, highlight: true },
@@ -103,12 +101,12 @@ const Icon = ({ value }) => {
   return <span className="text-blue-400 font-semibold">{value}</span>;
 };
 
-/* ================= COMPONENT ================= */
+/* COMPONENT  */
 export default function CROPricingComparison() {
   const [open, setOpen] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState("");
 
-  // Only use convertPrice; removed unused currency to fix ESLint warning
+  // Only use convertPrice; 
   const { convertPrice } = useCurrency();
 
   const formatValue = (value) => {

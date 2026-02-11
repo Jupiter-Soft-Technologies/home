@@ -20,3 +20,62 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ===============================
+   Hanging Swing Animation
+================================ */
+
+@keyframes swing {
+  0% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+  100% { transform: rotate(-2deg); }
+}
+
+@keyframes floatSlow {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
+}
+
+.swing-animation {
+  animation: swing 6s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+.float-animation {
+  animation: floatSlow 5s ease-in-out infinite;
+}
+
+/* Smooth perspective container */
+.perspective {
+  perspective: 1400px;
+}
+
+/* Glass reflection */
+.card-reflection::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at var(--x, 50%) var(--y, 50%),
+    rgba(255,255,255,0.25),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card-reflection:hover::before {
+  opacity: 1;
+}
+
+/* Floating subtle animation */
+@keyframes floatSoft {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+.float-soft {
+  animation: floatSoft 6s ease-in-out infinite;
+}

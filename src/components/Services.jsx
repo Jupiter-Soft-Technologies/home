@@ -5,7 +5,7 @@ import AnimatedSection from "./AnimatedSection";
 const services = [
   {
     number: "01",
-    title: "SEO Optimization",
+    title: "Search Engine Optimization (SEO)",
     slug: "seo",
     desc: "Technical SEO and content strategies designed for long-term organic dominance.",
     bullets: [
@@ -17,7 +17,7 @@ const services = [
   },
   {
     number: "02",
-    title: "Paid Advertising",
+    title: "Paid-per-click Advertising",
     slug: "paid-ads",
     desc: "High-performance Google, Meta & LinkedIn ads built for measurable ROI.",
     bullets: [
@@ -118,9 +118,13 @@ function Services() {
     <AnimatedSection>
       <section
         id="services"
-        className="py-32 bg-gradient-to-b from-[#0f172a] via-[#0b1120] to-black text-white"
+        className="relative py-32 bg-gradient-to-b from-[#0f172a] via-[#0b1120] to-black text-white overflow-hidden"
       >
-        <div className="max-w-7xl mx-auto px-6">
+        {/* Background Glow */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-600 opacity-20 blur-[160px] rounded-full"></div>
+
+        <div className="relative max-w-7xl mx-auto px-6">
+
           {/* Header */}
           <div className="text-center mb-28">
             <span className="text-blue-400 text-sm uppercase tracking-widest">
@@ -139,19 +143,22 @@ function Services() {
           </div>
 
           {/* Services */}
-          <div className="space-y-32">
+          <div className="space-y-28">
             {services.map((service, index) => (
               <div
                 key={index}
-                className="grid md:grid-cols-2 gap-16 items-center border-b border-gray-800 pb-20"
+                className="grid md:grid-cols-2 gap-16 items-center 
+                bg-white/5 backdrop-blur-xl border border-white/10 
+                rounded-3xl p-12 hover:border-blue-500 
+                transition-all duration-500 group"
               >
                 {/* Left */}
                 <div>
-                  <span className="text-6xl font-bold text-gray-800">
+                  <span className="text-6xl font-bold text-gray-700 group-hover:text-blue-500 transition">
                     {service.number}
                   </span>
 
-                  <h3 className="text-3xl md:text-4xl font-semibold mt-6">
+                  <h3 className="text-3xl md:text-4xl font-semibold mt-6 group-hover:text-blue-400 transition">
                     {service.title}
                   </h3>
 
@@ -172,7 +179,7 @@ function Services() {
                   {service.bullets.map((item, idx) => (
                     <div
                       key={idx}
-                      className="flex items-start gap-4 text-gray-300"
+                      className="flex items-start gap-4 text-gray-300 group-hover:text-white transition"
                     >
                       <span className="text-blue-500 text-xl">✓</span>
                       <p>{item}</p>
@@ -185,21 +192,22 @@ function Services() {
 
           {/* Metrics */}
           <div className="grid md:grid-cols-3 gap-12 text-center mt-32">
-            <div>
+            <div className="bg-white/5 backdrop-blur-xl p-10 rounded-2xl border border-white/10">
               <h4 className="text-4xl font-bold text-blue-500">250%+</h4>
               <p className="text-gray-400 mt-3">Average traffic growth</p>
             </div>
 
-            <div>
+            <div className="bg-white/5 backdrop-blur-xl p-10 rounded-2xl border border-white/10">
               <h4 className="text-4xl font-bold text-blue-500">180%+</h4>
               <p className="text-gray-400 mt-3">Conversion improvement</p>
             </div>
 
-            <div>
+            <div className="bg-white/5 backdrop-blur-xl p-10 rounded-2xl border border-white/10">
               <h4 className="text-4xl font-bold text-blue-500">50+</h4>
               <p className="text-gray-400 mt-3">Startups scaled globally</p>
             </div>
           </div>
+
         </div>
       </section>
     </AnimatedSection>

@@ -7,9 +7,9 @@ import Services from "../components/Services";
 import Process from "../components/Process";
 import WhyChooseUs from "../components/WhyChooseUs";
 import Testimonials from "../components/Testimonials";
-import Pricing from "../components/Pricing";
+// import Pricing from "../components/Pricing";
 import FAQ from "../components/FAQ";
-import ContactSection from "../components/ContactSection";
+// import ContactSection from "../components/ContactSection";
 import DemoWebsites from "../components/DemoWebsites";
 
 export default function HomePage() {
@@ -59,10 +59,10 @@ export default function HomePage() {
 
       <Testimonials />
 
-      {/* PRICING */}
+      {/* PRICING
       <section id="pricing">
         <Pricing />
-      </section>
+      </section> */}
 
       {/* FAQ */}
       <section id="faq">
@@ -70,9 +70,9 @@ export default function HomePage() {
       </section>
 
       {/* CONTACT */}
-      <section id="contact">
+      {/* <section id="contact">
         <ContactSection />
-      </section>
+      </section> */}
     </>
   );
 }

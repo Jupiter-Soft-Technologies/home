@@ -1,81 +1,265 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import {
   FaFacebookF,
   FaInstagram,
   FaLinkedinIn,
   FaYoutube,
 } from "react-icons/fa";
+import emailjs from "emailjs-com";
+import toast, { Toaster } from "react-hot-toast";
+import logo from "../assets/logo.png";
 
 function Footer() {
-  return (
-    <footer className="relative bg-[#0B0B12] text-gray-400 pt-20 pb-10 overflow-hidden">
+  const form = useRef();
 
-      {/* Background Glow Effect */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-purple-600 opacity-20 blur-[120px] rounded-full"></div>
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState({});
+  const [success, setSuccess] = useState(false);
+  const [countryCode, setCountryCode] = useState("+91");
+
+  // ================= VALIDATION =================
+  const validate = (data) => {
+    const newErrors = {};
+
+    if (!data.user_name.trim()) {
+      newErrors.user_name = "Name is required";
+    }
+
+    if (!data.user_email.trim()) {
+      newErrors.user_email = "Email is required";
+    } else if (!/^\S+@\S+\.\S+$/.test(data.user_email)) {
+      newErrors.user_email = "Invalid email format";
+    }
+
+    if (!data.phone.trim()) {
+      newErrors.phone = "Phone number is required";
+    } else if (!/^[0-9]{7,15}$/.test(data.phone.replace(/\D/g, ""))) {
+      newErrors.phone = "Enter valid phone number";
+    }
+
+    if (!data.message.trim()) {
+      newErrors.message = "Message is required";
+    }
+
+    return newErrors;
+  };
+
+  // ================= SEND EMAIL =================
+  const sendEmail = (e) => {
+    e.preventDefault();
+    if (loading) return;
+
+    const formData = {
+      user_name: form.current.user_name.value,
+      user_email: form.current.user_email.value,
+      phone: countryCode + " " + form.current.phone.value,
+      message: form.current.message.value,
+      honeypot: form.current.honeypot.value,
+    };
+
+    if (formData.honeypot) return;
+
+    const validationErrors = validate(formData);
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    setErrors({});
+    setLoading(true);
+
+    emailjs
+      .sendForm(
+        "service_9l00qaa",
+        "template_6ads65m",
+        form.current,
+        "MeJGLo1n0E50tSA4I"
+      )
+      .then(() => {
+        setLoading(false);
+        setSuccess(true);
+        toast.success("Message sent successfully 🚀");
+        form.current.reset();
+        setTimeout(() => setSuccess(false), 2000);
+      })
+      .catch(() => {
+        setLoading(false);
+        toast.error("Something went wrong. Please try again.");
+      });
+  };
+
+  return (
+    <footer className="relative bg-gradient-to-br from-[#0B0B12] via-[#111827] to-[#0F172A] text-gray-400 pt-24 pb-10 overflow-hidden">
+      
+      <Toaster position="top-right" />
+
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-purple-600 opacity-20 blur-[140px] rounded-full"></div>
 
       <div className="relative max-w-7xl mx-auto px-6">
 
-        {/* Newsletter Glass Box */}
-        <div className="mb-20 p-10 rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10 shadow-lg">
-          <div className="grid md:grid-cols-2 gap-10 items-center">
+        {/* ================= CONTACT FORM ================= */}
+        <div className="mb-24 p-12 rounded-3xl backdrop-blur-2xl bg-white/5 border border-white/10 shadow-2xl">
+          <div className="grid md:grid-cols-2 gap-12 items-start">
+
             <div>
-              <h3 className="text-3xl font-bold text-white">
-                Stay Ahead with <span className="text-[#A855F7]">Digital Insights</span>
+              <h3 className="text-4xl font-extrabold text-white">
+                Get In Touch
               </h3>
-              <p className="mt-4 text-gray-400">
-                Subscribe to receive marketing strategies, growth hacks, and
-                tech insights directly to your inbox.
+              <p className="mt-5 text-gray-400 text-lg">
+                Let’s build something amazing together.
               </p>
             </div>
 
-            <div className="flex">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-5 py-3 rounded-l-lg bg-black/40 border border-white/10 focus:outline-none text-white"
-              />
-              <button className="px-6 py-3 rounded-r-lg bg-gradient-to-r from-[#7C3AED] to-[#A855F7] text-white font-medium hover:opacity-90 transition">
-                Subscribe
+            <form
+              ref={form}
+              onSubmit={sendEmail}
+              className="flex flex-col space-y-4"
+            >
+              <input type="text" name="honeypot" className="hidden" />
+
+              {/* Name */}
+              <div>
+                <input
+                  type="text"
+                  name="user_name"
+                  placeholder="Your Name"
+                  className={`w-full px-6 py-4 bg-black/40 border rounded-xl text-white ${
+                    errors.user_name ? "border-red-500" : "border-white/10"
+                  }`}
+                  required
+                />
+                {errors.user_name && (
+                  <p className="text-red-400 text-sm mt-1">
+                    {errors.user_name}
+                  </p>
+                )}
+              </div>
+
+              {/* Email */}
+              <div>
+                <input
+                  type="email"
+                  name="user_email"
+                  placeholder="Your Email"
+                  className={`w-full px-6 py-4 bg-black/40 border rounded-xl text-white ${
+                    errors.user_email ? "border-red-500" : "border-white/10"
+                  }`}
+                  required
+                />
+                {errors.user_email && (
+                  <p className="text-red-400 text-sm mt-1">
+                    {errors.user_email}
+                  </p>
+                )}
+              </div>
+
+              {/* Phone */}
+              <div>
+                <div className="flex gap-2">
+                  <select
+                    value={countryCode}
+                    onChange={(e) => setCountryCode(e.target.value)}
+                    className="px-4 py-4 bg-black/40 border border-white/10 rounded-xl text-white"
+                  >
+                    <option value="+91">+91</option>
+                    <option value="+1">+1</option>
+                    <option value="+44">+44</option>
+                    <option value="+61">+61</option>
+                  </select>
+
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="Phone Number"
+                    className={`flex-1 px-6 py-4 bg-black/40 border rounded-xl text-white ${
+                      errors.phone ? "border-red-500" : "border-white/10"
+                    }`}
+                    onInput={(e) =>
+                      (e.target.value = e.target.value.replace(/\D/g, ""))
+                    }
+                    required
+                  />
+                </div>
+                {errors.phone && (
+                  <p className="text-red-400 text-sm mt-1">
+                    {errors.phone}
+                  </p>
+                )}
+              </div>
+
+              {/* Message */}
+              <div>
+                <textarea
+                  name="message"
+                  placeholder="Your Message"
+                  className={`w-full px-6 py-4 bg-black/40 border rounded-xl text-white min-h-[120px] ${
+                    errors.message ? "border-red-500" : "border-white/10"
+                  }`}
+                  required
+                />
+                {errors.message && (
+                  <p className="text-red-400 text-sm mt-1">
+                    {errors.message}
+                  </p>
+                )}
+              </div>
+
+              {/* Button */}
+              <button
+                type="submit"
+                disabled={loading}
+                className={`px-8 py-4 rounded-xl font-semibold text-white transition-all duration-300
+                bg-gradient-to-r from-[#7C3AED] to-[#A855F7]
+                ${loading ? "opacity-70 cursor-not-allowed" : "hover:scale-105"}
+                ${success ? "ring-4 ring-green-400 animate-pulse" : ""}`}
+              >
+                {loading ? (
+                  <span className="flex justify-center items-center gap-2">
+                    <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                    Sending...
+                  </span>
+                ) : (
+                  "Send Message"
+                )}
               </button>
-            </div>
+            </form>
           </div>
         </div>
 
-        {/* Main Footer Grid */}
-        <div className="grid md:grid-cols-5 gap-12">
+        {/* ================= FOOTER GRID ================= */}
+        <div className="grid md:grid-cols-5 gap-14">
 
-          {/* Logo + About */}
           <div>
-            <h2 className="text-2xl font-bold text-white">
-              <span className="text-[#A855F7]">Jupiter</span>Soft
-            </h2>
-
-            <p className="mt-6 text-sm leading-relaxed">
-              We build scalable digital ecosystems combining SEO, performance
-              marketing, web & app engineering to drive predictable growth.
+            <img
+              src={logo}
+              alt="JST Logo"
+              className="w-40 mb-6 hover:scale-105 transition-transform duration-300"
+            />
+            <p className="mt-4 text-sm leading-relaxed text-gray-400">
+              We build scalable digital ecosystems combining SEO,
+              performance marketing, web & app engineering to drive predictable growth.
             </p>
 
-            {/* Social Icons */}
-            <div className="flex gap-4 mt-6">
+            <div className="flex gap-4 mt-8">
               {[FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube].map(
                 (Icon, index) => (
                   <div
                     key={index}
-                    className="w-9 h-9 flex items-center justify-center rounded-full 
+                    className="w-10 h-10 flex items-center justify-center rounded-full 
                                bg-white/5 border border-white/10
-                               hover:border-[#A855F7] hover:shadow-[0_0_15px_#A855F7]
-                               transition-all duration-300 cursor-pointer"
+                               hover:border-[#A855F7] hover:shadow-[0_0_20px_#A855F7]
+                               hover:scale-110 transition-all duration-300 cursor-pointer"
                   >
-                    <Icon size={14} />
+                    <Icon size={16} />
                   </div>
                 )
               )}
             </div>
           </div>
 
-          {/* Services */}
           <div>
-            <h4 className="text-white font-semibold mb-6">Services</h4>
+            <h4 className="text-white font-semibold mb-6 text-lg">Services</h4>
             <ul className="space-y-3 text-sm">
               {[
                 "SEO Optimization",
@@ -84,27 +268,19 @@ function Footer() {
                 "Web Development",
                 "App Development",
               ].map((item, i) => (
-                <li
-                  key={i}
-                  className="cursor-pointer hover:text-[#A855F7] transition relative group"
-                >
+                <li key={i} className="cursor-pointer hover:text-[#A855F7] transition">
                   {item}
-                  <span className="absolute left-0 -bottom-1 w-0 h-[1px] bg-gradient-to-r from-[#7C3AED] to-[#A855F7] group-hover:w-full transition-all duration-300"></span>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Service Areas */}
           <div>
-            <h4 className="text-white font-semibold mb-6">Service Areas</h4>
+            <h4 className="text-white font-semibold mb-6 text-lg">Service Areas</h4>
             <ul className="space-y-3 text-sm">
               {["New York", "Los Angeles", "Chicago", "Houston", "Seattle"].map(
                 (city, i) => (
-                  <li
-                    key={i}
-                    className="cursor-pointer hover:text-[#A855F7] transition"
-                  >
+                  <li key={i} className="cursor-pointer hover:text-[#A855F7] transition">
                     {city}
                   </li>
                 )
@@ -112,16 +288,12 @@ function Footer() {
             </ul>
           </div>
 
-          {/* Quick Links */}
           <div>
-            <h4 className="text-white font-semibold mb-6">Quick Links</h4>
+            <h4 className="text-white font-semibold mb-6 text-lg">Quick Links</h4>
             <ul className="space-y-3 text-sm">
               {["Home", "About Us", "Services", "Case Studies", "Contact"].map(
                 (link, i) => (
-                  <li
-                    key={i}
-                    className="cursor-pointer hover:text-[#A855F7] transition"
-                  >
+                  <li key={i} className="cursor-pointer hover:text-[#A855F7] transition">
                     {link}
                   </li>
                 )
@@ -129,44 +301,19 @@ function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
-            <h4 className="text-white font-semibold mb-6">Contact</h4>
+            <h4 className="text-white font-semibold mb-6 text-lg">Contact</h4>
             <ul className="space-y-3 text-sm">
               <li>📍 123 Business Street, NY 10001</li>
               <li>📞 +1 (555) 123-4567</li>
-              <li>✉️ info@jupitersoft.com</li>
+              <li>✉️ jupitersofttechnologies@gmail.com</li>
             </ul>
-
-            <button
-              className="mt-6 px-5 py-2 rounded-md text-white font-medium
-                         border border-[#7C3AED]
-                         hover:shadow-[0_0_20px_#A855F7]
-                         hover:bg-gradient-to-r from-[#7C3AED] to-[#A855F7]
-                         transition-all duration-300"
-            >
-              Download Profile
-            </button>
           </div>
+
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-white/10 mt-16 pt-6 flex flex-col md:flex-row justify-between items-center text-sm">
-          <p>
-            © {new Date().getFullYear()} JupiterSoftTechnologies. All rights reserved.
-          </p>
-
-          <div className="flex gap-6 mt-4 md:mt-0">
-            <span className="hover:text-[#A855F7] cursor-pointer transition">
-              Terms & Conditions
-            </span>
-            <span className="hover:text-[#A855F7] cursor-pointer transition">
-              Privacy Policy
-            </span>
-            <span className="hover:text-[#A855F7] cursor-pointer transition">
-              Refund Policy
-            </span>
-          </div>
+        <div className="border-t border-white/10 mt-20 pt-6 text-sm text-gray-500 text-center">
+          © {new Date().getFullYear()} JST Technologies. All rights reserved.
         </div>
 
       </div>

@@ -59,7 +59,6 @@ export default function ServiceDropdown({ isMobile = false, closeMenu }) {
     },
   ];
 
-  // Close on outside click
   useEffect(() => {
     const handler = (e) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -75,7 +74,7 @@ export default function ServiceDropdown({ isMobile = false, closeMenu }) {
       {/* BUTTON */}
       <button
         onClick={() => setOpen(!open)}
-        className="text-gray-800 hover:text-blue-600 font-medium flex items-center gap-1"
+        className="text-black-200 hover:text-blue-400 font-medium flex items-center gap-1 transition"
       >
         Services
         <span
@@ -89,7 +88,7 @@ export default function ServiceDropdown({ isMobile = false, closeMenu }) {
 
       {/* DROPDOWN */}
       {open && (
-        <div className="absolute top-14 left-1/2 -translate-x-1/2 w-[820px] max-w-[95vw] rounded-3xl bg-white/90 backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.15)] border z-50 overflow-hidden">
+        <div className="absolute top-14 left-1/2 -translate-x-1/2 w-[820px] max-w-[95vw] rounded-3xl bg-[#111827]/95 backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.6)] border border-gray-800 z-50 overflow-hidden">
           
           {/* HEADER */}
           <div className="px-8 py-6 bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
@@ -110,7 +109,7 @@ export default function ServiceDropdown({ isMobile = false, closeMenu }) {
                     setOpen(false);
                     closeMenu && closeMenu();
                   }}
-                  className="group relative rounded-2xl border bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                  className="group relative rounded-2xl border border-gray-800 bg-[#1f2937] p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:border-blue-500"
                 >
                   {/* ICON */}
                   <div
@@ -120,16 +119,16 @@ export default function ServiceDropdown({ isMobile = false, closeMenu }) {
                   </div>
 
                   {/* CONTENT */}
-                  <h5 className="text-lg font-semibold group-hover:text-blue-600 transition">
+                  <h5 className="text-lg font-semibold text-gray-100 group-hover:text-blue-400 transition">
                     {service.name}
                   </h5>
-                  <p className="text-sm text-gray-500 mt-1">
+                  <p className="text-sm text-gray-400 mt-1">
                     {service.desc}
                   </p>
 
                   {/* ARROW */}
                   <div className="absolute bottom-5 right-5 opacity-0 group-hover:opacity-100 transition">
-                    <ArrowRight className="w-5 h-5 text-blue-600" />
+                    <ArrowRight className="w-5 h-5 text-blue-400" />
                   </div>
                 </Link>
               ))}
@@ -137,8 +136,8 @@ export default function ServiceDropdown({ isMobile = false, closeMenu }) {
           </div>
 
           {/* FOOTER CTA */}
-          <div className="px-8 py-6 bg-gray-50 flex items-center justify-between">
-            <span className="text-sm text-gray-600">
+          <div className="px-8 py-6 bg-[#0f172a] border-t border-gray-800 flex items-center justify-between">
+            <span className="text-sm text-gray-400">
               Not sure which service fits your business?
             </span>
             <Link

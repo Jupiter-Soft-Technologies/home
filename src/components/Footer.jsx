@@ -304,7 +304,7 @@ function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-6 text-lg">Contact</h4>
             <ul className="space-y-3 text-sm">
-              <li>📍 123 Business Street, NY 10001</li>
+              <li>📍30 N GOULD st,STE #37621, Sheridan, WY 82801</li> 
               <li>📞 +1 (555) 123-4567</li>
               <li>✉️ jupitersofttechnologies@gmail.com</li>
             </ul>

@@ -86,10 +86,10 @@ const features = [
 ];
 
 const plans = [
-  { name: "Silver", price: 2500 },
-  { name: "Gold", price: 3500, highlight: true },
-  { name: "Platinum", price: 4000 },
-  { name: "Premium", price: 5000 },
+  { name: "Silver", price: 15000 },
+  { name: "Gold", price: 35000, highlight: true },
+  { name: "Platinum", price: 45000 },
+  { name: "Premium", price: 55000 },
 ];
 
 /* ================= ICON ================= */

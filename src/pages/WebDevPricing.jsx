@@ -1,7 +1,7 @@
 import PricingComparison from "../components/PricingComparison";
 
 const plans = [
-  { name: "Basic Website", price: 25000 },
+  { name: "Basic Website", price: 30000 },
   { name: "Business Website", price: 60000, highlight: true },
   { name: "Advanced Website", price: 120000 },
 ];

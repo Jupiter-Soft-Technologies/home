@@ -1,9 +1,9 @@
 import PricingComparison from "../components/PricingComparison";
 
 const plans = [
-  { name: "MVP App", price: 150000 },
-  { name: "Business App", price: 350000, highlight: true },
-  { name: "Enterprise App", price: 800000 },
+  { name: "MVP App", price: 50000 },
+  { name: "Business App", price: 850000, highlight: true },
+  { name: "Enterprise App", price: 120000 },
 ];
 
 const features = [

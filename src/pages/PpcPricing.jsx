@@ -8,7 +8,7 @@ import { useCurrency } from "../context/CurrencyContext";
 const plans = [
   {
     name: "Starter PPC",
-    price: 12000,
+    price: 20000,
     subtitle: "For local & small businesses",
     features: [
       "Google Ads account setup",

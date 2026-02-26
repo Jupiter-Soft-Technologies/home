@@ -41,13 +41,11 @@ const symbols = {
   CZK: "Kč",
   ILS: "₪",
   THB: "฿",
- 
 };
-
 
 const rates = {
   INR: 1,
-  USD: 0.012,
+  USD: 0.012, // 1 INR = 0.012 USD
   GBP: 0.0095,
   EUR: 0.011,
   AUD: 0.018,
@@ -61,7 +59,7 @@ const rates = {
   SAR: 0.044,
   PKR: 2.10,
   LKR: 2.20,
-  KRW: 17.00,
+  KRW: 17.0,
   IDR: 180.0,
   MYR: 0.056,
   PHP: 0.66,
@@ -80,16 +78,14 @@ const rates = {
   HUF: 4.10,
   CZK: 0.28,
   ILS: 0.039,
-  
 };
 
 export const CurrencyProvider = ({ children }) => {
-  // Load initial currency from localStorage
+  // ✅ DEFAULT = USD
   const [currency, setCurrency] = useState(() => {
-    return localStorage.getItem("selectedCurrency") || "INR";
+    return localStorage.getItem("selectedCurrency") || "USD";
   });
 
-  // Store selected currency in localStorage 
   useEffect(() => {
     localStorage.setItem("selectedCurrency", currency);
   }, [currency]);
@@ -97,6 +93,7 @@ export const CurrencyProvider = ({ children }) => {
   const convertPrice = (priceInINR) => {
     const converted = priceInINR * (rates[currency] ?? 1);
     const symbol = symbols[currency] ?? currency;
+
     return `${symbol} ${converted.toLocaleString(undefined, {
       minimumFractionDigits: 0,
       maximumFractionDigits: 2,

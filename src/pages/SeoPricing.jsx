@@ -82,9 +82,9 @@ const features = [
 ];
 
 const plans = [
-  { name: "Starter SEO", price: 45000 },
-  { name: "Growth SEO", price: 63000, highlight: true },
-  { name: "Enterprise SEO", price: 90000 },
+  { name: "Starter SEO", price: 41667 },
+  { name: "Growth SEO", price: 58333, highlight: true },
+  { name: "Enterprise SEO", price: 83333 },
 ];
 
 const Icon = ({ value }) => {

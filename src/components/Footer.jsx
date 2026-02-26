@@ -305,7 +305,7 @@ function Footer() {
             <h4 className="text-white font-semibold mb-6 text-lg">Contact</h4>
             <ul className="space-y-3 text-sm">
               <li>📍30 N GOULD st,STE #37621, Sheridan, WY 82801</li> 
-              <li>📞 +1 (555) 123-4567</li>
+              <li>📞 +1 (720) 764-9455</li>
               <li>✉️ jupitersofttechnologies@gmail.com</li>
             </ul>
           </div>

@@ -18,7 +18,7 @@ const services = [
   {
     number: "02",
     title: "Paid-per-click Advertising",
-    slug: "paid-ads",
+    slug: "ppc",
     desc: "High-performance Google, Meta & LinkedIn ads built for measurable ROI.",
     bullets: [
       "Campaign strategy & setup",

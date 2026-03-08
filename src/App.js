@@ -16,6 +16,8 @@ import CROPricing from "./pages/CROPricing";
 import SEO from "./pages/services/SEO";
 import ServiceDetail from "./pages/services/ServiceDetail";
 
+import PPC from "./pages/services/PPC";
+
 export default function App() {
   return (
     <Routes>
@@ -41,6 +43,7 @@ export default function App() {
         {/* Services */}
         <Route path="/services/seo" element={<SEO />} />
         <Route path="/services/:slug" element={<ServiceDetail />} />
+        <Route path="/services/ppc" element={<PPC />} />
 
       </Route>
     </Routes>

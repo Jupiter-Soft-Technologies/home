@@ -74,7 +74,7 @@ export default function ServiceDropdown({ isMobile = false, closeMenu }) {
       {/* BUTTON */}
       <button
         onClick={() => setOpen(!open)}
-        className="text-black-200 hover:text-blue-400 font-medium flex items-center gap-1 transition"
+        className="hover:text-blue-500 font-medium flex items-center gap-1 transition"
       >
         Services
         <span
@@ -88,8 +88,8 @@ export default function ServiceDropdown({ isMobile = false, closeMenu }) {
 
       {/* DROPDOWN */}
       {open && (
-        <div className="absolute top-14 left-1/2 -translate-x-1/2 w-[820px] max-w-[95vw] rounded-3xl bg-[#111827]/95 backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.6)] border border-gray-800 z-50 overflow-hidden">
-          
+        <div className="absolute top-14 left-1/2 -translate-x-1/2 w-[820px] max-w-[95vw] rounded-3xl bg-[#111827]/95 backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.6)] border border-gray-800 z-50 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+
           {/* HEADER */}
           <div className="px-8 py-6 bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
             <h4 className="text-xl font-semibold">Our Services</h4>
@@ -99,8 +99,9 @@ export default function ServiceDropdown({ isMobile = false, closeMenu }) {
           </div>
 
           {/* SERVICES GRID */}
-          <div className="max-h-[45vh] overflow-y-auto no-scrollbar">
-            <div className="grid md:grid-cols-3 gap-6 p-8">
+          <div className="p-8">
+            <div className="grid md:grid-cols-3 gap-6">
+
               {services.map((service, idx) => (
                 <Link
                   key={idx}
@@ -109,7 +110,7 @@ export default function ServiceDropdown({ isMobile = false, closeMenu }) {
                     setOpen(false);
                     closeMenu && closeMenu();
                   }}
-                  className="group relative rounded-2xl border border-gray-800 bg-[#1f2937] p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:border-blue-500"
+                  className="group relative rounded-2xl border border-gray-800 bg-[#1f2937] p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] hover:border-blue-500"
                 >
                   {/* ICON */}
                   <div
@@ -122,6 +123,7 @@ export default function ServiceDropdown({ isMobile = false, closeMenu }) {
                   <h5 className="text-lg font-semibold text-gray-100 group-hover:text-blue-400 transition">
                     {service.name}
                   </h5>
+
                   <p className="text-sm text-gray-400 mt-1">
                     {service.desc}
                   </p>
@@ -130,8 +132,10 @@ export default function ServiceDropdown({ isMobile = false, closeMenu }) {
                   <div className="absolute bottom-5 right-5 opacity-0 group-hover:opacity-100 transition">
                     <ArrowRight className="w-5 h-5 text-blue-400" />
                   </div>
+
                 </Link>
               ))}
+
             </div>
           </div>
 
@@ -140,6 +144,7 @@ export default function ServiceDropdown({ isMobile = false, closeMenu }) {
             <span className="text-sm text-gray-400">
               Not sure which service fits your business?
             </span>
+
             <Link
               to="/contact"
               className="bg-blue-600 text-white px-5 py-2.5 rounded-lg font-medium hover:bg-blue-700 transition"
@@ -147,6 +152,7 @@ export default function ServiceDropdown({ isMobile = false, closeMenu }) {
               Get Free Consultation
             </Link>
           </div>
+
         </div>
       )}
     </div>

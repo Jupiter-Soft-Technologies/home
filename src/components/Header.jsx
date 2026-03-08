@@ -8,61 +8,106 @@ import logo from "../assets/logo.png";
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [active, setActive] = useState("hero");
+  const [indicatorStyle, setIndicatorStyle] = useState({});
 
   const navigate = useNavigate();
   const location = useLocation();
   const { currency, setCurrency } = useCurrency();
-  const mobileRef = useRef();
 
-  const sections = ["hero", "process", "pricing", "faq", "contact"];
+  const mobileRef = useRef(null);
+  const navRef = useRef(null);
+  const buttonRefs = useRef([]);
 
-  /* ================= Scroll Glass Effect ================= */
+  const navItems = [
+    { name: "Home", type: "scroll", target: "hero", path: "/" },
+    { name: "Portfolio", type: "route", path: "/portfolio" },
+    { name: "Process", type: "route", path: "/process" },
+    { name: "Pricing", type: "scroll", target: "pricing", path: "/" },
+    { name: "FAQ", type: "scroll", target: "faq", path: "/" },
+    { name: "Contact", type: "scroll", target: "contact", path: "/" },
+  ];
+
+  /* ================= HEADER SHRINK ================= */
+
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-
-      sections.forEach((section) => {
-        const el = document.getElementById(section);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= 120 && rect.bottom >= 120) {
-            setActive(section);
-          }
-        }
-      });
+      setScrolled(window.scrollY > 40);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  /* ================= Prevent Scroll when Mobile Open ================= */
+  /* ================= MOBILE MENU CONTROL ================= */
+
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "auto";
   }, [isOpen]);
 
-  /* ================= Close on Outside Click ================= */
   useEffect(() => {
     const handleClick = (e) => {
       if (mobileRef.current && !mobileRef.current.contains(e.target)) {
         setIsOpen(false);
       }
     };
+
     if (isOpen) document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
   }, [isOpen]);
 
-  const handleNav = (sectionId) => {
-    if (location.pathname !== "/") {
-      navigate("/", { state: { scrollTo: sectionId } });
-    } else {
-      document
-        .getElementById(sectionId)
-        ?.scrollIntoView({ behavior: "smooth" });
+  /* ================= NAVIGATION ================= */
+
+  const handleNavigation = (item) => {
+    if (item.type === "route") {
+      navigate(item.path);
+    } else if (item.type === "scroll") {
+      if (location.pathname !== "/") {
+        navigate("/", { state: { scrollTo: item.target } });
+      } else {
+        document
+          .getElementById(item.target)
+          ?.scrollIntoView({ behavior: "smooth" });
+      }
     }
+
     setIsOpen(false);
   };
+
+  const isActive = (item) => {
+    if (item.type === "route") {
+      return location.pathname === item.path;
+    }
+
+    if (item.type === "scroll") {
+      return location.pathname === "/" && item.target === "hero";
+    }
+
+    return false;
+  };
+
+  /* ================= STRIPE STYLE INDICATOR ================= */
+
+  const moveIndicator = (element) => {
+    if (!element || !navRef.current) return;
+
+    const rect = element.getBoundingClientRect();
+    const parentRect = navRef.current.getBoundingClientRect();
+
+    setIndicatorStyle({
+      width: rect.width,
+      transform: `translateX(${rect.left - parentRect.left}px)`
+    });
+  };
+
+  /* ================= POSITION INDICATOR ON ACTIVE PAGE ================= */
+
+  useEffect(() => {
+    const activeIndex = navItems.findIndex((item) => isActive(item));
+
+    if (activeIndex !== -1 && buttonRefs.current[activeIndex]) {
+      moveIndicator(buttonRefs.current[activeIndex]);
+    }
+  }, [location.pathname]);
 
   const countryMap = {
     INR: "IN",
@@ -75,19 +120,18 @@ function Header() {
 
   return (
     <>
-      {/* Background overlay when mobile open */}
       {isOpen && (
-        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 transition-opacity duration-300" />
+        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40" />
       )}
 
       <header
-        className={`fixed w-full z-50 transition-all duration-500 ${
+        className={`fixed w-full z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-white/80 backdrop-blur-xl shadow-lg border-b border-gray-200"
-            : "bg-transparent"
+            ? "bg-white/80 backdrop-blur-xl shadow-md border-b border-gray-200 py-2"
+            : "bg-transparent py-4"
         }`}
       >
-        <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-3">
+        <div className="max-w-7xl mx-auto flex justify-between items-center px-6">
 
           {/* LOGO */}
           <div
@@ -97,29 +141,35 @@ function Header() {
             <img
               src={logo}
               alt="Jupiter Soft Technologies"
-              className="h-14 md:h-16 transition-transform duration-300 hover:scale-105"
+              className={`transition-all duration-300 ${
+                scrolled ? "h-12" : "h-16"
+              }`}
             />
           </div>
 
           {/* DESKTOP NAV */}
-          <nav className="hidden md:flex items-center gap-8 font-medium text-gray-800 relative">
+          <nav
+            ref={navRef}
+            className="relative hidden md:flex items-center gap-8 font-medium text-gray-800"
+          >
 
-            {sections.map((item, i) => (
+            {/* Animated indicator */}
+            <span
+              className="absolute -bottom-1 h-[3px] bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full transition-all duration-300"
+              style={indicatorStyle}
+            />
+
+            {navItems.map((item, index) => (
               <button
-                key={i}
-                onClick={() => handleNav(item)}
-                className={`relative capitalize transition ${
-                  active === item ? "text-blue-600" : ""
+                key={index}
+                ref={(el) => (buttonRefs.current[index] = el)}
+                onMouseEnter={(e) => moveIndicator(e.currentTarget)}
+                onClick={() => handleNavigation(item)}
+                className={`relative text-sm transition duration-300 hover:text-blue-500 ${
+                  isActive(item) ? "text-blue-600 font-semibold" : ""
                 }`}
               >
-                {item === "hero" ? "Home" : item}
-
-                {/* Animated Underline */}
-                <span
-                  className={`absolute left-0 -bottom-1 h-0.5 bg-blue-600 transition-all duration-300 ${
-                    active === item ? "w-full" : "w-0 group-hover:w-full"
-                  }`}
-                />
+                {item.name}
               </button>
             ))}
 
@@ -132,6 +182,7 @@ function Header() {
                 countryCode={countryMap[currency]}
                 style={{ width: "1.2em", height: "1.2em" }}
               />
+
               <select
                 value={currency}
                 onChange={(e) => setCurrency(e.target.value)}
@@ -146,15 +197,16 @@ function Header() {
               </select>
             </div>
 
-            {/* Magnetic CTA */}
+            {/* CTA */}
             <button
-              onClick={() => handleNav("contact")}
-              className="ml-4 px-6 py-2.5 rounded-full font-medium text-white
-              bg-gradient-to-r from-blue-600 to-indigo-600
-              transition-all duration-300 hover:scale-110 hover:shadow-xl"
+              onClick={() =>
+                handleNavigation({ type: "scroll", target: "contact" })
+              }
+              className="ml-4 px-6 py-2.5 rounded-full font-medium text-white bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300 hover:scale-110 hover:shadow-xl"
             >
               Get In Touch
             </button>
+
           </nav>
 
           {/* MOBILE BUTTON */}
@@ -164,9 +216,10 @@ function Header() {
           >
             {isOpen ? "✖" : "☰"}
           </button>
+
         </div>
 
-        {/* MOBILE NAV PANEL */}
+        {/* MOBILE NAV */}
         <div
           ref={mobileRef}
           className={`fixed top-0 right-0 h-full w-72 bg-white shadow-2xl z-50 transform transition-transform duration-500 ${
@@ -175,44 +228,17 @@ function Header() {
         >
           <div className="p-6 space-y-6 mt-16">
 
-            {sections.map((item, i) => (
+            {navItems.map((item, index) => (
               <button
-                key={i}
-                onClick={() => handleNav(item)}
-                className="w-full text-left pb-2 border-b border-gray-200 capitalize"
+                key={index}
+                onClick={() => handleNavigation(item)}
+                className="w-full text-left pb-2 border-b border-gray-200"
               >
-                {item === "hero" ? "Home" : item}
+                {item.name}
               </button>
             ))}
 
             <ServiceDropdown isMobile closeMenu={() => setIsOpen(false)} />
-
-            <div className="flex items-center gap-2 pt-2">
-              <ReactCountryFlag
-                svg
-                countryCode={countryMap[currency]}
-                style={{ width: "1.2em", height: "1.2em" }}
-              />
-              <select
-                value={currency}
-                onChange={(e) => setCurrency(e.target.value)}
-                className="w-full border border-gray-300 rounded-md px-3 py-2 bg-white"
-              >
-                <option value="INR">IN · ₹</option>
-                <option value="USD">US · $</option>
-                <option value="GBP">UK · £</option>
-                <option value="EUR">EU · €</option>
-                <option value="AUD">AU · $</option>
-                <option value="AED">AE · د.إ</option>
-              </select>
-            </div>
-
-            <button
-              onClick={() => handleNav("contact")}
-              className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-5 py-3 rounded-full shadow-md hover:shadow-lg transition-all duration-300"
-            >
-              Get In Touch
-            </button>
 
           </div>
         </div>

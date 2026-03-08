@@ -45,7 +45,7 @@ function Hero() {
   const currentService = services[serviceIndex];
 
   /* -----------------------------
-     AI TYPEWRITER EFFECT
+     TYPEWRITER EFFECT
   ----------------------------- */
 
   useEffect(() => {
@@ -85,18 +85,16 @@ function Hero() {
 
       <div className="relative z-10 max-w-5xl mx-auto px-6">
         {/* MAIN HEADING */}
-        <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
+        <h1 className="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight">
           We Drive Business Growth Through
           <br />
 
-          {/* 3D TEXT */}
+          {/* Animated Text */}
           <span className="relative inline-block mt-4">
-            {/* Shadow Layer */}
             <span className="absolute inset-0 text-yellow-400 translate-x-1 translate-y-1 blur-sm opacity-60">
               {displayedText}
             </span>
 
-            {/* Main Text */}
             <span className="relative text-yellow-400 drop-shadow-[0_8px_25px_rgba(255,215,0,0.7)]">
               {displayedText}
               <span className="animate-pulse">|</span>
@@ -117,14 +115,14 @@ function Hero() {
             href="#services"
             className="bg-white text-black px-8 py-3 rounded-full font-semibold shadow-xl hover:scale-105 transition duration-300"
           >
-            Explore Services
+            Explore Our Services
           </a>
 
           <a
-            href="#contact"
+            href="#services"
             className="bg-yellow-400 text-black px-8 py-3 rounded-full font-semibold shadow-xl hover:scale-105 transition duration-300"
           >
-            Get Free Consultation
+            Get Free Strategy Call
           </a>
         </div>
       </div>

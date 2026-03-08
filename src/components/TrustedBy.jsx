@@ -5,6 +5,12 @@ const logos = [
   { src: "https://cdn.worldvectorlogo.com/logos/flutter.svg", alt: "Flutter" },
   { src: "https://cdn.worldvectorlogo.com/logos/firebase-1.svg", alt: "Firebase" },
   { src: "https://cdn.worldvectorlogo.com/logos/nodejs-icon.svg", alt: "Node.js" },
+  { src: "https://cdn.worldvectorlogo.com/logos/google-g-2015.svg", alt: "Google" },
+  { src: "https://cdn.worldvectorlogo.com/logos/wordpress-2.svg", alt: "Wordpress" },
+  { src: "https://cdn.worldvectorlogo.com/logos/shopify.svg", alt: "Shopify" },
+  { src: "https://prowly-prod.s3.eu-west-1.amazonaws.com/uploads/60169/assets/601039/-1f98f505180d14739e58c06d7a11eaea.png", alt: "Semrush" },
+  { src: "https://cdn.worldvectorlogo.com/logos/mailchimp-freddie-icon-wink.svg", alt: "Mailchimp" },
+
 ];
 
 function TrustedBy() {
@@ -20,7 +26,7 @@ function TrustedBy() {
 
         {/* Heading */}
         <h2 className="text-center text-sm tracking-[0.3em] uppercase text-gray-400 mb-16">
-          Trusted Technologies We Work With
+          Trusted Technologies & Platforms We Work With
         </h2>
 
         {/* Glass Container */}

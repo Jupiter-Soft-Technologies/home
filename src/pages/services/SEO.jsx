@@ -1,232 +1,437 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import AnimatedSection from "../../components/AnimatedSection";
+import ahrefs from "../../assets/ahrefs.svg";
+import semrush from "../../assets/Semrush.svg";
+import gsc from "../../assets/gsc.png";
+import analytics from "../../assets/googleanalytics.svg";
+import screamingfrog from "../../assets/screamingfrog.svg";
+import surfer from "../../assets/surferseo.png";
 
-const caseStudies = [
-  {
-    title: "E-commerce Brand – USA",
-    result: "+312% Organic Traffic",
-    desc: "Scaled from 4k to 18k monthly organic visitors within 6 months using technical optimization and authority backlinks.",
-  },
-  {
-    title: "Local Service Business",
-    result: "4X Lead Growth",
-    desc: "Dominated local search results and ranked in top 3 positions for high-intent keywords.",
-  },
-  {
-    title: "SaaS Startup",
-    result: "+220% Keyword Rankings",
-    desc: "Built topical authority and achieved first-page rankings for competitive SaaS terms.",
-  },
+const benefits = [
+"Increase organic search traffic",
+"Generate qualified leads",
+"Improve brand visibility",
+"Build long-term digital authority"
 ];
 
-const faqs = [
-  {
-    q: "How long does SEO take to show results?",
-    a: "SEO typically takes 3-6 months to see measurable improvements, depending on competition and industry.",
-  },
-  {
-    q: "Do you provide monthly reports?",
-    a: "Yes, we provide transparent KPI reports covering rankings, traffic, and performance improvements.",
-  },
-  {
-    q: "Do you offer Local SEO?",
-    a: "Absolutely. We optimize Google Business Profile, citations, and local ranking signals.",
-  },
-];
-
-function SEO() {
-  const [current, setCurrent] = useState(0);
-  const [openFAQ, setOpenFAQ] = useState(null);
-  const [count, setCount] = useState(0);
-
-  /* Auto Slide */
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % caseStudies.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
-
-  /* Animated Counter */
-  useEffect(() => {
-    let start = 0;
-    const end = 320;
-    if (start === end) return;
-
-    let duration = 2000;
-    let incrementTime = 20;
-    let step = Math.ceil(end / (duration / incrementTime));
-
-    let timer = setInterval(() => {
-      start += step;
-      if (start >= end) {
-        start = end;
-        clearInterval(timer);
-      }
-      setCount(start);
-    }, incrementTime);
-
-    return () => clearInterval(timer);
-  }, []);
-
-  return (
-    <div className="bg-[#0b0f1a] text-white relative">
-
-      {/* ================= HERO ================= */}
-      <section className="py-32 px-6 text-center">
-        <h1 className="text-5xl md:text-6xl font-bold leading-tight">
-          SEO Services in USA
-          <span className="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
-            {" "}That Drive Real Growth
-          </span>
-        </h1>
-
-        <p className="text-gray-400 max-w-3xl mx-auto mt-8 text-lg">
-          Our data-driven Search Engine Optimization strategies increase visibility,
-          attract qualified traffic, and generate sustainable revenue growth.
-        </p>
-
-        <button className="mt-10 px-8 py-4 bg-blue-600 hover:bg-blue-700 transition rounded-lg font-medium">
-          Get Free SEO Audit →
-        </button>
-      </section>
-
-      {/* ================= COUNTERS ================= */}
-      <AnimatedSection>
-        <section className="py-20 bg-white/5 text-center">
-          <div className="grid md:grid-cols-3 gap-12 max-w-5xl mx-auto">
-            <div>
-              <h3 className="text-4xl font-bold text-blue-500">
-                +{count}%
-              </h3>
-              <p className="text-gray-400 mt-3">Average Traffic Growth</p>
-            </div>
-            <div>
-              <h3 className="text-4xl font-bold text-blue-500">
-                4X
-              </h3>
-              <p className="text-gray-400 mt-3">Lead Increase</p>
-            </div>
-            <div>
-              <h3 className="text-4xl font-bold text-blue-500">
-                94%
-              </h3>
-              <p className="text-gray-400 mt-3">Search Starts With Google</p>
-            </div>
-          </div>
-        </section>
-      </AnimatedSection>
-
-      {/* ================= CASE STUDY SLIDER ================= */}
-      <AnimatedSection>
-        <section className="py-24 px-6 text-center">
-          <h2 className="text-4xl font-semibold mb-12">
-            SEO Case Studies
-          </h2>
-
-          <div className="max-w-3xl mx-auto bg-white/5 p-10 rounded-xl border border-white/10">
-            <h3 className="text-2xl font-semibold text-blue-400">
-              {caseStudies[current].title}
-            </h3>
-
-            <p className="text-3xl font-bold mt-4">
-              {caseStudies[current].result}
-            </p>
-
-            <p className="text-gray-400 mt-6">
-              {caseStudies[current].desc}
-            </p>
-          </div>
-
-          <div className="flex justify-center gap-4 mt-8">
-            {caseStudies.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrent(index)}
-                className={`w-3 h-3 rounded-full ${
-                  index === current ? "bg-blue-500" : "bg-gray-600"
-                }`}
-              ></button>
-            ))}
-          </div>
-        </section>
-      </AnimatedSection>
-
-      {/* ================= FAQ ================= */}
-      <AnimatedSection>
-        <section className="py-24 px-6 max-w-4xl mx-auto">
-          <h2 className="text-4xl font-semibold text-center mb-12">
-            Frequently Asked Questions
-          </h2>
-
-          {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className="border-b border-white/10 py-6 cursor-pointer"
-              onClick={() =>
-                setOpenFAQ(openFAQ === index ? null : index)
-              }
-            >
-              <h3 className="text-xl font-medium">
-                {faq.q}
-              </h3>
-              {openFAQ === index && (
-                <p className="text-gray-400 mt-4">
-                  {faq.a}
-                </p>
-              )}
-            </div>
-          ))}
-        </section>
-      </AnimatedSection>
-
-      {/* ================= CONTACT FORM ================= */}
-      <AnimatedSection>
-        <section className="py-24 bg-[#111827] px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-semibold mb-8">
-              Start Your SEO Growth Journey
-            </h2>
-
-            <form className="space-y-6">
-              <input
-                type="text"
-                placeholder="Your Name"
-                className="w-full p-4 rounded-lg bg-white/5 border border-white/10"
-              />
-              <input
-                type="email"
-                placeholder="Your Email"
-                className="w-full p-4 rounded-lg bg-white/5 border border-white/10"
-              />
-              <input
-                type="text"
-                placeholder="Your Website"
-                className="w-full p-4 rounded-lg bg-white/5 border border-white/10"
-              />
-              <textarea
-                placeholder="Tell us about your business"
-                className="w-full p-4 rounded-lg bg-white/5 border border-white/10"
-                rows="4"
-              ></textarea>
-
-              <button className="px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded-lg font-medium">
-                Submit →
-              </button>
-            </form>
-          </div>
-        </section>
-      </AnimatedSection>
-
-      {/* ================= STICKY CTA ================= */}
-      <div className="fixed bottom-0 left-0 w-full bg-gradient-to-r from-blue-600 to-cyan-500 text-center py-4">
-        <p className="font-medium">
-          Ready to rank higher? Call Now: 9999999999
-        </p>
-      </div>
-
-    </div>
-  );
+const services = [
+{
+title:"Technical SEO",
+desc:"Complete technical audits, site architecture optimization and performance improvements."
+},
+{
+title:"Keyword Strategy",
+desc:"Data-driven keyword research to target high-converting search queries."
+},
+{
+title:"On-Page Optimization",
+desc:"Optimizing meta tags, content structure, internal linking and semantic SEO."
+},
+{
+title:"Authority Backlinks",
+desc:"High-quality link building to strengthen domain authority."
+},
+{
+title:"Local SEO",
+desc:"Google Business Profile optimization and local ranking improvements."
+},
+{
+title:"SEO Analytics",
+desc:"Detailed reporting dashboards tracking rankings, traffic and conversions."
 }
+];
 
-export default SEO;
+const process = [
+"SEO Audit & Competitor Research",
+"Keyword & Topic Mapping",
+"Technical Optimization",
+"Content & On-Page SEO",
+"Backlink Authority Building",
+"Performance Tracking"
+];
+
+const tools = [
+{ src: ahrefs, alt: "Ahrefs" },
+{ src: semrush, alt: "SEMrush" },
+{ src: gsc, alt: "Google Search Console" },
+{ src: analytics, alt: "Google Analytics" },
+{ src: screamingfrog, alt: "Screaming Frog" },
+{ src: surfer, alt: "Surfer SEO" }
+];
+const faqs = [
+{
+q:"How long does SEO take?",
+a:"SEO typically takes 3-6 months to see measurable improvements depending on competition."
+},
+{
+q:"Do you provide monthly reports?",
+a:"Yes, we provide transparent reports covering rankings, traffic growth and conversions."
+},
+{
+q:"Do you guarantee rankings?",
+a:"No ethical SEO company can guarantee rankings but our strategies consistently improve visibility."
+}
+];
+
+export default function SEO(){
+
+const navigate = useNavigate();
+const [open,setOpen]=useState(null)
+
+return(
+
+<div className="bg-[#0b0f1a] text-white">
+
+{/* HERO */}
+
+<section className="py-32 text-center px-6">
+
+<h1 className="text-5xl md:text-6xl font-bold">
+SEO Services That
+<span className="text-blue-500"> Grow Your Business</span>
+</h1>
+
+<p className="text-gray-400 max-w-3xl mx-auto mt-8 text-lg">
+Our SEO strategies help businesses rank higher on Google,
+generate organic traffic and increase leads.
+</p>
+
+<button
+onClick={()=>navigate("/seo-pricing")}
+className="mt-10 px-8 py-4 bg-blue-600 rounded-lg hover:bg-blue-700 transition"
+>
+Explore Our SEO Packages →
+</button>
+
+</section>
+
+
+{/* BENEFITS */}
+
+<AnimatedSection>
+
+<section className="py-24 text-center">
+
+<h2 className="text-4xl mb-16">
+Why SEO Matters
+</h2>
+
+<div className="grid md:grid-cols-4 gap-10 max-w-6xl mx-auto">
+
+{benefits.map((item,i)=>(
+
+<div key={i}
+className="p-8 bg-white/5 border border-white/10 rounded-xl hover:bg-blue-600/20 transition">
+
+{item}
+
+</div>
+
+))}
+
+</div>
+
+</section>
+
+</AnimatedSection>
+
+
+{/* SERVICES */}
+
+<AnimatedSection>
+
+<section className="py-24 px-6">
+
+<h2 className="text-4xl text-center mb-16">
+Our SEO Services
+</h2>
+
+<div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+
+{services.map((s,i)=>(
+
+<div key={i}
+className="p-8 bg-white/5 border border-white/10 rounded-xl hover:scale-105 transition">
+
+<h3 className="text-blue-400 text-xl mb-3">
+{s.title}
+</h3>
+
+<p className="text-gray-400">
+{s.desc}
+</p>
+
+</div>
+
+))}
+
+</div>
+
+</section>
+
+</AnimatedSection>
+
+
+{/* PROCESS */}
+
+<AnimatedSection>
+
+<section className="py-24 text-center">
+
+<h2 className="text-4xl mb-16">
+Our SEO Process
+</h2>
+
+<div className="grid md:grid-cols-3 gap-10 max-w-5xl mx-auto">
+
+{process.map((step,i)=>(
+
+<div key={i}
+className="p-8 bg-white/5 border border-white/10 rounded-xl">
+
+<h3 className="text-blue-500">
+Step {i+1}
+</h3>
+
+<p className="text-gray-400 mt-2">
+{step}
+</p>
+
+</div>
+
+))}
+
+</div>
+
+</section>
+
+</AnimatedSection>
+
+
+{/* TOOLS */}
+
+<AnimatedSection>
+
+<section className="py-24 text-center">
+
+<h2 className="text-4xl mb-16">
+SEO Tools We Use
+</h2>
+
+<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 max-w-6xl mx-auto items-center">
+
+{tools.map((tool,i)=>(
+    
+<div
+key={i}
+className="flex flex-col items-center justify-center
+opacity-70 hover:opacity-100 transition
+grayscale hover:grayscale-0
+transform hover:scale-110"
+>
+
+<img
+src={tool.src}
+alt={tool.alt}
+className="h-14 object-contain"
+/>
+
+<p className="text-gray-400 text-sm mt-3">
+{tool.alt}
+</p>
+
+</div>
+
+))}
+
+</div>
+
+</section>
+
+</AnimatedSection>
+
+
+{/* CASE STUDIES */}
+
+<AnimatedSection>
+
+<section className="py-24 text-center">
+
+<h2 className="text-4xl mb-16">
+SEO Case Study Results
+</h2>
+
+<div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+
+<div className="p-8 bg-white/5 border border-white/10 rounded-xl">
+Dental Clinic
+<p className="text-gray-400 mt-3">
+320% traffic growth
+</p>
+</div>
+
+<div className="p-8 bg-white/5 border border-white/10 rounded-xl">
+Local Plumbing
+<p className="text-gray-400 mt-3">
+4X lead increase
+</p>
+</div>
+
+<div className="p-8 bg-white/5 border border-white/10 rounded-xl">
+SaaS Startup
+<p className="text-gray-400 mt-3">
+210% more signups
+</p>
+</div>
+
+</div>
+
+</section>
+
+</AnimatedSection>
+
+
+{/* TRAFFIC TIMELINE */}
+
+<AnimatedSection>
+
+<section className="py-24 text-center">
+
+<h2 className="text-4xl mb-16">
+SEO Traffic Growth Timeline
+</h2>
+
+<div className="max-w-4xl mx-auto space-y-6">
+
+<div className="p-6 bg-white/5 border border-white/10 rounded-xl">
+Month 1 – Technical SEO Fix
+</div>
+
+<div className="p-6 bg-white/5 border border-white/10 rounded-xl">
+Month 2 – Keyword Optimization
+</div>
+
+<div className="p-6 bg-white/5 border border-white/10 rounded-xl">
+Month 3 – Content Authority
+</div>
+
+<div className="p-6 bg-white/5 border border-white/10 rounded-xl">
+Month 6 – Top Google Rankings
+</div>
+
+</div>
+
+</section>
+
+</AnimatedSection>
+
+
+{/* EXPLORE PACKAGES CTA */}
+
+<section className="py-20 text-center">
+
+<h2 className="text-3xl font-semibold mb-6">
+Ready to See Our SEO Packages?
+</h2>
+
+<p className="text-gray-400 mb-10 max-w-xl mx-auto">
+Explore our transparent SEO pricing plans designed for startups,
+local businesses, and growing brands.
+</p>
+
+<button
+onClick={()=>navigate("/seo-pricing")}
+className="px-12 py-4 text-lg font-semibold rounded-xl
+bg-gradient-to-r from-blue-600 to-purple-600
+hover:from-blue-700 hover:to-purple-700
+shadow-lg hover:shadow-blue-500/30
+transition duration-300 transform hover:scale-105"
+>
+
+Explore Our SEO Packages →
+
+</button>
+
+</section>
+
+
+{/* FAQ */}
+
+<AnimatedSection>
+
+<section className="py-24 px-6 max-w-4xl mx-auto">
+
+<h2 className="text-4xl text-center mb-16">
+SEO FAQs
+</h2>
+
+{faqs.map((faq,i)=>(
+
+<div key={i} className="border-b border-white/10 py-6">
+
+<button
+onClick={()=>setOpen(open===i?null:i)}
+className="w-full text-left flex justify-between">
+
+{faq.q}
+
+<span>{open===i?"−":"+"}</span>
+
+</button>
+
+{open===i &&(
+
+<p className="text-gray-400 mt-3">
+{faq.a}
+</p>
+
+)}
+
+</div>
+
+))}
+
+</section>
+
+</AnimatedSection>
+
+
+{/* CONTACT */}
+
+<section className="py-24 text-center bg-[#111827] px-6">
+
+<h2 className="text-4xl mb-10">
+Get Your Free SEO Audit
+</h2>
+
+<form className="max-w-3xl mx-auto space-y-6">
+
+<input className="w-full p-4 bg-white/5 border border-white/10 rounded-lg" placeholder="Your Name"/>
+<input className="w-full p-4 bg-white/5 border border-white/10 rounded-lg" placeholder="Your Email"/>
+<input className="w-full p-4 bg-white/5 border border-white/10 rounded-lg" placeholder="Your Website"/>
+
+<textarea rows="4"
+className="w-full p-4 bg-white/5 border border-white/10 rounded-lg"
+placeholder="Tell us about your business"/>
+
+<button className="px-8 py-4 bg-blue-600 rounded-lg">
+Submit →
+</button>
+
+</form>
+
+</section>
+
+
+{/* STICKY CTA */}
+
+<div className="fixed bottom-0 left-0 w-full bg-blue-600 text-center py-4">
+Ready to rank higher? Call Now: 9999999999
+</div>
+
+</div>
+
+)
+
+}

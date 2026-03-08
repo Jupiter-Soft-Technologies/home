@@ -34,7 +34,7 @@ export default function HomePage() {
       {/* SEO META */}
       <Helmet>
         <script type="application/ld+json">
-        {`
+          {`
         {
           "@context": "https://schema.org",
           "@type": "Organization",
@@ -92,9 +92,7 @@ export default function HomePage() {
       <StatsCounter />
 
       {/* SERVICES */}
-      <section id="services" aria-label="Digital Marketing Services">
-        <Services />
-      </section>
+      <Services />
 
       {/* WHY CHOOSE US */}
       <WhyChooseUs />

@@ -1,5 +1,4 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import AnimatedSection from "./AnimatedSection";
 
 const services = [
@@ -114,6 +113,8 @@ const services = [
 ];
 
 function Services() {
+  const navigate = useNavigate();
+
   return (
     <AnimatedSection>
       <section
@@ -165,13 +166,12 @@ function Services() {
                   <p className="text-gray-400 mt-6 text-lg leading-relaxed">
                     {service.desc}
                   </p>
-
-                  <Link
-                    to={`/services/${service.slug}`}
+                  <button
+                    onClick={() => navigate(`/${service.slug}`)}
                     className="inline-block mt-8 px-6 py-3 bg-blue-600 hover:bg-blue-700 transition rounded-lg font-medium"
                   >
                     Explore Service →
-                  </Link>
+                  </button>
                 </div>
 
                 {/* Right */}

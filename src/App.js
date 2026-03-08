@@ -14,9 +14,16 @@ import AppDevPricing from "./pages/AppDevPricing";
 import CROPricing from "./pages/CROPricing";
 
 import SEO from "./pages/services/SEO";
-import ServiceDetail from "./pages/services/ServiceDetail";
 
 import PPC from "./pages/services/PPC";
+import WebsiteDevelopment from "./pages/services/WebsiteDevelopment";
+import Services from "./components/Services";
+import AppDevelopment from "./pages/services/ApplicationDevelopment";
+import CustomSoftware from "./pages/services/CustomSoftware";
+import CloudDevOps from "./pages/services/CloudDevOps";
+import UIUX from "./pages/services/UIUX";
+import SocialMedia from "./pages/services/SocialMedia";
+import ConversionOptimization from "./pages/services/ConversionOptimization";
 
 export default function App() {
   return (
@@ -41,9 +48,20 @@ export default function App() {
         <Route path="/app-pricing" element={<AppDevPricing />} />
 
         {/* Services */}
-        <Route path="/services/seo" element={<SEO />} />
-        <Route path="/services/:slug" element={<ServiceDetail />} />
-        <Route path="/services/ppc" element={<PPC />} />
+        <Route path="/seo" element={<SEO />} />
+        <Route path="/services/:slug" element={<Services/>} />
+        <Route path="/ppc" element={<PPC />} />
+        <Route path="/web-development" element={<WebsiteDevelopment />} />
+        
+        <Route path="/social-media" element={<SocialMedia />} />
+        
+        <Route path="/custom-software" element={<CustomSoftware />} />
+        
+        <Route path="/cloud-devops" element={<CloudDevOps />} />
+        
+        <Route path="/UI / UX Design" element={<UIUX/>} />
+        <Route path="/conversion-optimization" element={<ConversionOptimization />} />
+        <Route path="/app-development" element={<AppDevelopment />} />
 
       </Route>
     </Routes>

@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import ContactModal from "../components/ContactModal";
 import { useCurrency } from "../context/CurrencyContext";
@@ -7,46 +8,243 @@ import { useCurrency } from "../context/CurrencyContext";
  */
 const plans = [
   {
-    name: "Starter PPC",
-    price: 20000,
+    name: "Basic",
+    price: 25000,
+    setup: 16000,
     subtitle: "For local & small businesses",
+    color: "text-green-400",
+    border: "border-green-500",
+    button: "bg-green-600 hover:bg-green-700",
     features: [
-      "Google Ads account setup",
-      "Keyword research & structure",
-      "Ad copy creation",
-      "Conversion tracking",
-      "Monthly performance report",
+      "Setup Fee – $200",
+      "Advertising Budget – upto $1000/month",
+      "Full Optimizations – 1/month",
+      "Ad Groups – Up to 5",
+      "A/B Testing",
+      "Keywords – Up to 50",
+      "Negative Keywords",
+      "Conversion Tracking",
+      "Monthly Reporting",
+      "Google Ads",
+      "Call Extensions",
+      "Sitelink Extensions",
     ],
   },
   {
-    name: "Growth PPC",
-    price: 35000,
+    name: "Silver",
+    price: 33000,
+    setup: 29000,
+    subtitle: "Growing businesses",
+    color: "text-gray-300",
+    border: "border-gray-400",
+    button: "bg-gray-600 hover:bg-gray-700",
+    features: [
+      "Setup Fee – $350",
+      "Advertising Budget – upto $2000/month",
+      "Full Optimizations – 2/month",
+      "Ad Groups – Up to 10",
+      "A/B Testing",
+      "Keywords – Up to 100",
+      "Negative Keywords",
+      "Conversion Tracking",
+      "Monthly Reporting",
+      "Google Ads",
+      "Remarketing",
+      "Monthly Conference Calls",
+    ],
+  },
+  {
+    name: "Gold",
+    price: 50000,
+    setup: 42000,
     subtitle: "Most Popular",
+    color: "text-yellow-400",
+    border: "border-yellow-500",
+    button: "bg-yellow-500 hover:bg-yellow-600",
     highlight: true,
     features: [
-      "Google + Meta Ads",
-      "Advanced audience targeting",
-      "A/B ad testing",
-      "Landing page suggestions",
-      "Bi-weekly optimization reports",
+      "Setup Fee – $500",
+      "Advertising Budget – upto $3000/month",
+      "Full Optimizations – 3/month",
+      "Ad Groups – Up to 20",
+      "A/B Testing",
+      "Keywords – Up to 200",
+      "Negative Keywords",
+      "Conversion Tracking",
+      "Monthly Reporting",
+      "Google + Yahoo + Bing Ads",
+      "Remarketing",
+      "Conference Calls",
     ],
   },
   {
-    name: "Enterprise PPC",
-    price: 70000,
+    name: "Premium",
+    price: 67000,
+    setup: 62000,
     subtitle: "For aggressive scaling",
+    color: "text-indigo-400",
+    border: "border-indigo-500",
+    button: "bg-indigo-600 hover:bg-indigo-700",
     features: [
-      "Unlimited campaigns",
-      "Advanced conversion optimization",
-      "Remarketing funnels",
-      "Dedicated PPC manager",
-      "Weekly performance reports",
+      "Setup Fee – $750",
+      "Advertising Budget – above $3000/month",
+      "Full Optimizations – 5/month",
+      "Ad Groups – Up to 40",
+      "A/B Testing",
+      "Keywords – Up to 500",
+      "Negative Keywords",
+      "Conversion Tracking",
+      "Monthly Reporting",
+      "Google + Bing + Yahoo + FB Ads",
+      "Mobile Ads",
+      "Remarketing",
+      "Conference Calls",
     ],
   },
 ];
 
 /**
- * Conversion rates (can be moved to config later)
+ * PPC DETAIL DATA
+ */
+
+const basicDetails = [
+  {
+    title: "Campaign Setup",
+    items: [
+      ["A/B Test", "✓"],
+      ["Keywords", "Up to 50"],
+      ["Negative Keywords", "✓"],
+      ["Conversion Tracking", "✓"],
+      ["Monthly Reporting", "✓"],
+      ["No Contracts", "✓"]
+    ]
+  },
+  {
+    title: "Ad Networks",
+    items: [
+      ["Google", "✓"],
+      ["Yahoo", "×"],
+      ["Bing", "×"],
+      ["Facebook", "×"],
+      ["Mobile Ads", "×"]
+    ]
+  },
+  {
+    title: "Extensions",
+    items: [
+      ["Call Extensions", "✓"],
+      ["Sitelink Extensions", "✓"],
+      ["Remarketing", "×"],
+      ["Monthly Conference Calls", "×"],
+      ["Display / Image Ads", "×"]
+    ]
+  }
+];
+
+const silverDetails = [
+  {
+    title: "Campaign Setup",
+    items: [
+      ["A/B Test", "✓"],
+      ["Keywords", "Up to 100"],
+      ["Negative Keywords", "✓"],
+      ["Conversion Tracking", "✓"],
+      ["Monthly Reporting", "✓"],
+      ["No Contracts", "✓"]
+    ]
+  },
+  {
+    title: "Ad Networks",
+    items: [
+      ["Google", "✓"],
+      ["Yahoo", "×"],
+      ["Bing", "×"],
+      ["Facebook", "×"],
+      ["Mobile Ads", "×"]
+    ]
+  },
+  {
+    title: "Extensions",
+    items: [
+      ["Call Extensions", "✓"],
+      ["Sitelink Extensions", "✓"],
+      ["Remarketing", "✓"],
+      ["Monthly Conference Calls", "✓"],
+      ["Display / Image Ads", "×"]
+    ]
+  }
+];
+
+const goldDetails = [
+  {
+    title: "Campaign Setup",
+    items: [
+      ["A/B Test", "✓"],
+      ["Keywords", "Up to 200"],
+      ["Negative Keywords", "✓"],
+      ["Conversion Tracking", "✓"],
+      ["Monthly Reporting", "✓"],
+      ["No Contracts", "✓"]
+    ]
+  },
+  {
+    title: "Ad Networks",
+    items: [
+      ["Google", "✓"],
+      ["Yahoo", "✓"],
+      ["Bing", "✓"],
+      ["Facebook", "×"],
+      ["Mobile Ads", "×"]
+    ]
+  },
+  {
+    title: "Extensions",
+    items: [
+      ["Call Extensions", "✓"],
+      ["Sitelink Extensions", "✓"],
+      ["Remarketing", "✓"],
+      ["Monthly Conference Calls", "✓"],
+      ["Display / Image Ads", "×"]
+    ]
+  }
+];
+
+const premiumDetails = [
+  {
+    title: "Campaign Setup",
+    items: [
+      ["A/B Test", "✓"],
+      ["Keywords", "Up to 500"],
+      ["Negative Keywords", "✓"],
+      ["Conversion Tracking", "✓"],
+      ["Monthly Reporting", "✓"],
+      ["No Contracts", "✓"]
+    ]
+  },
+  {
+    title: "Ad Networks",
+    items: [
+      ["Google", "✓"],
+      ["Yahoo", "✓"],
+      ["Bing", "✓"],
+      ["Facebook", "✓"],
+      ["Mobile Ads", "✓"]
+    ]
+  },
+  {
+    title: "Extensions",
+    items: [
+      ["Call Extensions", "✓"],
+      ["Sitelink Extensions", "✓"],
+      ["Remarketing", "✓"],
+      ["Monthly Conference Calls", "✓"],
+      ["Display / Image Ads", "×"]
+    ]
+  }
+];
+
+/**
+ * Conversion rates
  */
 const currencyRates = {
   INR: { rate: 1, symbol: "₹" },
@@ -58,8 +256,10 @@ const currencyRates = {
 };
 
 export default function PpcPricing() {
+
   const [open, setOpen] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState("");
+  const [showDetails, setShowDetails] = useState(false);
 
   const { currency } = useCurrency();
 
@@ -73,44 +273,53 @@ export default function PpcPricing() {
       {/* HERO + PPC PLANS */}
       <section className="bg-black py-28">
         <div className="max-w-7xl mx-auto px-6">
+
           <h1 className="text-4xl md:text-5xl font-bold text-center text-white">
-            PPC Pricing Plans
+            Our PPC Plans
           </h1>
+
           <p className="text-gray-400 text-center mt-4 max-w-3xl mx-auto">
-            Performance-driven PPC management designed to maximize ROI, reduce
-            CPA, and scale profitable campaigns.
+            Choose the plan that’s right for you and let’s get started.
           </p>
 
           {/* PLAN CARDS */}
-          <div className="grid md:grid-cols-3 gap-10 mt-20">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mt-20">
+
             {plans.map((plan) => (
+
               <div
                 key={plan.name}
-                className={`relative rounded-3xl p-8 border transition ${
-                  plan.highlight
-                    ? "border-blue-500 bg-gradient-to-b from-gray-900 to-black scale-105"
-                    : "border-gray-800 bg-gradient-to-b from-gray-900 to-black"
-                }`}
+                onClick={() => {
+                  setSelectedPlan(plan.name.toUpperCase());
+                  setShowDetails(true);
+                }}
+                className={`cursor-pointer relative rounded-3xl p-8 border transition-all duration-300 hover:-translate-y-2
+                ${plan.border}
+                bg-gradient-to-b from-gray-900 to-black`}
               >
+
                 {plan.highlight && (
-                  <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-sm px-4 py-1 rounded-full">
+                  <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-yellow-500 text-black text-sm px-4 py-1 rounded-full font-semibold">
                     Most Popular
                   </span>
                 )}
 
-                <h3 className="text-2xl font-semibold text-white">
+                <h3 className={`text-2xl font-semibold ${plan.color}`}>
                   {plan.name}
                 </h3>
+
                 <p className="text-gray-400 mt-2">{plan.subtitle}</p>
 
-                {/* PRICE */}
-                <div className="mt-6 text-4xl font-bold text-blue-400">
+                <div className={`mt-6 text-4xl font-bold ${plan.color}`}>
                   {formatPrice(plan.price)}
                   <span className="text-base text-gray-400 font-medium">
-                    {" "}
-                    /month
+                    {" "} /month
                   </span>
                 </div>
+
+                <p className="text-gray-400 mt-2 text-sm">
+                  Setup Fee – {formatPrice(plan.setup)}
+                </p>
 
                 <ul className="mt-8 space-y-3 text-gray-300">
                   {plan.features.map((feature) => (
@@ -122,65 +331,98 @@ export default function PpcPricing() {
                 </ul>
 
                 <button
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.stopPropagation();
                     setSelectedPlan(plan.name);
                     setOpen(true);
                   }}
-                  className={`w-full mt-10 py-4 rounded-xl font-semibold transition ${
-                    plan.highlight
-                      ? "bg-blue-600 text-white hover:bg-blue-700"
-                      : "bg-gray-800 text-white hover:bg-gray-700"
-                  }`}
+                  className={`w-full mt-10 py-4 rounded-xl font-semibold text-white transition ${plan.button}`}
                 >
-                  Get Started →
+                  Start Today →
                 </button>
+
               </div>
+
             ))}
+
           </div>
+
         </div>
       </section>
 
-      {/* WHAT’S INCLUDED */}
-      <section className="bg-black py-24">
-        <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-16">
-            What’s Included in Our PPC Management
-          </h2>
+      {/* PPC DETAILS MODAL */}
+      {showDetails && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex justify-center items-center z-50 p-4">
 
-          <div className="grid md:grid-cols-3 gap-10">
-            {[
-              {
-                title: "Campaign Strategy",
-                text: "ROI-focused account structure designed to reduce wasted spend and improve Quality Score.",
-              },
-              {
-                title: "Execution & Optimization",
-                text: "Continuous bid optimization, ad testing, negative keywords & budget scaling.",
-              },
-              {
-                title: "Tracking & Reporting",
-                text: "Clear reports focused on conversions, CPA, ROAS & profitability.",
-              },
-            ].map((item) => (
-              <div
-                key={item.title}
-                className="rounded-2xl border border-gray-800 bg-gradient-to-b from-gray-900 to-black p-8"
+          <div className="bg-gradient-to-b from-gray-900 to-black border border-gray-700 w-full max-w-5xl max-h-[90vh] overflow-y-auto rounded-3xl p-10 relative shadow-2xl">
+
+            <button
+              onClick={() => setShowDetails(false)}
+              className="absolute top-5 right-6 text-gray-400 hover:text-white text-xl"
+            >
+              ✕
+            </button>
+
+            <h2 className="text-3xl font-bold text-yellow-400 mb-10 text-center">
+              {selectedPlan} PLAN – Complete PPC Breakdown
+            </h2>
+
+            <div className="space-y-12">
+              {(selectedPlan === "BASIC"
+                ? basicDetails
+                : selectedPlan === "SILVER"
+                ? silverDetails
+                : selectedPlan === "GOLD"
+                ? goldDetails
+                : premiumDetails
+              ).map((section, idx) => (
+
+                <div key={idx}>
+                  <h3 className="text-xl font-semibold text-white mb-6 border-b border-gray-800 pb-2">
+                    {section.title}
+                  </h3>
+
+                  <div className="grid md:grid-cols-2 gap-x-12">
+
+                    {section.items.map((item, i) => (
+
+                      <div key={i} className="flex justify-between py-2 text-gray-300">
+                        <span>{item[0]}</span>
+                        <span className="font-semibold">{item[1]}</span>
+                      </div>
+
+                    ))}
+
+                  </div>
+                </div>
+
+              ))}
+            </div>
+
+            <div className="mt-12 text-center">
+              <button
+                onClick={() => {
+                  setShowDetails(false);
+                  setOpen(true);
+                }}
+                className="bg-yellow-400 text-black px-8 py-3 rounded-xl font-semibold hover:bg-yellow-500 transition"
               >
-                <h3 className="text-xl font-semibold text-blue-400">
-                  {item.title}
-                </h3>
-                <p className="text-gray-400 mt-3">{item.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+                Start Now
+              </button>
+            </div>
 
-      {/* FINAL CTA */}
+          </div>
+
+        </div>
+      )}
+
+      {/* CTA */}
       <section className="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-24 text-center">
+
         <h2 className="text-3xl md:text-4xl font-bold">
           Want more leads without wasting ad spend?
         </h2>
+
         <p className="mt-4 text-lg text-blue-100">
           Get a free PPC audit & performance forecast.
         </p>
@@ -194,6 +436,7 @@ export default function PpcPricing() {
         >
           Get Free PPC Audit →
         </button>
+
       </section>
 
       {/* CONTACT MODAL */}

@@ -76,7 +76,7 @@ export default function ServiceDropdown({ isMobile = false, closeMenu }) {
         onClick={() => setOpen(!open)}
         className="hover:text-blue-500 font-medium flex items-center gap-1 transition"
       >
-        Services
+        Pricing
         <span
           className={`transition-transform duration-300 ${
             open ? "rotate-180" : ""

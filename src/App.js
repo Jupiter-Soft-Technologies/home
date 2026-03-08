@@ -25,11 +25,17 @@ import UIUX from "./pages/services/UIUX";
 import SocialMedia from "./pages/services/SocialMedia";
 import ConversionOptimization from "./pages/services/ConversionOptimization";
 
+import ScrollToTop from "./components/ScrollToTop";
+
+import Contact from "./pages/Contact";
+
 export default function App() {
   return (
+    <>
+      <ScrollToTop />
     <Routes>
       <Route element={<Layout />}>
-
+      
         <Route path="/" element={<HomePage />} />
 
         {/* Portfolio */}
@@ -63,7 +69,10 @@ export default function App() {
         <Route path="/conversion-optimization" element={<ConversionOptimization />} />
         <Route path="/app-development" element={<AppDevelopment />} />
 
+        <Route path="/contact" element={<Contact />} />
+
       </Route>
     </Routes>
+  </>
   );
 }

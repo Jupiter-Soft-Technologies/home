@@ -31,7 +31,7 @@ function Header() {
 
     { name: "Process", type: "route", path: "/process" },
     { name: "FAQ", type: "scroll", target: "faq", path: "/" },
-    { name: "Contact", type: "scroll", target: "contact", path: "/" },
+    { name: "Contact", type: "route", path: "/contact" }
   ];
 
   /* HEADER SHRINK */
@@ -116,6 +116,7 @@ function Header() {
 
   };
 
+  // eslint-disable-next-line
   useEffect(() => {
 
     const activeIndex = navItems.findIndex((item) => isActive(item));
@@ -237,7 +238,7 @@ function Header() {
 
             <button
               onClick={() =>
-                handleNavigation({ type: "scroll", target: "contact" })
+                navigate("/contact")
               }
               className="ml-4 px-6 py-2.5 rounded-full font-medium text-white bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-300 hover:scale-110 hover:shadow-xl"
             >

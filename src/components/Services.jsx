@@ -167,7 +167,7 @@ function Services() {
                     {service.desc}
                   </p>
                   <button
-                    onClick={() => navigate(`/${service.slug}`)}
+                    onClick={() => navigate(`/services/${service.slug}`)}
                     className="inline-block mt-8 px-6 py-3 bg-blue-600 hover:bg-blue-700 transition rounded-lg font-medium"
                   >
                     Explore Service →

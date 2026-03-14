@@ -36,49 +36,49 @@ export default function App() {
   return (
     <>
       <ScrollToTop />
-    <Routes>
-      <Route element={<Layout />}>
-      
-        <Route path="/" element={<HomePage />} />
+      <Routes>
+        <Route element={<Layout />}>
 
-        {/* Portfolio */}
-        <Route path="/portfolio" element={<Portfolio />} />
-        <Route path="/portfolio/:slug" element={<PortfolioProject />} />
+          <Route path="/" element={<HomePage />} />
 
-        {/* Process */}
-        <Route path="/process" element={<ProcessPage />} />
+          {/* Portfolio */}
+          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/portfolio/:slug" element={<PortfolioProject />} />
 
-        {/* Pricing */}
-        <Route path="/seo-pricing" element={<SeoPricing />} />
-        <Route path="/ppc-pricing" element={<PpcPricing />} />
-        <Route path="/cro-pricing" element={<CROPricing />} />
-        <Route path="/amazon-ppc-pricing" element={<AmazonPpcPricing />} />
-        <Route path="/web-pricing" element={<WebDevPricing />} />
-        <Route path="/app-pricing" element={<AppDevPricing />} />
+          {/* Process */}
+          <Route path="/process" element={<ProcessPage />} />
 
-        {/* Services */}
-        <Route path="/seo" element={<SEO />} />
-        <Route path="/services/:slug" element={<Services/>} />
-        <Route path="/ppc" element={<PPC />} />
-        <Route path="/web-development" element={<WebsiteDevelopment />} />
-        
-        <Route path="/social-media" element={<SocialMedia />} />
-        
-        <Route path="/custom-software" element={<CustomSoftware />} />
-        
-        <Route path="/cloud-devops" element={<CloudDevOps />} />
-        
-        <Route path="/UI / UX Design" element={<UIUX/>} />
-        <Route path="/conversion-optimization" element={<ConversionOptimization />} />
-        <Route path="/app-development" element={<AppDevelopment />} />
+          {/* Pricing */}
+          <Route path="/seo-pricing" element={<SeoPricing />} />
+          <Route path="/ppc-pricing" element={<PpcPricing />} />
+          <Route path="/cro-pricing" element={<CROPricing />} />
+          <Route path="/amazon-ppc-pricing" element={<AmazonPpcPricing />} />
+          <Route path="/web-pricing" element={<WebDevPricing />} />
+          <Route path="/app-pricing" element={<AppDevPricing />} />
 
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/about" element={<AboutUs />} />
+          {/* Services */}
+          <Route path="/services/seo" element={<SEO />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/services/ppc" element={<PPC />} />
+          <Route path="/services/web-development" element={<WebsiteDevelopment />} />
 
-        <Route path="/services/digital-marketing" element={<DigitalMarketing />} />
+          <Route path="/services/social-media" element={<SocialMedia />} />
 
-      </Route>
-    </Routes>
-  </>
+          <Route path="/services/custom-software" element={<CustomSoftware />} />
+
+          <Route path="/services/cloud-devops" element={<CloudDevOps />} />
+
+          <Route path="/services/ui-ux" element={<UIUX />} />
+          <Route path="/services/conversion-optimization" element={<ConversionOptimization />} />
+          <Route path="/services/app-development" element={<AppDevelopment />} />
+
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/about" element={<AboutUs />} />
+
+          <Route path="/services/digital-marketing" element={<DigitalMarketing />} />
+
+        </Route>
+      </Routes>
+    </>
   );
 }

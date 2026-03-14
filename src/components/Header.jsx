@@ -5,6 +5,7 @@ import ServicesMegaMenu from "./ServicesMegaMenu";
 import { useCurrency } from "../context/CurrencyContext";
 import ReactCountryFlag from "react-country-flag";
 import logo from "../assets/logo.png";
+import { path } from "framer-motion/client";
 
 function Header() {
 
@@ -25,7 +26,17 @@ const buttonRefs = useRef([]);
 const navItems = [
 { name: "Home", type: "scroll", target: "hero", path: "/" },
 { name: "Portfolio", type: "route", path: "/portfolio" },
-{ name: "Services", type: "mega" },
+ {
+    name: "Services",
+    type: "mega",
+    path: "/services/:slug",
+    children: [
+      { name: "SEO Optimization", path: "/services/seo" },
+      { name: "Paid Ads", path: "/services/paid-ads" },
+      { name: "Web Development", path: "/services/web-development" },
+      { name: "UI / UX Design", path: "/services/ui-ux" }
+    ]
+  },
 { name: "Pricing", type: "dropdown" },
 { name: "Process", type: "route", path: "/process" },
 { name: "FAQ", type: "scroll", target: "faq", path: "/" },

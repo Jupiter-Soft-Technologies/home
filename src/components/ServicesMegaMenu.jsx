@@ -27,19 +27,8 @@ items: [
 "Content Marketing",
 "Email Marketing",
 "Reputation Management",
-"Franchise Digital Marketing"
 ],
 path:"/services/digital-marketing"
-},
-
-{
-title: "Local SEO Services",
-icon: <MapPin size={18}/>,
-items: [
-"Small Business SEO",
-"GBP Optimization"
-],
-path:"/local-seo"
 },
 
 {
@@ -58,11 +47,9 @@ title: "Website Design & Development",
 icon: <Globe size={18}/>,
 items: [
 "WordPress Development",
+"E-commerce Web Development",
 "Custom Website Design",
 "Website Redesign Service",
-"Magento Development",
-"Mobile App Development",
-"Joomla Website Development",
 "Website Hosting Services"
 ],
 path:"/web-development"
@@ -72,13 +59,9 @@ path:"/web-development"
 title: "SEO",
 icon: <Search size={18}/>,
 items: [
-"Ecommerce SEO Services",
-"Link Building Services",
 "Technical SEO Services",
-"Franchise SEO Services",
+"Local SEO Services",
 "Voice Search Optimization",
-"App Store Optimization",
-"White Label SEO",
 "Generative Engine Optimization",
 "Answer Engine Optimization"
 ],
@@ -113,12 +96,13 @@ path:"/ppc"
 },
 
 {
-title: "Ecommerce Development",
+title: "Application Development",
 icon: <ShoppingCart size={18}/>,
 items: [
-"Shopify Web Development",
-"Woocommerce Development",
-"Payment Gateway"
+
+"E-commerce App Development",
+"Ed-tech App Development",
+"Payment Gateway Integration"
 ],
 path:"/ecommerce"
 }
@@ -181,10 +165,12 @@ return (
 
 <div className="relative group">
 
-<button className="font-medium hover:text-blue-500 transition">
+<button
+  onClick={() => goTo("/services")}
+  className="font-medium hover:text-blue-500 transition"
+>
 Services
 </button>
-
 <div
 className="
 absolute left-1/2 -translate-x-1/2 mt-6

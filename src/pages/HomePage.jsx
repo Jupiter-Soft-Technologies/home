@@ -9,6 +9,7 @@ import Services from "../components/Services";
 import WhyChooseUs from "../components/WhyChooseUs";
 import Testimonials from "../components/Testimonials";
 import FAQ from "../components/FAQ";
+import AIDrivenProcess from "../components/AIDrivenProcess";
 
 export default function HomePage() {
   const location = useLocation();
@@ -91,8 +92,7 @@ export default function HomePage() {
       {/* TRUST METRICS */}
       <StatsCounter />
 
-      {/* SERVICES */}
-      <Services />
+      <AIDrivenProcess />
 
       {/* WHY CHOOSE US */}
       <WhyChooseUs />

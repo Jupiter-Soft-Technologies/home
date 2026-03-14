@@ -17,7 +17,6 @@ function Footer() {
   const [success, setSuccess] = useState(false);
   const [countryCode, setCountryCode] = useState("+91");
 
-  // ================= VALIDATION =================
   const validate = (data) => {
     const newErrors = {};
 
@@ -44,7 +43,6 @@ function Footer() {
     return newErrors;
   };
 
-  // ================= SEND EMAIL =================
   const sendEmail = (e) => {
     e.preventDefault();
     if (loading) return;
@@ -90,24 +88,28 @@ function Footer() {
   };
 
   return (
-    <footer className="relative bg-gradient-to-br from-[#0B0B12] via-[#111827] to-[#0F172A] text-gray-400 pt-24 pb-10 overflow-hidden">
-      
+    <footer className="relative bg-gradient-to-br from-[#0B0B12] via-[#111827] to-[#0F172A] text-gray-400 pt-28 pb-10 overflow-hidden">
+
       <Toaster position="top-right" />
 
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-purple-600 opacity-20 blur-[140px] rounded-full"></div>
+      {/* Background glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-purple-600 opacity-20 blur-[160px] rounded-full"></div>
 
       <div className="relative max-w-7xl mx-auto px-6">
 
-        {/* ================= CONTACT FORM ================= */}
-        <div className="mb-24 p-12 rounded-3xl backdrop-blur-2xl bg-white/5 border border-white/10 shadow-2xl">
-          <div className="grid md:grid-cols-2 gap-12 items-start">
+        {/* CONTACT FORM */}
+        <div className="mb-24 p-14 rounded-3xl backdrop-blur-2xl bg-white/5 border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.6)]">
+
+          <div className="grid md:grid-cols-2 gap-14 items-start">
 
             <div>
-              <h3 className="text-4xl font-extrabold text-white">
-                Get In Touch
+              <h3 className="text-4xl font-bold text-white leading-tight">
+                Let’s Build Something Great
               </h3>
-              <p className="mt-5 text-gray-400 text-lg">
-                Let’s build something amazing together.
+
+              <p className="mt-5 text-gray-400 text-lg leading-relaxed max-w-md">
+                Tell us about your project and our team will get back to you
+                with a strategy to grow your business.
               </p>
             </div>
 
@@ -118,16 +120,15 @@ function Footer() {
             >
               <input type="text" name="honeypot" className="hidden" />
 
-              {/* Name */}
+              {/* NAME */}
               <div>
                 <input
                   type="text"
                   name="user_name"
                   placeholder="Your Name"
-                  className={`w-full px-6 py-4 bg-black/40 border rounded-xl text-white ${
+                  className={`w-full px-6 py-4 bg-black/40 border rounded-xl text-white focus:ring-2 focus:ring-purple-500 outline-none ${
                     errors.user_name ? "border-red-500" : "border-white/10"
                   }`}
-                  required
                 />
                 {errors.user_name && (
                   <p className="text-red-400 text-sm mt-1">
@@ -136,16 +137,15 @@ function Footer() {
                 )}
               </div>
 
-              {/* Email */}
+              {/* EMAIL */}
               <div>
                 <input
                   type="email"
                   name="user_email"
                   placeholder="Your Email"
-                  className={`w-full px-6 py-4 bg-black/40 border rounded-xl text-white ${
+                  className={`w-full px-6 py-4 bg-black/40 border rounded-xl text-white focus:ring-2 focus:ring-purple-500 outline-none ${
                     errors.user_email ? "border-red-500" : "border-white/10"
                   }`}
-                  required
                 />
                 {errors.user_email && (
                   <p className="text-red-400 text-sm mt-1">
@@ -154,7 +154,7 @@ function Footer() {
                 )}
               </div>
 
-              {/* Phone */}
+              {/* PHONE */}
               <div>
                 <div className="flex gap-2">
                   <select
@@ -172,15 +172,15 @@ function Footer() {
                     type="tel"
                     name="phone"
                     placeholder="Phone Number"
-                    className={`flex-1 px-6 py-4 bg-black/40 border rounded-xl text-white ${
+                    className={`flex-1 px-6 py-4 bg-black/40 border rounded-xl text-white focus:ring-2 focus:ring-purple-500 outline-none ${
                       errors.phone ? "border-red-500" : "border-white/10"
                     }`}
                     onInput={(e) =>
                       (e.target.value = e.target.value.replace(/\D/g, ""))
                     }
-                    required
                   />
                 </div>
+
                 {errors.phone && (
                   <p className="text-red-400 text-sm mt-1">
                     {errors.phone}
@@ -188,15 +188,14 @@ function Footer() {
                 )}
               </div>
 
-              {/* Message */}
+              {/* MESSAGE */}
               <div>
                 <textarea
                   name="message"
                   placeholder="Your Message"
-                  className={`w-full px-6 py-4 bg-black/40 border rounded-xl text-white min-h-[120px] ${
+                  className={`w-full px-6 py-4 bg-black/40 border rounded-xl text-white min-h-[120px] focus:ring-2 focus:ring-purple-500 outline-none ${
                     errors.message ? "border-red-500" : "border-white/10"
                   }`}
-                  required
                 />
                 {errors.message && (
                   <p className="text-red-400 text-sm mt-1">
@@ -205,7 +204,7 @@ function Footer() {
                 )}
               </div>
 
-              {/* Button */}
+              {/* BUTTON */}
               <button
                 type="submit"
                 disabled={loading}
@@ -227,18 +226,19 @@ function Footer() {
           </div>
         </div>
 
-        {/* ================= FOOTER GRID ================= */}
-        <div className="grid md:grid-cols-5 gap-14">
+        {/* FOOTER GRID */}
+        <div className="grid md:grid-cols-5 gap-12">
 
           <div>
             <img
               src={logo}
               alt="JST Logo"
-              className="w-40 mb-6 hover:scale-105 transition-transform duration-300"
+              className="w-44 mb-6 hover:scale-105 transition-transform duration-300"
             />
-            <p className="mt-4 text-sm leading-relaxed text-gray-400">
-              We build scalable digital ecosystems combining SEO,
-              performance marketing, web & app engineering to drive predictable growth.
+
+            <p className="text-sm leading-relaxed text-gray-400 max-w-xs">
+              We build scalable digital ecosystems combining SEO, performance
+              marketing, web & app engineering to drive predictable growth.
             </p>
 
             <div className="flex gap-4 mt-8">
@@ -247,9 +247,9 @@ function Footer() {
                   <div
                     key={index}
                     className="w-10 h-10 flex items-center justify-center rounded-full 
-                               bg-white/5 border border-white/10
-                               hover:border-[#A855F7] hover:shadow-[0_0_20px_#A855F7]
-                               hover:scale-110 transition-all duration-300 cursor-pointer"
+                    bg-white/5 border border-white/10
+                    hover:border-purple-500 hover:shadow-[0_0_20px_rgba(168,85,247,0.6)]
+                    hover:scale-110 transition-all duration-300 cursor-pointer"
                   >
                     <Icon size={16} />
                   </div>
@@ -268,7 +268,7 @@ function Footer() {
                 "Web Development",
                 "App Development",
               ].map((item, i) => (
-                <li key={i} className="cursor-pointer hover:text-[#A855F7] transition">
+                <li key={i} className="cursor-pointer hover:text-purple-400 transition">
                   {item}
                 </li>
               ))}
@@ -280,7 +280,7 @@ function Footer() {
             <ul className="space-y-3 text-sm">
               {["New York", "Los Angeles", "Chicago", "Houston", "Seattle"].map(
                 (city, i) => (
-                  <li key={i} className="cursor-pointer hover:text-[#A855F7] transition">
+                  <li key={i} className="cursor-pointer hover:text-purple-400 transition">
                     {city}
                   </li>
                 )
@@ -293,7 +293,7 @@ function Footer() {
             <ul className="space-y-3 text-sm">
               {["Home", "About Us", "Services", "Case Studies", "Contact"].map(
                 (link, i) => (
-                  <li key={i} className="cursor-pointer hover:text-[#A855F7] transition">
+                  <li key={i} className="cursor-pointer hover:text-purple-400 transition">
                     {link}
                   </li>
                 )
@@ -304,7 +304,7 @@ function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-6 text-lg">Contact</h4>
             <ul className="space-y-3 text-sm">
-              <li>📍30 N GOULD st,STE #37621, Sheridan, WY 82801</li> 
+              <li>📍 30 N GOULD st,STE #37621, Sheridan, WY 82801</li>
               <li>📞 +1 (720) 764-9455</li>
               <li>✉️ jupitersofttechnologies@gmail.com</li>
             </ul>
@@ -312,6 +312,7 @@ function Footer() {
 
         </div>
 
+        {/* COPYRIGHT */}
         <div className="border-t border-white/10 mt-20 pt-6 text-sm text-gray-500 text-center">
           © {new Date().getFullYear()} JST Technologies. All rights reserved.
         </div>

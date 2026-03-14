@@ -1,206 +1,313 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import {
-  Search,
-  Megaphone,
-  BarChart3,
-  Globe,
-  Smartphone
+Megaphone,
+MapPin,
+Hash,
+Globe,
+Search,
+Video,
+TrendingUp,
+ShoppingCart,
+ArrowRight
 } from "lucide-react";
 
 export default function ServicesMegaMenu({ isMobile, closeMenu }) {
 
-  const navigate = useNavigate();
+const navigate = useNavigate();
 
-  const services = [
-    {
-      title: "SEO",
-      icon: <Search className="w-5 h-5" />,
-      color: "from-blue-500 to-indigo-500",
-      items: [
-        { name: "Technical SEO", path: "/seo" },
-        { name: "Ecommerce SEO", path: "/seo" },
-        { name: "Link Building", path: "/seo" },
-        { name: "Local SEO", path: "/seo" }
-      ]
-    },
-    {
-      title: "Marketing",
-      icon: <Megaphone className="w-5 h-5" />,
-      color: "from-purple-500 to-pink-500",
-      items: [
-        { name: "Digital Marketing Strategy", path: "/marketing" },
-        { name: "Content Marketing", path: "/marketing" },
-        { name: "Email Marketing", path: "/marketing" },
-        { name: "Reputation Management", path: "/marketing" }
-      ]
-    },
-    {
-      title: "PPC",
-      icon: <BarChart3 className="w-5 h-5" />,
-      color: "from-emerald-500 to-lime-500",
-      items: [
-        { name: "Google Ads", path: "/ppc" },
-        { name: "Facebook Ads", path: "/ppc" },
-        { name: "Instagram Ads", path: "/ppc" },
-        { name: "LinkedIn Ads", path: "/ppc" }
-      ]
-    },
-    {
-      title: "Website Development",
-      icon: <Globe className="w-5 h-5" />,
-      color: "from-cyan-500 to-teal-500",
-      items: [
-        { name: "WordPress Development", path: "/web-development" },
-        { name: "Custom Website Design", path: "/web-development" },
-        { name: "Website Redesign", path: "/web-development" },
-        { name: "Website Hosting", path: "/web-development" }
-      ]
-    },
-    {
-      title: "Application Development",
-      icon: <Smartphone className="w-5 h-5" />,
-      color: "from-orange-500 to-red-500",
-      items: [
-        { name: "Android App Development", path: "/app-development" },
-        { name: "iOS App Development", path: "/app-development" },
-        { name: "Cross Platform Apps", path: "/app-development" },
-        { name: "App Maintenance", path: "/app-development" }
-      ]
-    }
-  ];
+const services = [
 
-  const goTo = (path) => {
-    navigate(path);
-    if (closeMenu) closeMenu();
-  };
+{
+title: "Digital Marketing",
+icon: <Megaphone size={18}/>,
+items: [
+"Digital Marketing Strategy",
+"Digital Marketing Audit",
+"Content Marketing",
+"Email Marketing",
+"Reputation Management",
+"Franchise Digital Marketing"
+],
+path:"/services/digital-marketing"
+},
 
-  /* MOBILE MENU */
+{
+title: "Local SEO Services",
+icon: <MapPin size={18}/>,
+items: [
+"Small Business SEO",
+"GBP Optimization"
+],
+path:"/local-seo"
+},
 
-  if (isMobile) {
-    return (
-      <div className="space-y-6">
+{
+title: "Social Media Marketing",
+icon: <Hash size={18}/>,
+items: [
+"Social Media Optimization",
+"Social Media Management",
+"Social Media Advertising"
+],
+path:"/social-media"
+},
 
-        {services.map((service, i) => (
+{
+title: "Website Design & Development",
+icon: <Globe size={18}/>,
+items: [
+"WordPress Development",
+"Custom Website Design",
+"Website Redesign Service",
+"Magento Development",
+"Mobile App Development",
+"Joomla Website Development",
+"Website Hosting Services"
+],
+path:"/web-development"
+},
 
-          <div key={i}>
+{
+title: "SEO",
+icon: <Search size={18}/>,
+items: [
+"Ecommerce SEO Services",
+"Link Building Services",
+"Technical SEO Services",
+"Franchise SEO Services",
+"Voice Search Optimization",
+"App Store Optimization",
+"White Label SEO",
+"Generative Engine Optimization",
+"Answer Engine Optimization"
+],
+path:"/seo"
+},
 
-            <h3 className="font-semibold text-gray-800 flex items-center gap-2 mb-2">
-              {service.icon}
-              {service.title}
-            </h3>
+{
+title: "Video SEO",
+icon: <Video size={18}/>,
+items: [
+"YouTube Optimization",
+"Customer Testimonial Videos",
+"Vlog Video Production Services"
+],
+path:"/video-seo"
+},
 
-            <div className="space-y-2 ml-6">
+{
+title: "Digital Advertising",
+icon: <TrendingUp size={18}/>,
+items: [
+"Pay Per Click",
+"Facebook",
+"Instagram",
+"X",
+"LinkedIn",
+"Pinterest",
+"Conversion Rate Optimization",
+"Amazon PPC Services"
+],
+path:"/ppc"
+},
 
-              {service.items.map((item, idx) => (
+{
+title: "Ecommerce Development",
+icon: <ShoppingCart size={18}/>,
+items: [
+"Shopify Web Development",
+"Woocommerce Development",
+"Payment Gateway"
+],
+path:"/ecommerce"
+}
 
-                <button
-                  key={idx}
-                  onClick={() => goTo(item.path)}
-                  className="block text-sm text-gray-600 hover:text-blue-600 transition"
-                >
-                  {item.name}
-                </button>
+];
 
-              ))}
+const goTo = (path) => {
+navigate(path);
+if(closeMenu) closeMenu();
+};
 
-            </div>
+/* MOBILE MENU */
 
-          </div>
+if(isMobile){
 
-        ))}
+return(
 
-      </div>
-    );
-  }
+<div className="space-y-6">
 
-  /* DESKTOP MEGA MENU */
+{services.map((service,i)=>(
 
-  return (
+<div key={i}>
 
-    <div className="relative group">
+<h3 className="flex items-center gap-2 font-semibold text-gray-800 mb-2">
+{service.icon}
+{service.title}
+</h3>
 
-      {/* NAV BUTTON */}
+<div className="space-y-2 ml-6">
 
-      <button className="font-medium hover:text-blue-500 transition">
-        Services
-      </button>
+{service.items.map((item,idx)=>(
 
-      {/* MEGA MENU */}
+<button
+key={idx}
+onClick={()=>goTo(service.path)}
+className="block text-sm text-gray-600 hover:text-blue-600 transition"
+>
 
-      <div
-        className="absolute left-1/2 -translate-x-1/2 mt-6 w-[1000px]
-        bg-white shadow-2xl rounded-3xl border border-gray-200
-        opacity-0 invisible
-        group-hover:opacity-100 group-hover:visible
-        transition-all duration-300
-        p-10 z-50"
-      >
+{item}
 
-        <div className="grid grid-cols-5 gap-8">
+</button>
 
-          {services.map((service, i) => (
+))}
 
-            <div
-              key={i}
-              className="p-4 rounded-xl hover:bg-gray-50 transition"
-            >
+</div>
 
-              <div
-                className={`w-10 h-10 rounded-lg bg-gradient-to-r ${service.color}
-                text-white flex items-center justify-center mb-3`}
-              >
-                {service.icon}
-              </div>
+</div>
 
-              <h3
-                className="font-semibold text-gray-900 mb-3 cursor-pointer hover:text-blue-600"
-                onClick={() => goTo(service.items[0].path)}
-              >
-                {service.title}
-              </h3>
+))}
 
-              <div className="space-y-2">
+</div>
 
-                {service.items.map((item, idx) => (
+)
 
-                  <button
-                    key={idx}
-                    onClick={() => goTo(item.path)}
-                    className="block text-sm text-gray-600 hover:text-blue-600 transition"
-                  >
-                    {item.name}
-                  </button>
+}
 
-                ))}
+/* DESKTOP MEGA MENU */
 
-              </div>
+return (
 
-            </div>
+<div className="relative group">
 
-          ))}
+<button className="font-medium hover:text-blue-500 transition">
+Services
+</button>
 
-        </div>
+<div
+className="
+absolute left-1/2 -translate-x-1/2 mt-6
+w-[1250px]
+bg-white/95 backdrop-blur-xl
+shadow-2xl rounded-3xl
+border border-gray-200
+opacity-0 invisible
+group-hover:opacity-100 group-hover:visible
+transition-all duration-300
+p-10 z-50
+"
+>
 
-        {/* CTA */}
+<div className="grid grid-cols-4 gap-8">
 
-        <div className="mt-10 pt-6 border-t flex justify-between items-center">
+{services.map((service,i)=>(
 
-          <p className="text-sm text-gray-500">
-            Need help choosing a service?
-          </p>
+<div
+key={i}
+className="
+p-5 rounded-xl border border-gray-100
+hover:border-blue-200
+hover:shadow-lg
+transition
+group/service
+bg-white
+"
+>
 
-          <button
-            onClick={() => goTo("/contact")}
-            className="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-          >
-            Free Consultation
-          </button>
+<div className="flex items-center gap-2 mb-4">
 
-        </div>
+<div className="w-8 h-8 flex items-center justify-center rounded-lg bg-blue-50 text-blue-600">
+{service.icon}
+</div>
 
-      </div>
+<h3
+onClick={()=>goTo(service.path)}
+className="font-semibold text-gray-900 cursor-pointer group-hover/service:text-blue-600 transition"
+>
 
-    </div>
-  );
+{service.title}
+
+</h3>
+
+</div>
+
+<ul className="space-y-2">
+
+{service.items.map((item,idx)=>(
+
+<li key={idx}>
+
+<button
+onClick={()=>goTo(service.path)}
+className="
+flex items-center justify-between w-full
+text-sm text-gray-600
+hover:text-blue-600
+transition
+group/item
+"
+>
+
+<span>{item}</span>
+
+<ArrowRight
+size={14}
+className="opacity-0 group-hover/item:opacity-100 transition"
+/>
+
+</button>
+
+</li>
+
+))}
+
+</ul>
+
+</div>
+
+))}
+
+</div>
+
+{/* CTA SECTION */}
+
+<div className="mt-10 pt-8 border-t flex items-center justify-between">
+
+<div>
+
+<h4 className="font-semibold text-gray-900">
+Need help choosing a service?
+</h4>
+
+<p className="text-sm text-gray-500">
+Talk with our experts and get a free strategy session.
+</p>
+
+</div>
+
+<button
+onClick={()=>goTo("/contact")}
+className="
+px-6 py-3 rounded-lg
+bg-gradient-to-r from-blue-600 to-indigo-600
+text-white font-medium
+hover:shadow-lg
+hover:scale-105
+transition
+"
+>
+
+Free Consultation
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+)
+
 }

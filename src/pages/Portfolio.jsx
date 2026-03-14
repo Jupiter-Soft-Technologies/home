@@ -13,7 +13,7 @@ export default function Portfolio() {
         />
       </Helmet>
 
-      <section className="pt-28">
+      <section className="pt-24">
         <DemoWebsites />
       </section>
 

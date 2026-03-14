@@ -29,6 +29,9 @@ import ScrollToTop from "./components/ScrollToTop";
 
 import Contact from "./pages/Contact";
 
+import AboutUs from "./pages/AboutUs";
+import DigitalMarketing from "./pages/services/DigitalMarketing";
+
 export default function App() {
   return (
     <>
@@ -70,6 +73,9 @@ export default function App() {
         <Route path="/app-development" element={<AppDevelopment />} />
 
         <Route path="/contact" element={<Contact />} />
+        <Route path="/about" element={<AboutUs />} />
+
+        <Route path="/services/digital-marketing" element={<DigitalMarketing />} />
 
       </Route>
     </Routes>

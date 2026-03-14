@@ -12,7 +12,7 @@ export default function ProcessPage() {
         />
       </Helmet>
 
-      <section className="pt-28">
+      <section className="pt-24">
         <Process />
       </section>
     </main>

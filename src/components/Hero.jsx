@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { PopupModal } from "react-calendly";
 
 /* -----------------------------
    SERVICES WITH IMAGES
@@ -6,7 +7,7 @@ import React, { useState, useEffect } from "react";
 
 const services = [
   {
-    name: "SEO Optimization",
+    name: "Search Engine Optimization (SEO)",
     image:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f",
   },
@@ -42,6 +43,10 @@ function Hero() {
   const [displayedText, setDisplayedText] = useState("");
   const [charIndex, setCharIndex] = useState(0);
 
+  // ✅ Calendly state (ADDED ONLY)
+  const [openCalendly, setOpenCalendly] = useState(false);
+  const [rootElement, setRootElement] = useState(null);
+
   const currentService = services[serviceIndex];
 
   /* -----------------------------
@@ -71,7 +76,13 @@ function Hero() {
     return () => clearTimeout(timeout);
   }, [charIndex, currentService.name]);
 
+  // ✅ Set root element (ADDED ONLY)
+  useEffect(() => {
+    setRootElement(document.getElementById("root"));
+  }, []);
+
   return (
+    <>
     <section
       className="relative overflow-hidden text-white py-32 text-center transition-all duration-700"
       style={{
@@ -118,15 +129,25 @@ function Hero() {
             Explore Our Services
           </a>
 
-          <a
-            href="#services"
+          {/* ✅ ONLY CHANGE: BUTTON → OPENS CALENDLY */}
+          <button
+            onClick={() => setOpenCalendly(true)}
             className="bg-yellow-400 text-black px-8 py-3 rounded-full font-semibold shadow-xl hover:scale-105 transition duration-300"
           >
             Get Free Strategy Call
-          </a>
+          </button>
         </div>
       </div>
     </section>
+
+    {/* ✅ CALENDLY POPUP (ADDED ONLY) */}
+    <PopupModal
+      url="https://calendly.com/jupitersofttechnologies/30min"
+      onModalClose={() => setOpenCalendly(false)}
+      open={openCalendly}
+      rootElement={rootElement}
+    />
+    </>
   );
 }
 

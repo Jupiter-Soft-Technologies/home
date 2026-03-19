@@ -30,11 +30,6 @@ desc:"Automated email funnels that convert leads into customers."
 title:"Reputation Management",
 path:"/services/digital-marketing/reputation-management",
 desc:"Protect and enhance your brand reputation across digital platforms."
-},
-{
-title:"Franchise Digital Marketing",
-path:"/services/digital-marketing/franchise-marketing",
-desc:"Scalable marketing systems designed for franchise growth."
 }
 ]
 

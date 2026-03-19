@@ -10,53 +10,37 @@ const plans = [
   {
     name: "Basic",
     price: 25000,
-    setup: 16000,
+    setup: 16666,
     subtitle: "For local & small businesses",
     color: "text-green-400",
     border: "border-green-500",
     button: "bg-green-600 hover:bg-green-700",
     features: [
-      "Setup Fee – $200",
-      "Advertising Budget – upto $1000/month",
-      "Full Optimizations – 1/month",
-      "Ad Groups – Up to 5",
-      "A/B Testing",
-      "Keywords – Up to 50",
-      "Negative Keywords",
-      "Conversion Tracking",
-      "Monthly Reporting",
-      "Google Ads",
-      "Call Extensions",
-      "Sitelink Extensions",
-    ],
+  "Setup Fee – $200",
+  "Advertising Budget – upto $1000/month",
+  "Full Optimizations – 1/month",
+  "Ad Groups – Up to 5",
+  ],
   },
   {
     name: "Silver",
-    price: 33000,
-    setup: 29000,
+    price: 33332,
+    setup: 29165.5,
     subtitle: "Growing businesses",
     color: "text-gray-300",
     border: "border-gray-400",
     button: "bg-gray-600 hover:bg-gray-700",
     features: [
-      "Setup Fee – $350",
-      "Advertising Budget – upto $2000/month",
-      "Full Optimizations – 2/month",
-      "Ad Groups – Up to 10",
-      "A/B Testing",
-      "Keywords – Up to 100",
-      "Negative Keywords",
-      "Conversion Tracking",
-      "Monthly Reporting",
-      "Google Ads",
-      "Remarketing",
-      "Monthly Conference Calls",
-    ],
+    "Setup Fee – $350",
+    "Advertising Budget – upto $2000/month",
+    "Full Optimizations – 2/month",
+    "Ad Groups – Up to 10",
+  ],
   },
   {
     name: "Gold",
     price: 50000,
-    setup: 42000,
+    setup: 41666.67,
     subtitle: "Most Popular",
     color: "text-yellow-400",
     border: "border-yellow-500",
@@ -67,38 +51,21 @@ const plans = [
       "Advertising Budget – upto $3000/month",
       "Full Optimizations – 3/month",
       "Ad Groups – Up to 20",
-      "A/B Testing",
-      "Keywords – Up to 200",
-      "Negative Keywords",
-      "Conversion Tracking",
-      "Monthly Reporting",
-      "Google + Yahoo + Bing Ads",
-      "Remarketing",
-      "Conference Calls",
     ],
   },
   {
     name: "Premium",
-    price: 67000,
-    setup: 62000,
+    price: 66666,
+    setup: 62499.5,
     subtitle: "For aggressive scaling",
     color: "text-indigo-400",
     border: "border-indigo-500",
     button: "bg-indigo-600 hover:bg-indigo-700",
     features: [
       "Setup Fee – $750",
-      "Advertising Budget – above $3000/month",
+      "Advertising Budget – abv. $3000/month",
       "Full Optimizations – 5/month",
       "Ad Groups – Up to 40",
-      "A/B Testing",
-      "Keywords – Up to 500",
-      "Negative Keywords",
-      "Conversion Tracking",
-      "Monthly Reporting",
-      "Google + Bing + Yahoo + FB Ads",
-      "Mobile Ads",
-      "Remarketing",
-      "Conference Calls",
     ],
   },
 ];
@@ -116,8 +83,8 @@ const basicDetails = [
       ["Negative Keywords", "✓"],
       ["Conversion Tracking", "✓"],
       ["Monthly Reporting", "✓"],
-      ["No Contracts", "✓"]
-    ]
+      ["No Contracts", "✓"],
+    ],
   },
   {
     title: "Ad Networks",
@@ -125,9 +92,9 @@ const basicDetails = [
       ["Google", "✓"],
       ["Yahoo", "×"],
       ["Bing", "×"],
-      ["Facebook", "×"],
-      ["Mobile Ads", "×"]
-    ]
+      ["FB", "×"],
+      ["Mobile Ads", "×"],
+    ],
   },
   {
     title: "Extensions",
@@ -136,9 +103,9 @@ const basicDetails = [
       ["Sitelink Extensions", "✓"],
       ["Remarketing", "×"],
       ["Monthly Conference Calls", "×"],
-      ["Display / Image Ads", "×"]
-    ]
-  }
+      ["Display/Image Ads", "×"],
+    ],
+  },
 ];
 
 const silverDetails = [
@@ -150,8 +117,8 @@ const silverDetails = [
       ["Negative Keywords", "✓"],
       ["Conversion Tracking", "✓"],
       ["Monthly Reporting", "✓"],
-      ["No Contracts", "✓"]
-    ]
+      ["No Contracts", "✓"],
+    ],
   },
   {
     title: "Ad Networks",
@@ -159,9 +126,9 @@ const silverDetails = [
       ["Google", "✓"],
       ["Yahoo", "×"],
       ["Bing", "×"],
-      ["Facebook", "×"],
-      ["Mobile Ads", "×"]
-    ]
+      ["FB", "×"],
+      ["Mobile Ads", "×"],
+    ],
   },
   {
     title: "Extensions",
@@ -170,9 +137,9 @@ const silverDetails = [
       ["Sitelink Extensions", "✓"],
       ["Remarketing", "✓"],
       ["Monthly Conference Calls", "✓"],
-      ["Display / Image Ads", "×"]
-    ]
-  }
+      ["Display/Image Ads", "×"],
+    ],
+  },
 ];
 
 const goldDetails = [
@@ -184,8 +151,8 @@ const goldDetails = [
       ["Negative Keywords", "✓"],
       ["Conversion Tracking", "✓"],
       ["Monthly Reporting", "✓"],
-      ["No Contracts", "✓"]
-    ]
+      ["No Contracts", "✓"],
+    ],
   },
   {
     title: "Ad Networks",
@@ -193,9 +160,9 @@ const goldDetails = [
       ["Google", "✓"],
       ["Yahoo", "✓"],
       ["Bing", "✓"],
-      ["Facebook", "×"],
-      ["Mobile Ads", "×"]
-    ]
+      ["FB", "×"],
+      ["Mobile Ads", "×"],
+    ],
   },
   {
     title: "Extensions",
@@ -204,9 +171,9 @@ const goldDetails = [
       ["Sitelink Extensions", "✓"],
       ["Remarketing", "✓"],
       ["Monthly Conference Calls", "✓"],
-      ["Display / Image Ads", "×"]
-    ]
-  }
+      ["Display/Image Ads", "×"],
+    ],
+  },
 ];
 
 const premiumDetails = [
@@ -218,8 +185,8 @@ const premiumDetails = [
       ["Negative Keywords", "✓"],
       ["Conversion Tracking", "✓"],
       ["Monthly Reporting", "✓"],
-      ["No Contracts", "✓"]
-    ]
+      ["No Contracts", "✓"],
+    ],
   },
   {
     title: "Ad Networks",
@@ -227,9 +194,9 @@ const premiumDetails = [
       ["Google", "✓"],
       ["Yahoo", "✓"],
       ["Bing", "✓"],
-      ["Facebook", "✓"],
-      ["Mobile Ads", "✓"]
-    ]
+      ["FB", "✓"],
+      ["Mobile Ads", "✓"],
+    ],
   },
   {
     title: "Extensions",
@@ -238,9 +205,9 @@ const premiumDetails = [
       ["Sitelink Extensions", "✓"],
       ["Remarketing", "✓"],
       ["Monthly Conference Calls", "✓"],
-      ["Display / Image Ads", "×"]
-    ]
-  }
+      ["Display/Image Ads", "×"],
+    ],
+  },
 ];
 
 /**
@@ -330,16 +297,29 @@ export default function PpcPricing() {
                   ))}
                 </ul>
 
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedPlan(plan.name);
-                    setOpen(true);
-                  }}
-                  className={`w-full mt-10 py-4 rounded-xl font-semibold text-white transition ${plan.button}`}
-                >
-                  Start Today →
-                </button>
+                {["Basic", "Silver", "Gold", "Premium"].includes(plan.name) ? (
+                  <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setSelectedPlan(plan.name.toUpperCase());
+                            setShowDetails(true);
+                          }}
+                          className="w-full mt-8 py-3 rounded-xl font-semibold text-white bg-blue-600 hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-blue-500/30"
+                        >
+                          View Details →
+                        </button>
+                ) : (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedPlan(plan.name);
+                      setOpen(true);
+                    }}
+                    className={`w-full mt-8 py-3 rounded-xl font-semibold text-white transition-all duration-300 shadow-lg ${plan.button}`}
+                  >
+                    Start Today →
+                  </button>
+                )}
 
               </div>
 

@@ -20,91 +20,91 @@ const services = [
 
 {
 title: "Digital Marketing",
-icon: <Megaphone size={18}/>,
+icon: <Megaphone size={18}/> ,
 items: [
-"Digital Marketing Strategy",
-"Digital Marketing Audit",
-"Content Marketing",
-"Email Marketing",
-"Reputation Management",
+{ name:"Digital Marketing Strategy", path:"/services/digital-marketing/strategy"},
+{ name:"Digital Marketing Audit", path:"/services/digital-marketing/audit"},
+{ name:"Content Marketing", path:"/services/digital-marketing/content-marketing"},
+{ name:"Email Marketing", path:"/services/digital-marketing/email-marketing"},
+{ name:"Reputation Management", path:"/services/digital-marketing/reputation-management"},
 ],
-path:"/services/digital-marketing"
+path:"/services/digital-marketing",
+highlight:true
 },
 
 {
 title: "Social Media Marketing",
-icon: <Hash size={18}/>,
+icon: <Hash size={18}/> ,
 items: [
-"Social Media Optimization",
-"Social Media Management",
-"Social Media Advertising"
+{ name:"Social Media Optimization", path:"/services/social-media"},
+{ name:"Social Media Management", path:"/services/social-media"},
+{ name:"Social Media Advertising", path:"/services/social-media"}
 ],
-path:"/social-media"
+path:"/services/social-media"
 },
 
 {
 title: "Website Design & Development",
-icon: <Globe size={18}/>,
+icon: <Globe size={18}/> ,
 items: [
-"WordPress Development",
-"E-commerce Web Development",
-"Custom Website Design",
-"Website Redesign Service",
-"Website Hosting Services"
+{ name:"WordPress Development", path:"/services/web-development"},
+{ name:"E-commerce Web Development", path:"/services/web-development"},
+{ name:"Custom Website Design", path:"/services/web-development"},
+{ name:"Website Redesign Service", path:"/services/web-development"},
+{ name:"Website Hosting Services", path:"/services/web-development"}
 ],
-path:"/web-development"
+path:"/services/web-development"
 },
 
 {
 title: "SEO",
-icon: <Search size={18}/>,
+icon: <Search size={18}/> ,
 items: [
-"Technical SEO Services",
-"Local SEO Services",
-"Voice Search Optimization",
-"Generative Engine Optimization",
-"Answer Engine Optimization"
+{ name:"Technical SEO Services", path:"/services/seo"},
+{ name:"Local SEO Services", path:"/services/seo"},
+{ name:"Voice Search Optimization", path:"/services/seo"},
+{ name:"Generative Engine Optimization", path:"/services/seo"},
+{ name:"Answer Engine Optimization", path:"/services/seo"}
 ],
-path:"/seo"
+path:"/services/seo"
 },
 
 {
 title: "Video SEO",
-icon: <Video size={18}/>,
+icon: <Video size={18}/> ,
 items: [
-"YouTube Optimization",
-"Customer Testimonial Videos",
-"Vlog Video Production Services"
+{ name:"YouTube Optimization", path:"/services/seo"},
+{ name:"Customer Testimonial Videos", path:"/services/seo"},
+{ name:"Vlog Video Production Services", path:"/services/seo"}
 ],
-path:"/video-seo"
+path:"/services/seo"
 },
 
 {
 title: "Digital Advertising",
-icon: <TrendingUp size={18}/>,
+icon: <TrendingUp size={18}/> ,
 items: [
-"Pay Per Click",
-"Facebook",
-"Instagram",
-"X",
-"LinkedIn",
-"Pinterest",
-"Conversion Rate Optimization",
-"Amazon PPC Services"
+{ name:"Pay Per Click", path:"/services/ppc"},
+{ name:"Facebook", path:"/services/ppc"},
+{ name:"Instagram", path:"/services/ppc"},
+{ name:"X", path:"/services/ppc"},
+{ name:"LinkedIn", path:"/services/ppc"},
+{ name:"Pinterest", path:"/services/ppc"},
+{ name:"Conversion Rate Optimization", path:"/services/conversion-optimization"},
+{ name:"Amazon PPC Services", path:"/services/ppc"}
 ],
-path:"/ppc"
+path:"/services/ppc"
 },
 
 {
 title: "Application Development",
-icon: <ShoppingCart size={18}/>,
+icon: <ShoppingCart size={18}/> ,
 items: [
-
-"E-commerce App Development",
-"Ed-tech App Development",
-"Payment Gateway Integration"
+{ name:"E-commerce App Development", path:"/services/app-development"},
+{ name:"Ed-tech App Development", path:"/services/app-development"},
+{ name:"Payment Gateway Integration", path:"/services/app-development"}
 ],
-path:"/ecommerce"
+path:"/services/app-development"
 }
 
 ];
@@ -137,11 +137,11 @@ return(
 
 <button
 key={idx}
-onClick={()=>goTo(service.path)}
+onClick={()=>goTo(item.path)}
 className="block text-sm text-gray-600 hover:text-blue-600 transition"
 >
 
-{item}
+{item.name}
 
 </button>
 
@@ -191,14 +191,11 @@ p-10 z-50
 
 <div
 key={i}
-className="
-p-5 rounded-xl border border-gray-100
-hover:border-blue-200
-hover:shadow-lg
-transition
-group/service
-bg-white
-"
+className={`
+p-5 rounded-xl border transition
+group/service bg-white
+${service.highlight ? "bg-gradient-to-br from-blue-50 to-orange-50 border-blue-200" : "border-gray-100 hover:border-blue-200 hover:shadow-lg"}
+`}
 >
 
 <div className="flex items-center gap-2 mb-4">
@@ -225,7 +222,7 @@ className="font-semibold text-gray-900 cursor-pointer group-hover/service:text-b
 <li key={idx}>
 
 <button
-onClick={()=>goTo(service.path)}
+onClick={()=>goTo(item.path)}
 className="
 flex items-center justify-between w-full
 text-sm text-gray-600
@@ -235,7 +232,7 @@ group/item
 "
 >
 
-<span>{item}</span>
+<span>{item.name}</span>
 
 <ArrowRight
 size={14}

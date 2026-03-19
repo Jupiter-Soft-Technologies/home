@@ -32,6 +32,14 @@ import Contact from "./pages/Contact";
 import AboutUs from "./pages/AboutUs";
 import DigitalMarketing from "./pages/services/DigitalMarketing";
 
+import Strategy from "./pages/services/digitalMarketing/Strategy";
+import Audit from "./pages/services/digitalMarketing/Audit";
+import ContentMarketing from "./pages/services/digitalMarketing/ContentMarketing";
+import EmailMarketing from "./pages/services/digitalMarketing/EmailMarketing";
+import ReputationManagement from "./pages/services/digitalMarketing/ReputationManagement";
+
+
+
 export default function App() {
   return (
     <>
@@ -76,6 +84,12 @@ export default function App() {
           <Route path="/about" element={<AboutUs />} />
 
           <Route path="/services/digital-marketing" element={<DigitalMarketing />} />
+          <Route path="/services/digital-marketing/strategy" element={<Strategy />} />
+          <Route path="/services/digital-marketing/audit" element={<Audit />} />
+          <Route path="/services/digital-marketing/content-marketing" element={<ContentMarketing />} />
+          <Route path="/services/digital-marketing/email-marketing" element={<EmailMarketing />} />
+          <Route path="/services/digital-marketing/reputation-management" element={<ReputationManagement />} />
+
 
         </Route>
       </Routes>

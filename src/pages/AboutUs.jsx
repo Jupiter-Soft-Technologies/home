@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { Player } from "@lottiefiles/react-lottie-player";
+import { useNavigate } from "react-router-dom";
 
 function AboutUs() {
 
+const navigate = useNavigate();
+
+// ✅ 13 testimonials total
 const testimonials = [
 {
 name:"Michael Carter",
@@ -16,15 +20,65 @@ text:"Their web development and marketing strategy helped us scale globally."
 {
 name:"Daniel Rodriguez",
 text:"A highly professional digital marketing agency delivering measurable ROI."
+},
+{
+name:"Emily Johnson",
+text:"Our traffic doubled within 3 months thanks to their SEO expertise."
+},
+{
+name:"James Anderson",
+text:"Their PPC campaigns generated high-quality leads consistently."
+},
+{
+name:"Olivia Brown",
+text:"Amazing team with strong technical and marketing skills."
+},
+{
+name:"William Martinez",
+text:"They built a powerful website that increased our conversions."
+},
+{
+name:"Isabella Garcia",
+text:"Professional, responsive, and results-driven agency."
+},
+{
+name:"Benjamin Lee",
+text:"We saw immediate improvements in our digital campaigns."
+},
+{
+name:"Mia Thompson",
+text:"Their AI-driven strategies gave us a competitive edge."
+},
+{
+name:"Lucas White",
+text:"Highly recommend them for scaling any online business."
+},
+{
+name:"Charlotte Harris",
+text:"They truly understand growth and performance marketing."
+},
+{
+name:"Henry Clark",
+text:"Great communication and outstanding results."
 }
 ];
+
+// ✅ rotation logic
+const [index, setIndex] = useState(0);
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    setIndex((prev) => (prev + 1) % testimonials.length);
+  }, 3000); // change every 3 sec
+
+  return () => clearInterval(interval);
+}, []);
 
 return (
 
 <div className="bg-white text-gray-800 overflow-hidden">
 
 <Helmet>
-
 <title>
 About Jupiter Soft Technologies | Digital Marketing & SEO Experts
 </title>
@@ -38,7 +92,6 @@ content="Jupiter Soft Technologies is a digital marketing agency providing SEO s
 name="keywords"
 content="digital marketing agency, SEO services, PPC advertising, web development company, social media marketing agency"
 />
-
 </Helmet>
 
 {/* HERO */}
@@ -52,30 +105,24 @@ content="digital marketing agency, SEO services, PPC advertising, web developmen
 <div>
 
 <h1 className="text-5xl font-bold text-gray-900 leading-tight">
-
 Building Powerful Digital Growth Systems
-
 </h1>
 
 <p className="mt-6 text-lg text-gray-600">
-
 Jupiter Soft Technologies is a global digital marketing agency
 helping businesses scale using SEO, paid advertising,
 web development, and AI-driven growth strategies.
-
 </p>
 
 </div>
 
 <div>
-
 <Player
 autoplay
 loop
 src="https://assets10.lottiefiles.com/packages/lf20_w51pcehl.json"
 style={{ height: "320px", width: "320px" }}
 />
-
 </div>
 
 </div>
@@ -91,33 +138,25 @@ style={{ height: "320px", width: "320px" }}
 <div>
 
 <h2 className="text-4xl font-bold text-gray-900">
-
 Our Mission
-
 </h2>
 
 <p className="mt-6 text-gray-600 leading-relaxed">
-
 Our mission is to help businesses dominate online markets through
 powerful digital marketing strategies, high-performance websites,
 and scalable marketing systems.
-
 </p>
 
 <p className="mt-6 text-gray-600 leading-relaxed">
-
 We combine advanced SEO techniques, paid advertising campaigns,
 conversion optimization, and modern web engineering to
 deliver measurable business growth.
-
 </p>
 
 </div>
 
 <div className="bg-gradient-to-br from-blue-600 to-indigo-600 rounded-3xl h-[320px] flex items-center justify-center text-white text-2xl font-semibold shadow-xl">
-
 Innovation • Strategy • Growth
-
 </div>
 
 </div>
@@ -131,9 +170,7 @@ Innovation • Strategy • Growth
 <div className="max-w-7xl mx-auto px-6 text-center">
 
 <h2 className="text-4xl font-bold text-gray-900">
-
 Our Expertise
-
 </h2>
 
 <div className="grid md:grid-cols-4 gap-10 mt-16">
@@ -152,9 +189,7 @@ Our Expertise
 <div key={i}
 className="p-8 rounded-xl bg-white border shadow-sm transform transition duration-500 hover:-translate-y-4 hover:shadow-2xl"
 >
-
 <p className="font-medium text-center">{item}</p>
-
 </div>
 
 ))}
@@ -172,9 +207,7 @@ className="p-8 rounded-xl bg-white border shadow-sm transform transition duratio
 <div className="max-w-5xl mx-auto px-6 text-center">
 
 <h2 className="text-4xl font-bold text-gray-900">
-
 Our Journey
-
 </h2>
 
 <div className="grid md:grid-cols-4 gap-12 mt-16">
@@ -187,11 +220,8 @@ Our Journey
 ].map((item,i)=>(
 
 <div key={i}>
-
 <div className="text-4xl font-bold text-blue-600">{item[0]}</div>
-
 <h3 className="mt-4 font-semibold">{item[1]}</h3>
-
 </div>
 
 ))}
@@ -202,31 +232,25 @@ Our Journey
 
 </section>
 
-{/* TESTIMONIALS */}
+{/* TESTIMONIALS (AUTO ROTATING) */}
 
 <section className="py-28 bg-gray-50">
 
-<div className="max-w-7xl mx-auto px-6 text-center">
+<div className="max-w-4xl mx-auto px-6 text-center">
 
 <h2 className="text-4xl font-bold text-gray-900">
-
 What Our Clients Say
-
 </h2>
 
-<div className="grid md:grid-cols-3 gap-10 mt-16">
+<div className="mt-16 p-10 bg-white rounded-xl shadow border transition duration-500">
 
-{testimonials.map((t,i)=>(
+<p className="text-gray-600 italic text-lg">
+"{testimonials[index].text}"
+</p>
 
-<div key={i} className="p-8 bg-white rounded-xl shadow border">
-
-<p className="text-gray-600 italic">"{t.text}"</p>
-
-<div className="mt-6 font-semibold">{t.name}</div>
-
+<div className="mt-6 font-semibold text-blue-600">
+{testimonials[index].name}
 </div>
-
-))}
 
 </div>
 
@@ -241,22 +265,19 @@ What Our Clients Say
 <div className="max-w-4xl mx-auto text-center px-6">
 
 <h2 className="text-4xl font-bold">
-
 Ready To Grow Your Business?
-
 </h2>
 
 <p className="mt-6 text-lg opacity-90">
-
 Partner with Jupiter Soft Technologies and build a
 powerful digital growth engine.
-
 </p>
 
-<button className="mt-10 px-10 py-4 bg-white text-blue-600 font-semibold rounded-full hover:scale-105 transition">
-
+<button
+onClick={() => navigate("/contact")}
+className="mt-10 px-10 py-4 bg-white text-blue-600 font-semibold rounded-full hover:scale-105 transition"
+>
 Start Your Project
-
 </button>
 
 </div>
@@ -266,13 +287,11 @@ Start Your Project
 {/* HIDDEN SEO */}
 
 <div className="sr-only">
-
 Jupiter Soft Technologies is a digital marketing agency
 specializing in SEO services, pay per click advertising,
 social media marketing, web development, mobile app
 development, AI marketing solutions, conversion
 optimization and growth marketing strategies.
-
 </div>
 
 </div>

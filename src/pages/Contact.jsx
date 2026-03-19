@@ -1,26 +1,110 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { sendEmail } from "../components/sendEmail";
+import { PopupModal } from "react-calendly";
 
 function Contact() {
 
-const [service,setService] = useState("SEO")
+const [formData, setFormData] = useState({
+  name: "",
+  email: "",
+  message: ""
+});
 
-const services = [
-"SEO",
-"PPC Advertising",
-"Social Media Marketing",
-"Web Development",
-"App Development"
-]
+const [errors, setErrors] = useState({});
+const [toast, setToast] = useState("");
+
+// Calendly states
+const [openCalendly, setOpenCalendly] = useState(false);
+const [rootElement, setRootElement] = useState(null);
+
+useEffect(() => {
+  setRootElement(document.getElementById("root"));
+}, []);
+
+// handle input change
+const handleChange = (e) => {
+  setFormData({
+    ...formData,
+    [e.target.name]: e.target.value
+  });
+
+  setErrors({
+    ...errors,
+    [e.target.name]: ""
+  });
+};
+
+// validation
+const validate = () => {
+  let newErrors = {};
+
+  if (!formData.name.trim()) {
+    newErrors.name = "Name is required";
+  }
+
+  if (!formData.email.trim()) {
+    newErrors.email = "Email is required";
+  } else {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      newErrors.email = "Enter a valid email";
+    }
+  }
+
+  if (!formData.message.trim()) {
+    newErrors.message = "Message is required";
+  }
+
+  return newErrors;
+};
+
+// handle submit
+const handleSubmit = (e) => {
+  e.preventDefault();
+
+  const validationErrors = validate();
+
+  if (Object.keys(validationErrors).length > 0) {
+    setErrors(validationErrors);
+    return;
+  }
+
+  sendEmail(formData)
+    .then(() => {
+      setToast("Message sent successfully 🚀");
+
+      setFormData({
+        name: "",
+        email: "",
+        message: ""
+      });
+
+      setErrors({});
+
+      setTimeout(() => setToast(""), 3000);
+    })
+    .catch((error) => {
+      console.error(error);
+      setToast("Failed to send ❌");
+      setTimeout(() => setToast(""), 3000);
+    });
+};
 
 return (
 
 <div className="bg-[#050505] text-white min-h-screen">
 
+{/* TOAST */}
+{toast && (
+  <div className="fixed top-6 right-6 bg-blue-600 text-white px-6 py-3 rounded-lg shadow-lg z-50">
+    {toast}
+  </div>
+)}
+
 {/* HERO */}
 
 <section className="relative py-32 text-center px-6 overflow-hidden">
 
-{/* glow background */}
 <div className="absolute w-[650px] h-[650px] bg-blue-600 opacity-20 blur-[220px] rounded-full top-0 left-1/2 -translate-x-1/2"></div>
 
 <div className="relative z-10">
@@ -73,46 +157,11 @@ hover:bg-white/10 hover:scale-[1.02] transition duration-300"
 </section>
 
 
-{/* SERVICE SELECTION */}
-
-<section className="py-24 border-t border-white/10 px-6">
-
-<h2 className="text-4xl font-semibold text-center mb-16">
-What Service Are You Interested In?
-</h2>
-
-<div className="grid md:grid-cols-5 gap-6 max-w-6xl mx-auto">
-
-{services.map((s,i)=>(
-
-<button
-key={i}
-onClick={()=>setService(s)}
-className={`p-6 rounded-xl border text-sm md:text-base font-medium
-transition-all duration-300 ${
-service===s
-? "bg-blue-600 border-blue-600 shadow-lg scale-[1.03]"
-: "bg-white/5 border-white/10 hover:bg-white/10 hover:scale-[1.03]"
-}`}
->
-
-{s}
-
-</button>
-
-))}
-
-</div>
-
-</section>
-
-
 {/* CONTACT SECTION */}
 
 <section className="py-24 border-t border-white/10 px-6">
 
 <div className="grid md:grid-cols-2 gap-16 max-w-6xl mx-auto">
-
 
 {/* FORM */}
 
@@ -122,35 +171,46 @@ service===s
 Tell Us About Your Project
 </h2>
 
-<form className="space-y-6">
+<form onSubmit={handleSubmit} className="space-y-6">
 
+<div>
 <input
 type="text"
+name="name"
+value={formData.name}
+onChange={handleChange}
 placeholder="Full Name"
 className="w-full p-4 bg-white/5 border border-white/10 rounded-lg
 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
 />
+{errors.name && <p className="text-red-400 text-sm mt-2">{errors.name}</p>}
+</div>
 
+<div>
 <input
 type="email"
+name="email"
+value={formData.email}
+onChange={handleChange}
 placeholder="Email Address"
 className="w-full p-4 bg-white/5 border border-white/10 rounded-lg
 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
 />
+{errors.email && <p className="text-red-400 text-sm mt-2">{errors.email}</p>}
+</div>
 
-<input
-type="text"
-placeholder="Company / Website"
-className="w-full p-4 bg-white/5 border border-white/10 rounded-lg
-focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
-/>
-
+<div>
 <textarea
 rows="5"
+name="message"
+value={formData.message}
+onChange={handleChange}
 placeholder="Project Details"
 className="w-full p-4 bg-white/5 border border-white/10 rounded-lg
 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
 />
+{errors.message && <p className="text-red-400 text-sm mt-2">{errors.message}</p>}
+</div>
 
 <button
 type="submit"
@@ -172,8 +232,8 @@ Send Message →
 {[
 {
 title:"Email Us",
-content:"contact@jupitersofttechnologies.com",
-link:"mailto:contact@jupitersofttechnologies.com"
+content:"jupitersofttechnologies@gmail.com",
+link:"mailto:jupitersofttechnologies@gmail.com"
 },
 {
 title:"Call Us",
@@ -183,7 +243,7 @@ link:"tel:+17207649455"
 {
 title:"Office Location",
 content:"30 N Gould St, STE #36521, Sheridan, WY 82801 US",
-link:  "https://maps.app.goo.gl/LK1AS3jf47qHVjkm7"
+link:"https://maps.app.goo.gl/LK1AS3jf47qHVjkm7"
 }
 ].map((item,i)=>(
 <div
@@ -275,15 +335,10 @@ hover:bg-white/10 hover:scale-[1.03] transition duration-300"
 <p className="text-gray-400 mt-4 leading-relaxed">
 {step.desc}
 </p>
-
 </div>
-
 ))}
-
 </div>
-
 </section>
-
 
 {/* FINAL CTA */}
 
@@ -297,12 +352,28 @@ Ready to Start?
 Book a strategy session and discover how we can scale your business.
 </p>
 
-<button className="mt-8 px-8 py-4 bg-blue-600 rounded-lg
-hover:bg-blue-700 hover:scale-[1.05] transition duration-300 font-semibold">
+<button
+onClick={() => setOpenCalendly(true)}
+className="mt-8 px-8 py-4 bg-blue-600 rounded-lg
+hover:bg-blue-700 hover:scale-[1.05] transition duration-300 font-semibold"
+>
 Book Free Strategy Call →
 </button>
 
 </section>
+
+{/* CALENDLY POPUP */}
+
+<PopupModal
+url="https://calendly.com/jupitersofttechnologies/30min"
+onModalClose={() => setOpenCalendly(false)}
+open={openCalendly}
+rootElement={rootElement}
+prefill={{
+  name: formData.name,
+  email: formData.email
+}}
+/>
 
 </div>
 
@@ -310,4 +381,4 @@ Book Free Strategy Call →
 
 }
 
-export default Contact
+export default Contact;

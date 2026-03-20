@@ -1,5 +1,16 @@
 import { useNavigate } from "react-router-dom";
 import AnimatedSection from "./AnimatedSection";
+import { useInView } from "react-intersection-observer";
+
+/* ✅ Lazy Wrapper (performance boost) */
+function LazySection({ children }) {
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    rootMargin: "120px",
+  });
+
+  return <div ref={ref}>{inView ? children : null}</div>;
+}
 
 const services = [
   {
@@ -158,47 +169,48 @@ function Services() {
           {/* Services */}
           <div className="space-y-28">
             {services.map((service, index) => (
-              <div
-                key={index}
-                className="grid md:grid-cols-2 gap-16 items-center 
-                bg-white/5 backdrop-blur-xl border border-white/10 
-                rounded-3xl p-12 hover:border-blue-500 
-                transition-all duration-500 group"
-              >
-                {/* Left */}
-                <div>
-                  <span className="text-6xl font-bold text-gray-700 group-hover:text-blue-500 transition">
-                    {service.number}
-                  </span>
+              <LazySection key={index}>
+                <div
+                  className="grid md:grid-cols-2 gap-16 items-center 
+                  bg-white/5 backdrop-blur-xl border border-white/10 
+                  rounded-3xl p-12 hover:border-blue-500 
+                  transition-all duration-500 group"
+                >
+                  {/* Left */}
+                  <div>
+                    <span className="text-6xl font-bold text-gray-700 group-hover:text-blue-500 transition">
+                      {service.number}
+                    </span>
 
-                  <h3 className="text-3xl md:text-4xl font-semibold mt-6 group-hover:text-blue-400 transition">
-                    {service.title}
-                  </h3>
+                    <h3 className="text-3xl md:text-4xl font-semibold mt-6 group-hover:text-blue-400 transition">
+                      {service.title}
+                    </h3>
 
-                  <p className="text-gray-400 mt-6 text-lg leading-relaxed">
-                    {service.desc}
-                  </p>
-                  <button
-                    onClick={() => navigate(`/services/${service.slug}`)}
-                    className="inline-block mt-8 px-6 py-3 bg-blue-600 hover:bg-blue-700 transition rounded-lg font-medium"
-                  >
-                    Explore Service →
-                  </button>
-                </div>
-
-                {/* Right */}
-                <div className="space-y-6">
-                  {service.bullets.map((item, idx) => (
-                    <div
-                      key={idx}
-                      className="flex items-start gap-4 text-gray-300 group-hover:text-white transition"
+                    <p className="text-gray-400 mt-6 text-lg leading-relaxed">
+                      {service.desc}
+                    </p>
+                    <button
+                      onClick={() => navigate(`/services/${service.slug}`)}
+                      className="inline-block mt-8 px-6 py-3 bg-blue-600 hover:bg-blue-700 transition rounded-lg font-medium"
                     >
-                      <span className="text-blue-500 text-xl">✓</span>
-                      <p>{item}</p>
-                    </div>
-                  ))}
+                      Explore Service →
+                    </button>
+                  </div>
+
+                  {/* Right */}
+                  <div className="space-y-6">
+                    {service.bullets.map((item, idx) => (
+                      <div
+                        key={idx}
+                        className="flex items-start gap-4 text-gray-300 group-hover:text-white transition"
+                      >
+                        <span className="text-blue-500 text-xl">✓</span>
+                        <p>{item}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              </LazySection>
             ))}
           </div>
 

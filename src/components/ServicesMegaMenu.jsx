@@ -47,11 +47,11 @@ path:"/services/social-media"
 title: "Website Design & Development",
 icon: <Globe size={18}/> ,
 items: [
-{ name:"WordPress Development", path:"/services/web-development"},
-{ name:"E-commerce Web Development", path:"/services/web-development"},
-{ name:"Custom Website Design", path:"/services/web-development"},
-{ name:"Website Redesign Service", path:"/services/web-development"},
-{ name:"Website Hosting Services", path:"/services/web-development"}
+{ name:"WordPress Development", path:"/services/WebDesDev/wordpress-development"},
+{ name:"E-commerce Web Development", path:"/services/WebDesDev/ecommerce-development"},
+{ name:"Custom Website Design", path:"/services/WebDesDev/custom-web-development"},
+{ name:"Website Redesign Service", path:"/services/WebDesDev/website-redesign"},
+{ name:"Website Hosting Services", path:"/services/WebDesDev/website-hosting"}
 ],
 path:"/services/web-development"
 },
@@ -100,9 +100,9 @@ path:"/services/ppc"
 title: "Application Development",
 icon: <ShoppingCart size={18}/> ,
 items: [
-{ name:"E-commerce App Development", path:"/services/app-development"},
-{ name:"Ed-tech App Development", path:"/services/app-development"},
-{ name:"Payment Gateway Integration", path:"/services/app-development"}
+{ name:"E-commerce App Development", path:"/services/AppDevelopment/ecommerce-app-development"},
+{ name:"Ed-tech App Development", path:"/services/AppDevelopment/edtech-app-development"},
+{ name:"Payment Gateway Integration", path:"/services/AppDevelopment/payment-gateway-integration"}
 ],
 path:"/services/app-development"
 }

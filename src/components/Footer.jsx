@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   FaFacebookF,
   FaInstagram,
@@ -11,6 +12,7 @@ import logo from "../assets/logo.png";
 
 function Footer() {
   const form = useRef();
+  const navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
@@ -162,8 +164,8 @@ function Footer() {
                     onChange={(e) => setCountryCode(e.target.value)}
                     className="px-4 py-4 bg-black/40 border border-white/10 rounded-xl text-white"
                   >
-                    <option value="+91">+91</option>
                     <option value="+1">+1</option>
+                    <option value="+91">+91</option>
                     <option value="+44">+44</option>
                     <option value="+61">+61</option>
                   </select>
@@ -233,7 +235,8 @@ function Footer() {
             <img
               src={logo}
               alt="JST Logo"
-              className="w-44 mb-6 hover:scale-105 transition-transform duration-300"
+              onClick={() => navigate("/")}
+              className="w-44 mb-6 hover:scale-105 cursor-pointer transition-transform duration-300"
             />
 
             <p className="text-sm leading-relaxed text-gray-400 max-w-xs">
@@ -262,14 +265,18 @@ function Footer() {
             <h4 className="text-white font-semibold mb-6 text-lg">Services</h4>
             <ul className="space-y-3 text-sm">
               {[
-                "SEO Optimization",
-                "Paid Advertising",
-                "Social Media Marketing",
-                "Web Development",
-                "App Development",
+                { name: "SEO Optimization", path: "/services/seo" },
+                { name: "Paid Advertising", path: "/services/ppc" },
+                { name: "Social Media Marketing", path: "/services/social-media" },
+                { name: "Web Development", path: "/services/web-development" },
+                { name: "App Development", path: "/services/app-development" },
               ].map((item, i) => (
-                <li key={i} className="cursor-pointer hover:text-purple-400 transition">
-                  {item}
+                <li
+                  key={i}
+                  onClick={() => navigate(item.path)}
+                  className="cursor-pointer hover:text-purple-400 transition"
+                >
+                  {item.name}
                 </li>
               ))}
             </ul>
@@ -291,13 +298,21 @@ function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-6 text-lg">Quick Links</h4>
             <ul className="space-y-3 text-sm">
-              {["Home", "About Us", "Services", "Case Studies", "Contact"].map(
-                (link, i) => (
-                  <li key={i} className="cursor-pointer hover:text-purple-400 transition">
-                    {link}
-                  </li>
-                )
-              )}
+              {[
+                { name: "Home", path: "/" },
+                { name: "About Us", path: "/about" },
+                { name: "Services", path: "/services" },
+                { name: "Case Studies", path: "/portfolio" },
+                { name: "Contact", path: "/contact" },
+              ].map((link, i) => (
+                <li
+                  key={i}
+                  onClick={() => navigate(link.path)}
+                  className="cursor-pointer hover:text-purple-400 transition"
+                >
+                  {link.name}
+                </li>
+              ))}
             </ul>
           </div>
 

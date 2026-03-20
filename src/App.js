@@ -58,6 +58,16 @@ import LinkedInAds from "./pages/services/DigitalAd/LinkedInAd";
 import PinterestAds from "./pages/services/DigitalAd/PinterestAds";
 import AmazonPPC from "./pages/services/DigitalAd/AmazonPPC";
 
+import WordPressDevelopment from "./pages/services/WebDesDev/WordPressDevelopment";
+import EcommerceDevelopment from "./pages/services/WebDesDev/EcommerceDevelopment";
+import CustomWebDevelopment from "./pages/services/WebDesDev/CustomWebDevelopment";
+import WebsiteRedesign from "./pages/services/WebDesDev/WebsiteRedesign";
+import WebsiteHosting from "./pages/services/WebDesDev/WebsiteHosting";
+import EcommerceAppDevelopment from "./pages/services/AppDevelopment/EcommerceAppDevelopment";
+import EdTechAppDevelopment from "./pages/services/AppDevelopment/EdTechAppDevelopment";
+import PaymentGatewayIntegration from "./pages/services/AppDevelopment/PaymentGatewayIntegration";
+
+
 export default function App() {
   return (
     <>
@@ -129,6 +139,15 @@ export default function App() {
           <Route path="/services/digital-ad/linkedin-ads" element={<LinkedInAds />} />
           <Route path="/services/digital-ad/pinterest-ads" element={<PinterestAds />} />
           <Route path="/services/digital-ad/amazon-ppc" element={<AmazonPPC />} />
+
+          <Route path="/services/WebDesDev/wordpress-development" element={<WordPressDevelopment />} />
+          <Route path="/services/WebDesDev/ecommerce-development" element={<EcommerceDevelopment />} />
+          <Route path="/services/WebDesDev/custom-web-development" element={<CustomWebDevelopment />} />
+          <Route path="/services/WebDesDev/website-redesign" element={<WebsiteRedesign />} />
+          <Route path="/services/WebDesDev/website-hosting" element={<WebsiteHosting />} />
+          <Route path="/services/AppDevelopment/ecommerce-app-development" element={<EcommerceAppDevelopment />} />
+          <Route path="/services/AppDevelopment/edtech-app-development" element={<EdTechAppDevelopment />} />
+          <Route path="/services/AppDevelopment/payment-gateway-integration" element={<PaymentGatewayIntegration />} />
         </Route>
       </Routes>
     </>

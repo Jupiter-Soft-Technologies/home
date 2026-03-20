@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function WebsiteDevelopment() {
+    const navigate = useNavigate();
+
     return (
         <div className="bg-gradient-to-b from-[#0f172a] via-[#0b1120] to-black text-white">
 
@@ -64,6 +67,131 @@ export default function WebsiteDevelopment() {
 
             </section>
 
+{/* 🔥 ULTRA PREMIUM WEB DEV SUB SERVICES */}
+
+<section className="py-28 px-6 relative overflow-hidden">
+
+  {/* Background Glow */}
+  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[400px] bg-blue-600/20 blur-[160px] rounded-full"></div>
+
+  <div className="relative max-w-7xl mx-auto">
+
+    {/* Heading */}
+    <div className="text-center">
+      <h2 className="text-4xl md:text-6xl font-bold leading-tight">
+        Explore Our
+        <span className="text-blue-500"> Web Solutions</span>
+      </h2>
+
+      <p className="text-gray-400 max-w-2xl mx-auto mt-6 text-lg">
+        High-performance development services designed to build, scale,
+        and optimize your digital presence.
+      </p>
+    </div>
+
+    {/* Cards */}
+    <div className="grid md:grid-cols-3 gap-10 mt-20">
+
+      {/* WordPress */}
+      <div
+        onClick={() => navigate("/services/WebDesDev/wordpress-development")}
+        className="group cursor-pointer relative bg-white/5 backdrop-blur-xl border border-white/10 p-10 rounded-3xl 
+        hover:border-blue-500 transition-all duration-500 hover:-translate-y-3 overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+
+        <div className="relative">
+          <div className="text-4xl mb-6 text-blue-500">🧩</div>
+          <h3 className="text-2xl font-semibold group-hover:text-blue-400 transition">
+            WordPress Development
+          </h3>
+          <p className="text-gray-400 mt-4">
+            Build scalable, SEO-friendly WordPress websites tailored to your business.
+          </p>
+        </div>
+      </div>
+
+      {/* Ecommerce (FEATURED) */}
+      <div
+        onClick={() => navigate("/services/WebDesDev/ecommerce-development")}
+        className="group cursor-pointer relative bg-gradient-to-b from-blue-600/20 to-transparent border border-blue-500 p-10 rounded-3xl 
+        hover:-translate-y-3 transition-all duration-500 scale-105 shadow-[0_0_40px_rgba(59,130,246,0.3)] overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-blue-500/10 blur-2xl opacity-60"></div>
+
+        <div className="relative">
+          <div className="text-4xl mb-6 text-blue-300">🛒</div>
+          <h3 className="text-2xl font-semibold text-blue-300">
+            E-commerce Development
+          </h3>
+          <p className="text-gray-300 mt-4">
+            High-converting online stores designed to maximize sales and growth.
+          </p>
+        </div>
+      </div>
+
+      {/* Custom */}
+      <div
+        onClick={() => navigate("/services/WebDesDev/custom-web-development")}
+        className="group cursor-pointer relative bg-white/5 backdrop-blur-xl border border-white/10 p-10 rounded-3xl 
+        hover:border-blue-500 transition-all duration-500 hover:-translate-y-3 overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+
+        <div className="relative">
+          <div className="text-4xl mb-6 text-blue-500">💻</div>
+          <h3 className="text-2xl font-semibold group-hover:text-blue-400 transition">
+            Custom Development
+          </h3>
+          <p className="text-gray-400 mt-4">
+            Fully custom-built solutions for unique business needs and scalability.
+          </p>
+        </div>
+      </div>
+
+      {/* Redesign */}
+      <div
+        onClick={() => navigate("/services/WebDesDev/website-redesign")}
+        className="group cursor-pointer relative bg-white/5 backdrop-blur-xl border border-white/10 p-10 rounded-3xl 
+        hover:border-blue-500 transition-all duration-500 hover:-translate-y-3 overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+
+        <div className="relative">
+          <div className="text-4xl mb-6 text-blue-500">🔄</div>
+          <h3 className="text-2xl font-semibold group-hover:text-blue-400 transition">
+            Website Redesign
+          </h3>
+          <p className="text-gray-400 mt-4">
+            Transform outdated websites into modern, high-converting platforms.
+          </p>
+        </div>
+      </div>
+
+      {/* Hosting */}
+      <div
+        onClick={() => navigate("/services/WebDesDev/website-hosting")}
+        className="group cursor-pointer relative bg-white/5 backdrop-blur-xl border border-white/10 p-10 rounded-3xl 
+        hover:border-blue-500 transition-all duration-500 hover:-translate-y-3 overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+
+        <div className="relative">
+          <div className="text-4xl mb-6 text-blue-500">☁️</div>
+          <h3 className="text-2xl font-semibold group-hover:text-blue-400 transition">
+            Website Hosting
+          </h3>
+          <p className="text-gray-400 mt-4">
+            Fast, secure, and scalable hosting solutions with maximum uptime.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
             {/* WHY INVEST */}
 
             <section className="py-24 px-6">

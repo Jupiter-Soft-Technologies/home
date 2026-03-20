@@ -1,8 +1,11 @@
 
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 export default function AppDevelopment() {
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -66,6 +69,87 @@ export default function AppDevelopment() {
 
       </section>
 
+    {/* 🔥 PREMIUM APP DEV SUB SERVICES */}
+
+<section className="py-32 px-6 relative overflow-hidden">
+
+  {/* Background Glow */}
+  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[400px] bg-blue-600/20 blur-[160px] rounded-full"></div>
+
+  <div className="relative max-w-7xl mx-auto">
+
+    {/* Heading */}
+    <div className="text-center">
+      <h2 className="text-4xl md:text-6xl font-bold leading-tight">
+        Explore Our
+        <span className="text-blue-500"> App Solutions</span>
+      </h2>
+
+      <p className="text-gray-400 max-w-2xl mx-auto mt-6 text-lg">
+        High-performance applications designed for growth, engagement,
+        and revenue generation.
+      </p>
+    </div>
+
+    {/* Cards */}
+    <div className="grid md:grid-cols-3 gap-12 mt-24">
+
+      {/* Ecommerce App */}
+      <div
+        onClick={() => navigate("/services/AppDevelopment/ecommerce-app-development")}
+        className="group cursor-pointer relative p-[1px] rounded-3xl bg-gradient-to-r from-blue-500 to-indigo-500 hover:scale-105 transition"
+      >
+        <div className="bg-black/80 backdrop-blur-xl p-10 rounded-3xl border border-white/10 h-full">
+          <div className="text-5xl mb-6">🛒</div>
+          <h3 className="text-2xl font-semibold text-blue-400">
+            E-commerce Apps
+          </h3>
+          <p className="text-gray-400 mt-4">
+            Build powerful shopping apps that boost sales and customer engagement.
+          </p>
+          <span className="text-sm text-blue-400 mt-6 block">
+            🔥 High Revenue Service →
+          </span>
+        </div>
+      </div>
+
+      {/* EdTech App */}
+      <div
+        onClick={() => navigate("/services/AppDevelopment/edtech-app-development")}
+        className="group cursor-pointer relative p-[1px] rounded-3xl bg-white/10 hover:scale-105 transition"
+      >
+        <div className="bg-black/80 backdrop-blur-xl p-10 rounded-3xl border border-white/10 h-full">
+          <div className="text-5xl mb-6">📚</div>
+          <h3 className="text-2xl font-semibold group-hover:text-blue-400 transition">
+            EdTech Apps
+          </h3>
+          <p className="text-gray-400 mt-4">
+            Create scalable education platforms with courses and live learning.
+          </p>
+        </div>
+      </div>
+
+      {/* Payment Integration */}
+      <div
+        onClick={() => navigate("/services/AppDevelopment/payment-gateway-integration")}
+        className="group cursor-pointer relative p-[1px] rounded-3xl bg-white/10 hover:scale-105 transition"
+      >
+        <div className="bg-black/80 backdrop-blur-xl p-10 rounded-3xl border border-white/10 h-full">
+          <div className="text-5xl mb-6">💳</div>
+          <h3 className="text-2xl font-semibold group-hover:text-blue-400 transition">
+            Payment Integration
+          </h3>
+          <p className="text-gray-400 mt-4">
+            Secure and fast payment solutions for apps and platforms.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
 
       {/* TECHNOLOGIES */}
       <section className="py-24 px-6 bg-zinc-950">

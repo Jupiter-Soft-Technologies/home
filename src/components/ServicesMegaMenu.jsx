@@ -60,11 +60,11 @@ path:"/services/web-development"
 title: "SEO",
 icon: <Search size={18}/> ,
 items: [
-{ name:"Technical SEO Services", path:"/services/seo"},
-{ name:"Local SEO Services", path:"/services/seo"},
-{ name:"Voice Search Optimization", path:"/services/seo"},
-{ name:"Generative Engine Optimization", path:"/services/seo"},
-{ name:"Answer Engine Optimization", path:"/services/seo"}
+{ name:"Technical SEO Services", path:"/services/seo/technical-seo"},
+{ name:"Local SEO Services", path:"/services/seo/local-seo"},
+{ name:"Voice Search Optimization", path:"/services/seo/voice-search-optimization"},
+{ name:"Generative Engine Optimization", path:"/services/seo/generative-seo"},
+{ name:"Answer Engine Optimization", path:"/services/seo/answer-engine-optimization"}
 ],
 path:"/services/seo"
 },
@@ -73,11 +73,11 @@ path:"/services/seo"
 title: "Video SEO",
 icon: <Video size={18}/> ,
 items: [
-{ name:"YouTube Optimization", path:"/services/seo"},
-{ name:"Customer Testimonial Videos", path:"/services/seo"},
-{ name:"Vlog Video Production Services", path:"/services/seo"}
+{ name:"YouTube Optimization", path:"/services/video-seo/youtube-seo"},
+{ name:"Customer Testimonial Videos", path:"/services/video-seo/customer-testimonial-videos"},
+{ name:"Vlog Video Production Services", path:"/services/video-seo/vlog-video-production"}
 ],
-path:"/services/seo"
+path:"/services/video-seo"
 },
 
 {

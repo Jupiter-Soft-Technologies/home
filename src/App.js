@@ -38,7 +38,15 @@ import ContentMarketing from "./pages/services/digitalMarketing/ContentMarketing
 import EmailMarketing from "./pages/services/digitalMarketing/EmailMarketing";
 import ReputationManagement from "./pages/services/digitalMarketing/ReputationManagement";
 
-
+import VideoSEO from "./pages/VideoSEO";
+import YouTubeSEO from "./pages/services/SEO/VideoSEO/YouTubeSEO";
+import VideoSEOCustomerTestimonialVideos from "./pages/services/SEO/VideoSEO/CustomerTestimonialVideos";
+import VlogVideoProduction from "./pages/services/SEO/VideoSEO/VlogVideoProduction";
+import TechnicalSEO from "./pages/services/SEO/TechnicalSEO";
+import LocalSEO from "./pages/services/SEO/LocalSEO";
+import VoiceSearchOptimization from "./pages/services/SEO/VoiceSearchOptimization";
+import GenerativeSEO from "./pages/services/SEO/GenerativeSEO";
+import AnswerEngineOptimization from "./pages/services/SEO/AnswerEngineOptimization";
 
 export default function App() {
   return (
@@ -65,8 +73,9 @@ export default function App() {
           <Route path="/app-pricing" element={<AppDevPricing />} />
 
           {/* Services */}
-          <Route path="/services/seo" element={<SEO />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/services/seo" element={<SEO />} />
+          <Route path="/services/video-seo" element={<VideoSEO />} />
           <Route path="/services/ppc" element={<PPC />} />
           <Route path="/services/web-development" element={<WebsiteDevelopment />} />
 
@@ -90,6 +99,14 @@ export default function App() {
           <Route path="/services/digital-marketing/email-marketing" element={<EmailMarketing />} />
           <Route path="/services/digital-marketing/reputation-management" element={<ReputationManagement />} />
 
+          <Route path="/services/video-seo/youtube-seo" element={<YouTubeSEO />} />
+          <Route path="/services/video-seo/customer-testimonial-videos" element={<VideoSEOCustomerTestimonialVideos />} />
+          <Route path="/services/video-seo/vlog-video-production" element={<VlogVideoProduction />} />
+          <Route path="/services/seo/technical-seo" element={<TechnicalSEO />} />
+          <Route path="/services/seo/local-seo" element={<LocalSEO />} />
+          <Route path="/services/seo/voice-search-optimization" element={<VoiceSearchOptimization />} />
+          <Route path="/services/seo/generative-seo" element={<GenerativeSEO />} />
+          <Route path="/services/seo/answer-engine-optimization" element={<AnswerEngineOptimization />} />
 
         </Route>
       </Routes>

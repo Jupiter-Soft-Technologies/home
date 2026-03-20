@@ -16,6 +16,18 @@ const services = [
   },
   {
     number: "02",
+    title: "Video SEO",
+    slug: "video-seo",
+    desc: "Optimize your video content to rank on YouTube and Google, driving organic views, engagement, and leads.",
+    bullets: [
+      "YouTube keyword research & optimization",
+      "Title, tags & description optimization",
+      "Thumbnail & CTR improvement",
+      "Watch-time & retention strategies",
+    ],
+  },
+  {
+    number: "03",
     title: "Paid-per-click Advertising",
     slug: "ppc",
     desc: "High-performance Google, Meta & LinkedIn ads built for measurable ROI.",
@@ -27,7 +39,7 @@ const services = [
     ],
   },
   {
-    number: "03",
+    number: "04",
     title: "Social Media Marketing",
     slug: "social-media",
     desc: "Brand-building and lead generation through data-driven social campaigns.",
@@ -39,7 +51,7 @@ const services = [
     ],
   },
   {
-    number: "04",
+    number: "05",
     title: "Web Development",
     slug: "web-development",
     desc: "Modern, lightning-fast websites built for performance and scalability.",
@@ -51,7 +63,7 @@ const services = [
     ],
   },
   {
-    number: "05",
+    number: "06",
     title: "App Development",
     slug: "app-development",
     desc: "Cross-platform mobile applications engineered for seamless experiences.",
@@ -63,7 +75,7 @@ const services = [
     ],
   },
   {
-    number: "06",
+    number: "07",
     title: "Custom Software Solutions",
     slug: "custom-software",
     desc: "Tailored systems that automate workflows and scale with your business.",
@@ -75,7 +87,7 @@ const services = [
     ],
   },
   {
-    number: "07",
+    number: "08",
     title: "Cloud & DevOps",
     slug: "cloud-devops",
     desc: "Secure, scalable infrastructure powered by modern cloud platforms.",
@@ -87,7 +99,7 @@ const services = [
     ],
   },
   {
-    number: "08",
+    number: "09",
     title: "UI / UX Design",
     slug: "ui-ux",
     desc: "Conversion-focused design systems built for usability and trust.",
@@ -99,7 +111,7 @@ const services = [
     ],
   },
   {
-    number: "09",
+    number: "10",
     title: "Conversion Optimization",
     slug: "conversion-optimization",
     desc: "Turn more visitors into paying customers through data-backed testing.",

@@ -587,7 +587,32 @@ const premiumDetails = [
 
   return (
     <>
-      <section className="py-24 bg-black">
+      <section className="py-28 bg-black text-center">
+
+        {/* HEADING */}
+        <h1 className="text-4xl md:text-5xl font-bold text-white">
+          SEO Pricing Plans
+        </h1>
+
+        {/* SUBTEXT */}
+        <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
+          Grow your rankings, traffic, and revenue with AI-powered SEO strategies
+          designed for long-term results.
+        </p>
+
+        {/* TRUST LINE */}
+        <p className="text-green-400 text-sm mt-4">
+          ✔ Proven SEO Framework • ✔ AI-Driven Optimization • ✔ Transparent Reporting
+        </p>
+
+        {/* OPTIONAL URGENCY */}
+        <p className="text-red-400 text-xs mt-2">
+          ⚡ Limited onboarding slots available this month
+        </p>
+
+        {/* CARDS GRID */}
+        <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-8 px-6 mt-20">
+          </div>
         <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-8 px-6">
           {plans.map((plan) => (
             <div

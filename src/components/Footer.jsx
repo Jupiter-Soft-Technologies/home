@@ -17,7 +17,15 @@ function Footer() {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState(false);
-  const [countryCode, setCountryCode] = useState("+91");
+  const [countryCode, setCountryCode] = useState("+1");
+
+  const serviceAreas = [
+  { name: "New York", path: "/locations/new-york" },
+  { name: "Los Angeles", path: "/contact" },
+  { name: "Chicago", path: "/contact" },
+  { name: "Houston", path: "/contact" },
+  { name: "Seattle", path: "/contact" },
+];
 
   const validate = (data) => {
     const newErrors = {};
@@ -283,15 +291,20 @@ function Footer() {
           </div>
 
           <div>
-            <h4 className="text-white font-semibold mb-6 text-lg">Service Areas</h4>
+            <h4 className="text-white font-semibold mb-6 text-lg">
+              Service Areas
+            </h4>
+
             <ul className="space-y-3 text-sm">
-              {["New York", "Los Angeles", "Chicago", "Houston", "Seattle"].map(
-                (city, i) => (
-                  <li key={i} className="cursor-pointer hover:text-purple-400 transition">
-                    {city}
-                  </li>
-                )
-              )}
+              {serviceAreas.map((city, i) => (
+                <li
+                  key={i}
+                  onClick={() => navigate(city.path)}
+                  className="cursor-pointer hover:text-purple-400 transition"
+                >
+                  {city.name}
+                </li>
+              ))}
             </ul>
           </div>
 

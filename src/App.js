@@ -67,6 +67,9 @@ import EcommerceAppDevelopment from "./pages/services/AppDevelopment/EcommerceAp
 import EdTechAppDevelopment from "./pages/services/AppDevelopment/EdTechAppDevelopment";
 import PaymentGatewayIntegration from "./pages/services/AppDevelopment/PaymentGatewayIntegration";
 
+import LocationTemplate from "./pages/locations/LocationTemplate";
+import newYorkData from "./data/locations/newyork";
+
 
 export default function App() {
   return (
@@ -148,6 +151,10 @@ export default function App() {
           <Route path="/services/AppDevelopment/ecommerce-app-development" element={<EcommerceAppDevelopment />} />
           <Route path="/services/AppDevelopment/edtech-app-development" element={<EdTechAppDevelopment />} />
           <Route path="/services/AppDevelopment/payment-gateway-integration" element={<PaymentGatewayIntegration />} />
+
+
+          <Route path="/locations/new-york" element={<LocationTemplate data={newYorkData} />}/>
+          
         </Route>
       </Routes>
     </>

@@ -47,6 +47,16 @@ import LocalSEO from "./pages/services/SEO/LocalSEO";
 import VoiceSearchOptimization from "./pages/services/SEO/VoiceSearchOptimization";
 import GenerativeSEO from "./pages/services/SEO/GenerativeSEO";
 import AnswerEngineOptimization from "./pages/services/SEO/AnswerEngineOptimization";
+import SocialMediaOptimization from "./pages/services/SMM/SocialMediaOptimization";
+import SocialMediaManagement from "./pages/services/SMM/SocialMediaManagement";
+import SocialMediaAdvertising from "./pages/services/SMM/SocialMediaAdvertising";
+import PPCServices from "./pages/services/DigitalAd/PPCServices";
+import FacebookAds from "./pages/services/DigitalAd/FacebookAds";
+import InstagramAds from "./pages/services/DigitalAd/InstagramAds";
+import TwitterAds from "./pages/services/DigitalAd/TwitterAds";
+import LinkedInAds from "./pages/services/DigitalAd/LinkedInAd";
+import PinterestAds from "./pages/services/DigitalAd/PinterestAds";
+import AmazonPPC from "./pages/services/DigitalAd/AmazonPPC";
 
 export default function App() {
   return (
@@ -108,6 +118,17 @@ export default function App() {
           <Route path="/services/seo/generative-seo" element={<GenerativeSEO />} />
           <Route path="/services/seo/answer-engine-optimization" element={<AnswerEngineOptimization />} />
 
+          <Route path="/services/SMM/social-media-optimization" element={<SocialMediaOptimization />} />
+          <Route path="/services/SMM/social-media-management" element={<SocialMediaManagement />} />
+          <Route path="/services/SMM/social-media-advertising" element={<SocialMediaAdvertising />} />
+
+          <Route path="/services/digital-ad/ppcServices" element={<PPCServices />} />
+          <Route path="/services/digital-ad/facebook-ads" element={<FacebookAds />} />
+          <Route path="/services/digital-ad/instagram-ads" element={<InstagramAds />} />
+          <Route path="/services/digital-ad/twitter-ads" element={<TwitterAds />} />
+          <Route path="/services/digital-ad/linkedin-ads" element={<LinkedInAds />} />
+          <Route path="/services/digital-ad/pinterest-ads" element={<PinterestAds />} />
+          <Route path="/services/digital-ad/amazon-ppc" element={<AmazonPPC />} />
         </Route>
       </Routes>
     </>

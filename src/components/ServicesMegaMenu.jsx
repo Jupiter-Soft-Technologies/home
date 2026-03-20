@@ -36,9 +36,9 @@ highlight:true
 title: "Social Media Marketing",
 icon: <Hash size={18}/> ,
 items: [
-{ name:"Social Media Optimization", path:"/services/social-media"},
-{ name:"Social Media Management", path:"/services/social-media"},
-{ name:"Social Media Advertising", path:"/services/social-media"}
+{ name:"Social Media Optimization", path:"/services/SMM/social-media-optimization"},
+{ name:"Social Media Management", path:"/services/SMM/social-media-management"},
+{ name:"Social Media Advertising", path:"/services/SMM/social-media-advertising"}
 ],
 path:"/services/social-media"
 },
@@ -84,14 +84,14 @@ path:"/services/video-seo"
 title: "Digital Advertising",
 icon: <TrendingUp size={18}/> ,
 items: [
-{ name:"Pay Per Click", path:"/services/ppc"},
-{ name:"Facebook", path:"/services/ppc"},
-{ name:"Instagram", path:"/services/ppc"},
-{ name:"X", path:"/services/ppc"},
-{ name:"LinkedIn", path:"/services/ppc"},
-{ name:"Pinterest", path:"/services/ppc"},
+{ name:"Pay Per Click", path:"/services/digital-ad/ppcServices"},
+{ name:"Facebook", path:"/services/digital-ad/facebook-ads"},
+{ name:"Instagram", path:"/services/digital-ad/instagram-ads"},
+{ name:"X", path:"/services/digital-ad/twitter-ads"},
+{ name:"LinkedIn", path:"/services/digital-ad/linkedin-ads"},
+{ name:"Pinterest", path:"/services/digital-ad/pinterest-ads"},
 { name:"Conversion Rate Optimization", path:"/services/conversion-optimization"},
-{ name:"Amazon PPC Services", path:"/services/ppc"}
+{ name:"Amazon PPC Services", path:"/services/digital-ad/amazon-ppc"}
 ],
 path:"/services/ppc"
 },

@@ -1,24 +1,92 @@
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function PPC() {
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const platforms = [
-    { name: "Google Ads", logo: "https://cdn.worldvectorlogo.com/logos/google-ads-2.svg" },
-    { name: "Meta Ads", logo: "https://images.seeklogo.com/logo-png/42/2/meta-icon-new-facebook-2021-logo-png_seeklogo-424014.png" },
-    { name: "LinkedIn Ads", logo: "https://cdn.worldvectorlogo.com/logos/linkedin-icon-2.svg" },
-    { name: "Amazon Ads", logo: "https://cdn.prod.website-files.com/61f0f48a97255128fb175a87/620a2d7e6e043369a8bf7a87_Capture%20d%E2%80%99e%CC%81cran%202022-02-14%20a%CC%80%2011.22.31.png" }
+    {
+      name: "Google Ads",
+      logo: "https://www.vectorlogo.zone/logos/google_ads/google_ads-icon.svg"
+    },
+    {
+      name: "Meta Ads",
+      logo: "https://www.vectorlogo.zone/logos/facebook/facebook-icon.svg"
+    },
+    {
+      name: "LinkedIn Ads",
+      logo: "https://www.vectorlogo.zone/logos/linkedin/linkedin-icon.svg"
+    },
+    {
+      name: "Amazon Ads",
+      logo: "https://www.vectorlogo.zone/logos/amazon/amazon-icon.svg"
+    }
+  ];
+
+  const services = [
+    {
+      name: "PPC Ads",
+      path: "/services/digital-ad/ppcServices",
+      tag: "High Intent",
+      logo: "https://www.vectorlogo.zone/logos/google_ads/google_ads-icon.svg"
+    },
+    {
+      name: "Facebook Ads",
+      path: "/services/digital-ad/facebook-ads",
+      tag: "Scaling",
+      logo: "https://www.vectorlogo.zone/logos/facebook/facebook-icon.svg"
+    },
+    {
+      name: "Instagram Ads",
+      path: "/services/digital-ad/instagram-ads",
+      tag: "Visual Brands",
+      logo: "https://www.vectorlogo.zone/logos/instagram/instagram-icon.svg"
+    },
+    {
+      name: "X Ads",
+      path: "/services/digital-ad/twitter-ads",
+      tag: "Trends",
+      logo: "https://www.vectorlogo.zone/logos/x/x-icon.svg"
+    },
+    {
+      name: "LinkedIn Ads",
+      path: "/services/digital-ad/linkedin-ads",
+      tag: "B2B",
+      logo: "https://www.vectorlogo.zone/logos/linkedin/linkedin-icon.svg"
+    },
+    {
+      name: "Pinterest Ads",
+      path: "/services/digital-ad/pinterest-ads",
+      tag: "Shopping",
+      logo: "https://www.vectorlogo.zone/logos/pinterest/pinterest-icon.svg"
+    },
+    {
+      name: "Amazon PPC",
+      path: "/services/digital-ad/amazon-ppc",
+      tag: "E-commerce",
+      logo: "https://www.vectorlogo.zone/logos/amazon/amazon-icon.svg"
+    },
+    {
+      name: "CRO",
+      path: "/services/conversion-optimization",
+      tag: "Conversion",
+      logo: "https://cdn-icons-png.flaticon.com/512/1828/1828919.png"
+    }
   ];
 
   const funnel = [
-    { title: "Traffic", desc: "Targeted paid traffic from search & social ads" },
-    { title: "Landing Page", desc: "Optimized pages built to convert visitors" },
-    { title: "Leads", desc: "Users submit forms or call your business" },
-    { title: "Sales", desc: "Your team converts qualified leads into customers" }
+    { title: "Traffic", desc: "Targeted paid traffic from ads" },
+    { title: "Landing Page", desc: "Optimized pages for conversions" },
+    { title: "Leads", desc: "Users submit forms or call" },
+    { title: "Sales", desc: "Convert leads into customers" }
   ];
 
   const metrics = [
-    { label: "Average ROAS", value: "4.2x", width: "85%" },
-    { label: "CPA Reduction", value: "48%", width: "70%" },
+    { label: "ROAS", value: "4.2x", width: "85%" },
+    { label: "CPA Drop", value: "48%", width: "70%" },
     { label: "Lead Growth", value: "320%", width: "95%" }
   ];
 
@@ -27,253 +95,128 @@ export default function PPC() {
 
       {/* HERO */}
       <section className="py-32 text-center px-6">
-
         <h1 className="text-5xl md:text-6xl font-bold">
           Paid Advertising (PPC)
         </h1>
-
         <p className="text-gray-400 mt-8 max-w-3xl mx-auto text-lg">
-          Data-driven paid advertising campaigns that generate leads,
-          increase sales and maximize ROI across Google, Meta, LinkedIn
-          and Amazon advertising platforms.
+          Data-driven campaigns that generate leads and maximize ROI.
         </p>
-
       </section>
 
-
-      {/* PLATFORM LOGO WALL */}
-
+      {/* PLATFORM LOGOS */}
       <section className="py-24 border-t border-white/10 text-center">
-
         <h2 className="text-4xl font-semibold mb-16">
           Platforms We Advertise On
         </h2>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-12 max-w-5xl mx-auto">
-
-          {platforms.map((platform,i)=>(
-            <div
-              key={i}
-              className="flex flex-col items-center opacity-70 hover:opacity-100
-              grayscale hover:grayscale-0 transition transform hover:scale-110"
-            >
-
-              <img
-                src={platform.logo}
-                alt={platform.name}
-                className="h-16 object-contain"
-              />
-
-              <p className="text-gray-400 mt-3">
-                {platform.name}
-              </p>
-
+          {platforms.map((p, i) => (
+            <div key={i} className="flex flex-col items-center">
+              <div className="p-6 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition">
+                <img
+                  src={p.logo}
+                  alt={p.name}
+                  className="h-12 w-12 object-contain 
+                  grayscale opacity-70 
+                  hover:grayscale-0 hover:opacity-100 transition"
+                />
+              </div>
+              <p className="text-gray-400 mt-3">{p.name}</p>
             </div>
           ))}
-
         </div>
-
       </section>
 
-
-      {/* GOOGLE ADS DASHBOARD */}
-
-      <section className="py-24 border-t border-white/10 px-6">
-
-        <h2 className="text-4xl text-center font-semibold mb-16">
-          Campaign Performance Dashboard
+      {/* DIGITAL SERVICES */}
+      <section className="py-28 px-6 border-t border-white/10">
+        <h2 className="text-4xl text-center font-bold mb-16">
+          Explore Digital Advertising Services
         </h2>
 
-        <div className="max-w-5xl mx-auto bg-white/5 border border-white/10 rounded-xl p-10">
+        <div className="grid md:grid-cols-4 gap-8 max-w-7xl mx-auto">
+          {services.map((s, i) => (
+            <Link
+              key={i}
+              to={s.path}
+              className="group p-6 rounded-2xl border border-white/10 
+              bg-white/5 hover:bg-white/10 hover:-translate-y-2 transition"
+            >
 
-          <div className="grid md:grid-cols-3 gap-10 text-center">
+              <span className="text-xs bg-blue-500/20 text-blue-400 px-3 py-1 rounded-full">
+                {s.tag}
+              </span>
 
-            <div>
-              <p className="text-gray-400">Clicks</p>
-              <h3 className="text-3xl font-bold text-blue-500">12,483</h3>
-            </div>
+              <div className="mt-4 p-4 bg-white/5 rounded-xl flex justify-center">
+                <img
+                  src={s.logo}
+                  alt={s.name}
+                  className="h-10 object-contain 
+                  grayscale opacity-70 
+                  group-hover:grayscale-0 group-hover:opacity-100 transition"
+                />
+              </div>
 
-            <div>
-              <p className="text-gray-400">Conversions</p>
-              <h3 className="text-3xl font-bold text-green-500">1,294</h3>
-            </div>
+              <h3 className="mt-4 text-lg font-semibold text-center">
+                {s.name}
+              </h3>
 
-            <div>
-              <p className="text-gray-400">Cost Per Lead</p>
-              <h3 className="text-3xl font-bold text-purple-500">$18.20</h3>
-            </div>
-
-          </div>
-
+            </Link>
+          ))}
         </div>
-
       </section>
 
-
-      {/* ROAS GROWTH BARS */}
-
+      {/* METRICS */}
       <section className="py-24 border-t border-white/10 text-center">
-
         <h2 className="text-4xl font-semibold mb-16">
-          Campaign Performance Metrics
+          Campaign Performance
         </h2>
 
         <div className="max-w-4xl mx-auto space-y-8">
-
-          {metrics.map((metric,i)=>(
+          {metrics.map((m, i) => (
             <div key={i}>
-
               <div className="flex justify-between mb-2">
-                <span>{metric.label}</span>
-                <span className="text-purple-400 font-semibold">
-                  {metric.value}
-                </span>
+                <span>{m.label}</span>
+                <span className="text-purple-400">{m.value}</span>
               </div>
-
-              <div className="w-full bg-gray-800 rounded-full h-4">
-
+              <div className="bg-gray-800 h-3 rounded">
                 <div
-                  className="bg-purple-600 h-4 rounded-full transition-all duration-1000"
-                  style={{ width: metric.width }}
+                  className="bg-purple-600 h-3 rounded"
+                  style={{ width: m.width }}
                 ></div>
-
               </div>
-
             </div>
           ))}
-
         </div>
-
       </section>
 
-
-      {/* PPC FUNNEL */}
-
+      {/* FUNNEL */}
       <section className="py-24 border-t border-white/10 text-center">
-
         <h2 className="text-4xl font-semibold mb-16">
-          Our PPC Conversion Funnel
+          Conversion Funnel
         </h2>
 
         <div className="grid md:grid-cols-4 gap-10 max-w-6xl mx-auto">
-
-          {funnel.map((step,i)=>(
-            <div
-              key={i}
-              className="p-8 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 transition"
-            >
-
-              <h3 className="text-purple-400 font-semibold">
-                {step.title}
-              </h3>
-
-              <p className="text-gray-400 mt-3">
-                {step.desc}
-              </p>
-
+          {funnel.map((f, i) => (
+            <div key={i} className="p-6 bg-white/5 rounded-xl">
+              <h3 className="text-purple-400">{f.title}</h3>
+              <p className="text-gray-400 mt-2">{f.desc}</p>
             </div>
           ))}
-
         </div>
-
       </section>
-
-
-      {/* SERVICES */}
-
-      <section className="py-24 border-t border-white/10 px-6">
-
-        <h2 className="text-4xl font-semibold text-center mb-16">
-          Our PPC Advertising Services
-        </h2>
-
-        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-
-          {/* STANDARD PPC */}
-
-          <div className="p-10 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 transition">
-
-            <h3 className="text-3xl font-semibold text-purple-400">
-              Standard PPC Advertising
-            </h3>
-
-            <p className="text-gray-400 mt-6">
-              Google Ads, Meta Ads and LinkedIn campaigns built to drive
-              qualified leads and measurable ROI.
-            </p>
-
-            <ul className="mt-8 space-y-3 text-gray-300">
-              <li>✓ Google Search Ads</li>
-              <li>✓ Meta Ads (Facebook & Instagram)</li>
-              <li>✓ LinkedIn Ads</li>
-              <li>✓ Conversion tracking</li>
-              <li>✓ Campaign optimization</li>
-            </ul>
-
-            <Link
-              to="/ppc-pricing"
-              className="inline-block mt-10 px-8 py-4 bg-purple-600 hover:bg-purple-700 rounded-lg font-semibold transition"
-            >
-              View PPC Pricing →
-            </Link>
-
-          </div>
-
-
-          {/* AMAZON PPC */}
-
-          <div className="p-10 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 transition">
-
-            <h3 className="text-3xl font-semibold text-orange-400">
-              Amazon PPC Advertising
-            </h3>
-
-            <p className="text-gray-400 mt-6">
-              Amazon advertising strategies designed to increase product
-              visibility and maximize profitable sales.
-            </p>
-
-            <ul className="mt-8 space-y-3 text-gray-300">
-              <li>✓ Sponsored Products</li>
-              <li>✓ Sponsored Brands</li>
-              <li>✓ Sponsored Display</li>
-              <li>✓ Keyword mining</li>
-              <li>✓ ACOS optimization</li>
-            </ul>
-
-            <Link
-              to="/amazon-ppc-pricing"
-              className="inline-block mt-10 px-8 py-4 bg-orange-500 hover:bg-orange-600 rounded-lg font-semibold transition"
-            >
-              View Amazon PPC Pricing →
-            </Link>
-
-          </div>
-
-        </div>
-
-      </section>
-
 
       {/* CTA */}
-
-      <section className="py-24 text-center bg-gradient-to-r from-gray-900 to-black">
-
+      <section className="py-24 text-center">
         <h2 className="text-4xl font-semibold">
-          Ready to scale your advertising?
+          Ready to scale your ads?
         </h2>
-
-        <p className="text-gray-400 mt-6">
-          Let our PPC specialists build profitable campaigns for your business.
-        </p>
 
         <Link
           to="/contact"
-          className="inline-block mt-10 px-10 py-4 bg-white text-black rounded-lg font-semibold hover:scale-105 transition"
+          className="inline-block mt-10 px-10 py-4 bg-white text-black rounded-lg hover:scale-105 transition"
         >
-          Book Free PPC Strategy →
+          Book Free Strategy →
         </Link>
-
       </section>
 
     </div>

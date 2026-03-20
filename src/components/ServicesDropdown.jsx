@@ -92,7 +92,7 @@ export default function ServiceDropdown({ isMobile = false, closeMenu }) {
 
           {/* HEADER */}
           <div className="px-8 py-6 bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
-            <h4 className="text-xl font-semibold">Our Services</h4>
+            <h4 className="text-xl font-semibold">Our Pricing</h4>
             <p className="text-sm opacity-90 mt-1">
               Performance-driven digital growth solutions
             </p>
